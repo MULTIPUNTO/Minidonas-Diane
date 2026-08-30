@@ -4,37 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minidonas Diane · Santiago de Cuba</title>
-    <!-- Fuentes elegantes + amigables -->
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ==========================================
-           NUEVA PALETA DE COLORES (Imagen base de texto)
-           Reemplazo total de los colores anteriores
-           ========================================== */
+        /* ===== PALETA DE COLORES ===== */
         :root {
-            /* Colores principales de la marca */
-            --primary: #D95B7A;        /* Rosa Dulce */
-            --primary-dark: #C24A68;   /* Rosa más intenso */
-            --secondary: #F9C96E;      /* Amarillo Cálido (glaseado) */
-            --accent: #5BBFC4;         /* Menta/Turquesa (frescura) */
-            --bg-cream: #FFFBF5;       /* Fondo crema suave */
-            --card-white: #FFFFFF;     
-            --text-dark: #2D2421;      /* Café oscuro casi negro */
-            --text-muted: #6B5B55;     /* Café grisáceo */
-            
-            /* Tipografías */
+            --primary: #D95B7A;
+            --primary-dark: #C24A68;
+            --secondary: #F9C96E;
+            --accent: #5BBFC4;
+            --bg-cream: #FFFBF5;
+            --card-white: #FFFFFF;
+            --text-dark: #2D2421;
+            --text-muted: #6B5B55;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Quicksand', sans-serif;
-            
-            /* Bordes y sombras */
             --radius-donut: 40px;
             --shadow-soft: 0 15px 30px rgba(217, 91, 122, 0.12);
             --shadow-hover: 0 25px 40px rgba(217, 91, 122, 0.20);
         }
 
-        /* ===== RESET Y BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -44,7 +35,6 @@
         body {
             font-family: var(--font-body);
             background-color: var(--bg-cream);
-            /* Textura de puntitos (simula sprinkles) */
             background-image: radial-gradient(#F1E3D7 1.2px, transparent 1.2px);
             background-size: 30px 30px;
             color: var(--text-dark);
@@ -53,7 +43,6 @@
             padding: 20px;
         }
 
-        /* ===== CONTENEDOR PRINCIPAL ===== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -128,7 +117,6 @@
             background: linear-gradient(135deg, #FFF1F4 0%, #FDE8E8 100%);
             border-radius: var(--radius-donut);
             margin: 30px 0 40px 0;
-            /* Fondo con círculos decorativos de los nuevos colores */
             background-image: radial-gradient(circle at 10% 20%, var(--secondary) 2px, transparent 2px), 
                               radial-gradient(circle at 90% 80%, var(--accent) 1.5px, transparent 1.5px);
             background-size: 50px 50px, 70px 70px;
@@ -207,28 +195,35 @@
             box-shadow: var(--shadow-soft);
         }
 
-        /* ===== MENÚ COMPLETO ===== */
-        .menu-completo {
-            margin: 50px 0;
-            text-align: center;
-        }
-        .menu-completo h3 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
+        /* Mensaje explicativo en el Hero */
+        .hero-explicativo {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(2px);
+            border-radius: 60px;
+            padding: 12px 25px;
+            font-weight: 600;
             color: var(--primary-dark);
-            margin-bottom: 10px;
+            border: 2px dashed var(--secondary);
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1rem;
         }
-        .menu-completo .subtitulo-menu {
-            color: var(--text-muted);
+        .hero-explicativo span {
             font-size: 1.2rem;
-            margin-bottom: 40px;
+        }
+
+        /* ===== BOTONES INTERACTIVOS ===== */
+        .productos-grid {
+            margin: 50px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .menu-block {
             background: var(--card-white);
             border-radius: var(--radius-donut);
             padding: 30px 25px;
-            margin-bottom: 30px;
             box-shadow: var(--shadow-soft);
             border: 1px solid #f3e3d3;
             text-align: left;
@@ -248,92 +243,156 @@
             font-size: 2.2rem;
         }
 
-        .sabores-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .sabor-chip {
+        .opcion-btn {
             background: var(--bg-cream);
-            border: 2px solid var(--secondary);
-            padding: 12px 30px;
+            border: 2px solid #e8dccc;
+            padding: 10px 24px;
             border-radius: 60px;
             font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary-dark);
-            transition: all 0.2s ease;
+            font-size: 1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+            font-family: var(--font-body);
+            animation: pulse 2s infinite ease-in-out;
         }
-        .sabor-chip:hover {
-            background: var(--secondary);
+        .opcion-btn:hover {
             transform: scale(1.05);
+            border-color: var(--primary);
+        }
+        .opcion-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 6px 16px rgba(217, 91, 122, 0.3);
         }
 
-        .coberturas-grid {
+        .opcion-btn:nth-child(1) { animation-delay: 0s; }
+        .opcion-btn:nth-child(2) { animation-delay: 0.15s; }
+        .opcion-btn:nth-child(3) { animation-delay: 0.3s; }
+        .opcion-btn:nth-child(4) { animation-delay: 0.45s; }
+        .opcion-btn:nth-child(5) { animation-delay: 0.6s; }
+        .opcion-btn:nth-child(6) { animation-delay: 0.75s; }
+        .opcion-btn:nth-child(7) { animation-delay: 0.9s; }
+        .opcion-btn:nth-child(8) { animation-delay: 1.05s; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+
+        .sabores-grid,
+        .coberturas-grid,
+        .temas-container {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
         }
-        .cobertura-chip {
-            padding: 10px 25px;
-            border-radius: 60px;
-            font-weight: 600;
-            color: var(--text-dark);
-            border: 1px solid #e8dccc;
-            font-size: 1rem;
-            background: var(--bg-cream);
-        }
-        /* Coberturas con colores personalizados */
-        .cobertura-chip:nth-child(1) { background: #3D2C24; color: white; border-color: #3D2C24; } /* Oscuro */
-        .cobertura-chip:nth-child(2) { background: #FDF6EE; border-color: #d4c4b5; } /* Blanco */
-        .cobertura-chip:nth-child(3) { background: #FCE4EC; border-color: var(--primary); } /* Con color (rosa) */
-        .cobertura-chip:nth-child(4) { background: var(--secondary); border-color: #dba959; } /* Dulce de leche */
-
         .agregos-wrap {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             align-items: center;
         }
-        .agrego-tag {
-            background: var(--bg-cream);
-            padding: 6px 18px;
-            border-radius: 60px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            border: 1px dashed var(--secondary);
-        }
-        .agrego-tag.destacado {
+        .agrego-btn.destacado {
             background: var(--accent);
+            border-color: var(--accent);
             color: white;
-            border: none;
-            font-size: 1.1rem;
-            padding: 8px 25px;
-            box-shadow: 0 4px 10px rgba(91, 191, 196, 0.4);
+        }
+        .agrego-btn.destacado.active {
+            background: #4BA8AD;
+            border-color: #4BA8AD;
+            box-shadow: 0 6px 16px rgba(91, 191, 196, 0.4);
+        }
+        .agrego-btn.destacado:hover {
+            background: #4BA8AD;
+            border-color: #4BA8AD;
         }
 
-        /* ===== NOSOTROS ===== */
-        .nosotros {
+        /* ===== PREVISUALIZACIÓN DE IMAGEN POR CATEGORÍA ===== */
+        .preview-imagen {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fcf3ea;
+            border-radius: 30px;
             text-align: center;
-            padding: 30px 20px;
-            margin: 40px 0;
-            background: rgba(249, 201, 110, 0.15);
-            border-radius: var(--radius-donut);
-            border: 2px dashed var(--secondary);
+            font-size: 3rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            border: 1px solid #e8dccc;
+            transition: all 0.3s ease;
         }
-        .nosotros h3 {
+        .preview-imagen .label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .preview-imagen .imagen-item {
+            background: white;
+            border-radius: 60px;
+            padding: 8px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* ===== PANEL DE RESUMEN CON BOTÓN WHATSAPP ===== */
+        .seleccion-preview {
+            margin-top: 30px;
+            background: #fcf3ea;
+            border-radius: var(--radius-donut);
+            padding: 25px 30px;
+            border: 2px solid var(--secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .seleccion-preview h4 {
             font-family: var(--font-heading);
-            font-size: 2.2rem;
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        .seleccion-preview .resumen-linea {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+        .seleccion-preview .resumen-linea strong {
             color: var(--primary-dark);
         }
-        .nosotros p {
-            max-width: 700px;
-            margin: 15px auto;
-            font-size: 1.1rem;
-            color: var(--text-muted);
+        .seleccion-preview .resumen-linea .valor {
+            font-weight: 700;
+            color: var(--primary);
         }
 
-        /* ===== CONTACTO / PEDIDO (Con los nuevos colores y ubicación) ===== */
+        /* Botón de WhatsApp dentro del resumen */
+        .btn-pedido-resumen {
+            background: #25D366;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+            text-align: center;
+            align-self: center;
+        }
+        .btn-pedido-resumen:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ===== CONTACTO (sección inferior) ===== */
         .contacto {
             background: var(--primary);
             color: white;
@@ -390,7 +449,6 @@
             transform: scale(1.05);
             box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
         }
-        /* Botón de Ubicación con el color Menta (accent) */
         .btn-maps {
             background: var(--accent);
             color: white;
@@ -409,7 +467,6 @@
             box-shadow: 0 12px 30px rgba(91, 191, 196, 0.5);
         }
 
-        /* ===== FOOTER ===== */
         footer {
             text-align: center;
             padding: 20px 0 10px 0;
@@ -422,7 +479,6 @@
             color: var(--primary);
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; }
             nav { margin-top: 15px; }
@@ -431,11 +487,12 @@
             .hero-text h2 { font-size: 2.5rem; }
             .hero-text .sub-lema { border-left: none; border-top: 6px solid var(--secondary); padding-left: 0; padding-top: 15px; }
             .container { padding: 15px; border-radius: 25px; }
-            .sabor-chip { width: 100%; text-align: center; }
-            .cobertura-chip { width: 100%; text-align: center; }
+            .opcion-btn { width: 100%; text-align: center; }
             .contacto .datos { flex-direction: column; gap: 10px; border-radius: 30px; }
             .btn-group { flex-direction: column; align-items: center; }
             .btn-wsp, .btn-maps { width: 90%; }
+            .seleccion-preview { padding: 20px; }
+            .btn-pedido-resumen { width: 100%; }
         }
     </style>
 </head>
@@ -450,6 +507,7 @@
             <p>✨ Pequeñas DONITAS, Grandes SONRISAS ✨</p>
         </div>
         <nav>
+            <a href="#productos">Productos</a>
             <a href="#contacto" class="btn-cta-nav">¡Pedir Ahora!</a>
         </nav>
     </header>
@@ -459,90 +517,289 @@
         <div class="hero-text">
             <h2>Minidonas <i>Diane</i> <br>El sabor que enamora</h2>
             <div class="sub-lema">✨ Hechas con amor en Santiago de Cuba</div>
-            <p>La dosis exacta de dulzura con ingredientes Premium y tambien naturales. Perfectas para cualquier momento.</p>
-            <a href="#contacto" class="btn-principal">📦 Ordena tu caja</a>
+            <p>La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.</p>
+            <!-- Mensaje explicativo -->
+            <div class="hero-explicativo">
+                <span>📋</span> Elige tus opciones abajo y al tocar <strong>"Pedir mis donas"</strong> se enviará tu pedido por WhatsApp
+            </div>
         </div>
         <div class="hero-image">
             🍩<span>+15 combinaciones</span>
         </div>
     </section>
 
-    <!-- ===== MENÚ COMPLETO ===== -->
-    <section id="menu" class="menu-completo">
-        <h3>📋 Nuestras Delicias</h3>
-        <p class="subtitulo-menu">Elige tu sabor, cobertura, tema y agregos favoritos</p>
+    <!-- ===== PRODUCTOS ===== -->
+    <section id="productos" class="productos-grid">
 
-        <!-- Sabores -->
+        <!-- ====== SABORES ====== -->
         <div class="menu-block">
             <h4><span>🍩</span> Sabores</h4>
             <div class="sabores-grid">
-                <span class="sabor-chip">Vainilla</span>
-                <span class="sabor-chip">Chocolate</span>
-                <span class="sabor-chip">Mixtas</span>
+                <button class="opcion-btn sabor-btn" data-sabor="Vainilla">Vainilla</button>
+                <button class="opcion-btn sabor-btn" data-sabor="Chocolate">Chocolate</button>
+                <button class="opcion-btn sabor-btn" data-sabor="Mixtas">Mixtas</button>
+            </div>
+            <!-- Previsualización de imagen para Sabores -->
+            <div id="previewSabor" class="preview-imagen">
+                <span class="label">🖼️ Imagen del sabor</span>
+                <span class="imagen-item">🍩</span>
             </div>
         </div>
 
-        <!-- Coberturas -->
+        <!-- ====== COBERTURAS ====== -->
         <div class="menu-block">
-            <h4><span>🍫</span> Coberturas</h4>
+            <h4><span>🍫</span> Cobertura</h4>
             <div class="coberturas-grid">
-                <span class="cobertura-chip">Chocolate oscuro</span>
-                <span class="cobertura-chip">Chocolate blanco</span>
-                <span class="cobertura-chip">Chocolate blanco con color</span>
-                <span class="cobertura-chip">Dulce de leche</span>
+                <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate oscuro">Chocolate oscuro</button>
+                <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco">Chocolate blanco</button>
+                <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco con color">Chocolate blanco con color</button>
+                <button class="opcion-btn cobertura-btn" data-cobertura="Dulce de leche">Dulce de leche</button>
+            </div>
+            <!-- Previsualización de imagen para Coberturas -->
+            <div id="previewCobertura" class="preview-imagen">
+                <span class="label">🖼️ Imagen de la cobertura</span>
+                <span class="imagen-item">🍫</span>
             </div>
         </div>
 
-        <!-- Agregos -->
+        <!-- ====== AGREGOS ====== -->
         <div class="menu-block">
             <h4><span>✨</span> Agregos</h4>
             <div class="agregos-wrap">
-                <span class="agrego-tag">Grajeas</span>
-                <span class="agrego-tag">Perlas comestibles</span>
-                <span class="agrego-tag">Galleticas</span>
-                <span class="agrego-tag">Sorbeto</span>
-                <span class="agrego-tag">Botonetas</span>
-                <span class="agrego-tag">Maní</span>
-                <span class="agrego-tag">Coco</span>
-                <span class="agrego-tag destacado">✨ Y mucho más...!</span>
+                <button class="opcion-btn agrego-btn" data-agrego="Grajeas">Grajeas</button>
+                <button class="opcion-btn agrego-btn" data-agrego="Perlas comestibles">Perlas comestibles</button>
+                <button class="opcion-btn agrego-btn" data-agrego="Galleticas">Galleticas</button>
+                <button class="opcion-btn agrego-btn" data-agrego="Sorbeto">Sorbeto</button>
+                <button class="opcion-btn agrego-btn" data-agrego="Botonetas">Botonetas</button>
+                <button class="opcion-btn agrego-btn" data-agrego="Maní">Maní</button>
+                <button class="opcion-btn agrego-btn" data-agrego="Coco">Coco</button>
+                <button class="opcion-btn agrego-btn destacado" data-agrego="Y mucho más...!">✨ Y mucho más...!</button>
+            </div>
+            <!-- Previsualización de imagen para Agregos (múltiple) -->
+            <div id="previewAgregos" class="preview-imagen">
+                <span class="label">🖼️ Agregos seleccionados</span>
+                <span class="imagen-item">✨</span>
             </div>
         </div>
+
+        <!-- ====== TEMAS PERSONALIZADOS ====== -->
+        <div class="menu-block">
+            <h4><span>🎨</span> Temas Personalizados</h4>
+            <div class="temas-container">
+                <button class="opcion-btn tema-btn" data-tema="Futbol">⚽ Futbol</button>
+                <button class="opcion-btn tema-btn" data-tema="Paw Patrol">🐶 Paw Patrol</button>
+                <button class="opcion-btn tema-btn" data-tema="Dinosaurios">🦕 Dinosaurios</button>
+                <button class="opcion-btn tema-btn" data-tema="Cumpleaños">🎂 Cumpleaños</button>
+                <button class="opcion-btn tema-btn" data-tema="Navidad">🎄 Navidad</button>
+                <button class="opcion-btn tema-btn" data-tema="Lo que el cliente desee">✨ LO QUE EL CLIENTE DESEE</button>
+            </div>
+            <!-- Previsualización de imagen para Temas -->
+            <div id="previewTema" class="preview-imagen">
+                <span class="label">🖼️ Imagen del tema</span>
+                <span class="imagen-item">🎨</span>
+            </div>
+        </div>
+
+        <!-- ====== PANEL DE RESUMEN CON BOTÓN WHATSAPP ====== -->
+        <div id="seleccionPreview" class="seleccion-preview">
+            <h4>📋 Tu selección</h4>
+            <div class="resumen-linea"><strong>Sabor:</strong> <span id="saborSeleccionado" class="valor">Ninguno</span></div>
+            <div class="resumen-linea"><strong>Cobertura:</strong> <span id="coberturaSeleccionado" class="valor">Ninguno</span></div>
+            <div class="resumen-linea"><strong>Agregos:</strong> <span id="agregosSeleccionados" class="valor">Ninguno</span></div>
+            <div class="resumen-linea"><strong>Tema:</strong> <span id="temaSeleccionado" class="valor">Ninguno</span></div>
+            <!-- Botón que genera el pedido -->
+            <button id="btnPedidoResumen" class="btn-pedido-resumen">
+                📲 Pedir mis donas
+            </button>
+        </div>
+
     </section>
 
-    <!-- ===== NOSOTROS ===== -->
-    <section id="nosotros" class="nosotros">
-        <h3>🧑‍🍳 Hechas con amor artesanal</h3>
-        <p>En <strong>Minidonas Diane</strong> cada minidona se hornea con ingredientes Premium y tambien naturales.</p>
-    </section>
-
-    <!-- ===== CONTACTO / PEDIDO (Con ubicación) ===== -->
+    <!-- ===== CONTACTO (inferior) ===== -->
     <section id="contacto" class="contacto">
-        <h3>📲 ¡Haz tu pedido YA!</h3>
-        <p>Escoge tus sabores y coberturas favoritas. ¡Las recibes en la puerta de tu casa o las recoges en la puerta de la mía, TU DECIDES!</p>
+        <h3>📲 ¡Haz tu pedido!</h3>
+        <p>Escoge tus sabores, cobertura, agregos y el tema que más te guste. ¡Las recibes en la puerta de tu casa!</p>
         
         <div class="btn-group">
-            <a href="https://wa.me/5355123300?text=Hola%20Minidonas%20Diane!%20Quiero%20pedir%20una%20caja%20de%20minidonas" target="_blank" class="btn-wsp">
+            <a href="https://wa.me/5355123300?text=Hola%20Minidonas%20Diane!%20Te%20encontr%C3%A9%20por%20tu%20pagina%20web%20y%20quiero%20hacer%20un%20pedido%20de%20minidonas%20con:%0A*%20Sabor:%20%0A*%20Cobertura:%20%0A*%20Agregos:%20%0A*%20Tema:%20%0A*%20Cantidad:%20%0A*%20Caja/Envase:%20%0A*%20Lo%20quiero%20para%20el%20dia:%20%0A*%20Domicilio:" target="_blank" class="btn-wsp">
                 💬 Pedir por WhatsApp
             </a>
             <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps">
-                📍 Ubicación en Google Maps
+                📍 Ver ubicación en Google Maps
             </a>
         </div>
 
         <div class="datos">
-            <span>📍 Edificio 17 apto 10, Reparto Rajayoga, Santiago de Cuba, Cuba</span>
-            <span>📞 +53 55123300</span>
-            
+            <span>📍 Edificio 17 apto 10, Reparto Rajayoga</span>
+            <span>📞 +53 5512 3300</span>
+            <span>✉️ hola@minidonasdiane.com</span>
         </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer>
-        <p>© 2026 · <strong>Minidonas Diane</strong> · Santiago de Cuba · Hechas con Amor</p>
+        <p>© 2026 · <strong>Minidonas Diane</strong> · Santiago de Cuba · Hecho con 🍩</p>
         <p style="font-size:0.8rem; opacity:0.7;">Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora</p>
     </footer>
 
 </div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // ---- Elementos del resumen ----
+        const saborSpan = document.getElementById('saborSeleccionado');
+        const coberturaSpan = document.getElementById('coberturaSeleccionado');
+        const agregosSpan = document.getElementById('agregosSeleccionados');
+        const temaSpan = document.getElementById('temaSeleccionado');
+
+        // ---- Elementos de previsualización de imágenes ----
+        const previewSabor = document.getElementById('previewSabor');
+        const previewCobertura = document.getElementById('previewCobertura');
+        const previewAgregos = document.getElementById('previewAgregos');
+        const previewTema = document.getElementById('previewTema');
+
+        // ---- Estado de selección ----
+        let selectedSabor = 'Ninguno';
+        let selectedCobertura = 'Ninguno';
+        let selectedTema = 'Ninguno';
+        let selectedAgregos = [];
+
+        // ---- Mapeo de emojis/imágenes para cada opción ----
+        const imagenes = {
+            // Sabores
+            'Vainilla': '🍦',
+            'Chocolate': '🍫',
+            'Mixtas': '🍩🍫',
+            // Coberturas
+            'Chocolate oscuro': '🍫',
+            'Chocolate blanco': '🍫🤍',
+            'Chocolate blanco con color': '🍫🌈',
+            'Dulce de leche': '🍯',
+            // Agregos
+            'Grajeas': '🌈',
+            'Perlas comestibles': '⚪',
+            'Galleticas': '🍪',
+            'Sorbeto': '🧋',
+            'Botonetas': '🔵',
+            'Maní': '🥜',
+            'Coco': '🥥',
+            'Y mucho más...!': '✨',
+            // Temas
+            'Futbol': '⚽',
+            'Paw Patrol': '🐶',
+            'Dinosaurios': '🦕',
+            'Cumpleaños': '🎂',
+            'Navidad': '🎄',
+            'Lo que el cliente desee': '✨'
+        };
+
+        // ---- Función para actualizar el resumen y las previsualizaciones ----
+        function actualizarTodo() {
+            // Actualizar texto del resumen
+            saborSpan.textContent = selectedSabor;
+            coberturaSpan.textContent = selectedCobertura;
+            temaSpan.textContent = selectedTema;
+            if (selectedAgregos.length === 0) {
+                agregosSpan.textContent = 'Ninguno';
+            } else {
+                agregosSpan.textContent = selectedAgregos.join(', ');
+            }
+
+            // Actualizar previsualización de Sabor
+            const imgSabor = imagenes[selectedSabor] || '🍩';
+            previewSabor.innerHTML = `<span class="label">🖼️ Imagen del sabor</span><span class="imagen-item">${imgSabor}</span>`;
+
+            // Actualizar previsualización de Cobertura
+            const imgCobertura = imagenes[selectedCobertura] || '🍫';
+            previewCobertura.innerHTML = `<span class="label">🖼️ Imagen de la cobertura</span><span class="imagen-item">${imgCobertura}</span>`;
+
+            // Actualizar previsualización de Agregos (mostrar todos los seleccionados)
+            let agregosImagenes = selectedAgregos.map(a => imagenes[a] || '✨');
+            if (agregosImagenes.length === 0) agregosImagenes = ['✨'];
+            previewAgregos.innerHTML = `<span class="label">🖼️ Agregos seleccionados</span>` + 
+                agregosImagenes.map(img => `<span class="imagen-item">${img}</span>`).join('');
+
+            // Actualizar previsualización de Tema
+            const imgTema = imagenes[selectedTema] || '🎨';
+            previewTema.innerHTML = `<span class="label">🖼️ Imagen del tema</span><span class="imagen-item">${imgTema}</span>`;
+        }
+
+        // ---- Función para manejar clic en botones de selección única (Sabor, Cobertura, Tema) ----
+        function setupUnico(selector, estadoSetter, callback) {
+            const botones = document.querySelectorAll(selector);
+            botones.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const grupo = this.parentElement.querySelectorAll(selector);
+                    grupo.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const valor = this.dataset.sabor || this.dataset.cobertura || this.dataset.tema;
+                    estadoSetter(valor);
+                    callback(valor);
+                    actualizarTodo();
+                });
+            });
+        }
+
+        // ---- Configurar SABORES ----
+        setupUnico('.sabor-btn', (val) => { selectedSabor = val; }, () => {});
+
+        // ---- Configurar COBERTURAS ----
+        setupUnico('.cobertura-btn', (val) => { selectedCobertura = val; }, () => {});
+
+        // ---- Configurar TEMAS ----
+        setupUnico('.tema-btn', (val) => { selectedTema = val; }, () => {});
+
+        // ---- Configurar AGREGOS (selección múltiple) ----
+        const agregoBotones = document.querySelectorAll('.agrego-btn');
+        agregoBotones.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const valor = this.dataset.agrego;
+                this.classList.toggle('active');
+                if (this.classList.contains('active')) {
+                    if (!selectedAgregos.includes(valor)) {
+                        selectedAgregos.push(valor);
+                    }
+                } else {
+                    const index = selectedAgregos.indexOf(valor);
+                    if (index !== -1) {
+                        selectedAgregos.splice(index, 1);
+                    }
+                }
+                actualizarTodo();
+            });
+        });
+
+        // ---- Botón "Pedir mis donas" en el resumen ----
+        document.getElementById('btnPedidoResumen').addEventListener('click', function() {
+            // Construir mensaje con los valores seleccionados
+            const sabor = selectedSabor !== 'Ninguno' ? selectedSabor : '';
+            const cobertura = selectedCobertura !== 'Ninguno' ? selectedCobertura : '';
+            const agregos = selectedAgregos.length > 0 ? selectedAgregos.join(', ') : '';
+            const tema = selectedTema !== 'Ninguno' ? selectedTema : '';
+            
+            // Mensaje base con los campos que el usuario llenará
+            let mensaje = 'Hola Minidonas Diane! Te encontré por tu pagina web y quiero hacer un pedido de minidonas con:\n';
+            mensaje += `* Sabor: ${sabor}\n`;
+            mensaje += `* Cobertura: ${cobertura}\n`;
+            mensaje += `* Agregos: ${agregos}\n`;
+            mensaje += `* Tema: ${tema}\n`;
+            mensaje += `* Cantidad: \n`;
+            mensaje += `* Caja/Envase: \n`;
+            mensaje += `* Lo quiero para el dia: \n`;
+            mensaje += `* Domicilio:`;
+            
+            // Codificar para URL
+            const url = `https://wa.me/5355123300?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        });
+
+        // ---- Inicializar ----
+        actualizarTodo();
+
+    });
+</script>
 
 </body>
 </html>
