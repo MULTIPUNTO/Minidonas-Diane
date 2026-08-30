@@ -1,437 +1,548 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DDonas | Mini Donas Premium</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minidonas Diane · Santiago de Cuba</title>
+    <!-- Fuentes elegantes + amigables -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================
+           NUEVA PALETA DE COLORES (Imagen base de texto)
+           Reemplazo total de los colores anteriores
+           ========================================== */
+        :root {
+            /* Colores principales de la marca */
+            --primary: #D95B7A;        /* Rosa Dulce */
+            --primary-dark: #C24A68;   /* Rosa más intenso */
+            --secondary: #F9C96E;      /* Amarillo Cálido (glaseado) */
+            --accent: #5BBFC4;         /* Menta/Turquesa (frescura) */
+            --bg-cream: #FFFBF5;       /* Fondo crema suave */
+            --card-white: #FFFFFF;     
+            --text-dark: #2D2421;      /* Café oscuro casi negro */
+            --text-muted: #6B5B55;     /* Café grisáceo */
+            
+            /* Tipografías */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Quicksand', sans-serif;
+            
+            /* Bordes y sombras */
+            --radius-donut: 40px;
+            --shadow-soft: 0 15px 30px rgba(217, 91, 122, 0.12);
+            --shadow-hover: 0 25px 40px rgba(217, 91, 122, 0.20);
+        }
 
-  <meta name="description" content="Minidonas artesanales premium. Pedido rápido por WhatsApp." />
+        /* ===== RESET Y BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    :root{
-      --bg1:#fff;
-      --bg2:#ffe6f1;
-      --bg3:#e9ddff;
-      --text:#1c1c1e;
-      --muted:#6b6b73;
-      --card:rgba(255,255,255,.75);
-      --stroke:rgba(255,255,255,.4);
-      --accent:#ff3f86;
-      --accent2:#6c5ce7;
-      --shadow:0 20px 50px rgba(0,0,0,.10);
-      --radius:22px;
-    }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            /* Textura de puntitos (simula sprinkles) */
+            background-image: radial-gradient(#F1E3D7 1.2px, transparent 1.2px);
+            background-size: 30px 30px;
+            color: var(--text-dark);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: 20px;
+        }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-    }
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255, 251, 245, 0.90);
+            backdrop-filter: blur(4px);
+            box-shadow: var(--shadow-soft);
+            border-radius: var(--radius-donut);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
 
-    body{
-      background:linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
-      color:var(--text);
-      overflow-x:hidden;
-    }
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px 30px 10px;
+            border-bottom: 3px solid var(--secondary);
+            flex-wrap: wrap;
+        }
 
-    html{scroll-behavior:smooth;}
+        .logo h1 {
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+        .logo h1 span {
+            color: var(--primary-dark);
+        }
+        .logo p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: -5px;
+        }
 
-    /* FLOATING BACKGROUND BLUR ELEMENTS */
-    .blob{
-      position:absolute;
-      width:300px;
-      height:300px;
-      border-radius:50%;
-      filter:blur(80px);
-      opacity:.35;
-      animation:float 8s ease-in-out infinite;
-    }
+        nav a {
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-left: 25px;
+            padding: 8px 16px;
+            border-radius: 60px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        nav a:hover {
+            background: var(--secondary);
+            color: var(--primary-dark);
+        }
+        .btn-cta-nav {
+            background: var(--primary) !important;
+            color: white !important;
+        }
+        .btn-cta-nav:hover {
+            background: var(--primary-dark) !important;
+            transform: scale(1.05);
+        }
 
-    .b1{background:#ff4d8d; top:80px; left:-80px;}
-    .b2{background:#7c5cff; bottom:100px; right:-100px;}
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 30px;
+            flex-wrap: wrap;
+            gap: 30px;
+            background: linear-gradient(135deg, #FFF1F4 0%, #FDE8E8 100%);
+            border-radius: var(--radius-donut);
+            margin: 30px 0 40px 0;
+            /* Fondo con círculos decorativos de los nuevos colores */
+            background-image: radial-gradient(circle at 10% 20%, var(--secondary) 2px, transparent 2px), 
+                              radial-gradient(circle at 90% 80%, var(--accent) 1.5px, transparent 1.5px);
+            background-size: 50px 50px, 70px 70px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);
+        }
 
-    @keyframes float{
-      0%,100%{transform:translateY(0px)}
-      50%{transform:translateY(-25px)}
-    }
+        .hero-text {
+            flex: 1 1 300px;
+        }
+        .hero-text h2 {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            line-height: 1.1;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        .hero-text h2 i {
+            font-style: italic;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .hero-text .sub-lema {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 6px solid var(--secondary);
+            padding-left: 20px;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            max-width: 450px;
+        }
+        .btn-principal {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 16px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(217, 91, 122, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        .btn-principal:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(217, 91, 122, 0.3);
+        }
 
-    header{
-      text-align:center;
-      padding:80px 20px 30px;
-      position:relative;
-    }
+        .hero-image {
+            flex: 0 1 280px;
+            text-align: center;
+            font-size: 7rem;
+            line-height: 1;
+            filter: drop-shadow(0 15px 20px rgba(217, 91, 122, 0.15));
+            background: rgba(255,255,255,0.5);
+            padding: 20px;
+            border-radius: 100%;
+            backdrop-filter: blur(2px);
+        }
+        .hero-image span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            background: white;
+            padding: 5px 20px;
+            border-radius: 60px;
+            margin-top: 10px;
+            box-shadow: var(--shadow-soft);
+        }
 
-    .logo{
-      font-size:46px;
-      font-weight:800;
-      letter-spacing:-1px;
-    }
+        /* ===== MENÚ COMPLETO ===== */
+        .menu-completo {
+            margin: 50px 0;
+            text-align: center;
+        }
+        .menu-completo h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+        .menu-completo .subtitulo-menu {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
 
-    .slogan{
-      color:var(--muted);
-      margin-top:10px;
-      font-size:15px;
-    }
+        .menu-block {
+            background: var(--card-white);
+            border-radius: var(--radius-donut);
+            padding: 30px 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #f3e3d3;
+            text-align: left;
+        }
+        .menu-block h4 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+        .menu-block h4 span {
+            font-size: 2.2rem;
+        }
 
-    /* HERO */
-    .hero{
-      margin:25px auto;
-      max-width:460px;
-      background:var(--card);
-      backdrop-filter:blur(18px);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:20px;
-      transform:translateY(0);
-      transition:.4s;
-    }
+        .sabores-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .sabor-chip {
+            background: var(--bg-cream);
+            border: 2px solid var(--secondary);
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            transition: all 0.2s ease;
+        }
+        .sabor-chip:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
 
-    .hero:hover{
-      transform:translateY(-5px);
-    }
+        .coberturas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .cobertura-chip {
+            padding: 10px 25px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: var(--text-dark);
+            border: 1px solid #e8dccc;
+            font-size: 1rem;
+            background: var(--bg-cream);
+        }
+        /* Coberturas con colores personalizados */
+        .cobertura-chip:nth-child(1) { background: #3D2C24; color: white; border-color: #3D2C24; } /* Oscuro */
+        .cobertura-chip:nth-child(2) { background: #FDF6EE; border-color: #d4c4b5; } /* Blanco */
+        .cobertura-chip:nth-child(3) { background: #FCE4EC; border-color: var(--primary); } /* Con color (rosa) */
+        .cobertura-chip:nth-child(4) { background: var(--secondary); border-color: #dba959; } /* Dulce de leche */
 
-    .hero-img{
-      height:200px;
-      border-radius:18px;
-      background:radial-gradient(circle at top,#ffd6e7,#d6ccff);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:60px;
-      animation:float 6s ease-in-out infinite;
-    }
+        .agregos-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .agrego-tag {
+            background: var(--bg-cream);
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border: 1px dashed var(--secondary);
+        }
+        .agrego-tag.destacado {
+            background: var(--accent);
+            color: white;
+            border: none;
+            font-size: 1.1rem;
+            padding: 8px 25px;
+            box-shadow: 0 4px 10px rgba(91, 191, 196, 0.4);
+        }
 
-    /* BUTTONS */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      margin-top:14px;
-      padding:14px 18px;
-      border-radius:16px;
-      background:var(--accent);
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      transition:.25s ease;
-      box-shadow:0 10px 25px rgba(255,63,134,.25);
-    }
+        /* ===== NOSOTROS ===== */
+        .nosotros {
+            text-align: center;
+            padding: 30px 20px;
+            margin: 40px 0;
+            background: rgba(249, 201, 110, 0.15);
+            border-radius: var(--radius-donut);
+            border: 2px dashed var(--secondary);
+        }
+        .nosotros h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+        }
+        .nosotros p {
+            max-width: 700px;
+            margin: 15px auto;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
 
-    .btn:hover{
-      transform:translateY(-3px) scale(1.02);
-    }
+        /* ===== CONTACTO / PEDIDO (Con los nuevos colores y ubicación) ===== */
+        .contacto {
+            background: var(--primary);
+            color: white;
+            padding: 40px 30px;
+            border-radius: var(--radius-donut);
+            text-align: center;
+            margin: 40px 0 20px 0;
+            background-image: radial-gradient(circle at 20% 30%, var(--primary-dark) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .contacto h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: white;
+        }
+        .contacto p {
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+        .contacto .datos {
+            margin: 20px 0 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.1);
+            padding: 15px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+        }
+        .contacto .datos span {
+            opacity: 0.95;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .btn-wsp {
+            background: #25D366;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+        .btn-wsp:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+        }
+        /* Botón de Ubicación con el color Menta (accent) */
+        .btn-maps {
+            background: var(--accent);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(91, 191, 196, 0.4);
+        }
+        .btn-maps:hover {
+            transform: scale(1.05);
+            background: #4BA8AD;
+            box-shadow: 0 12px 30px rgba(91, 191, 196, 0.5);
+        }
 
-    .btn.secondary{
-      background:var(--accent2);
-      box-shadow:0 10px 25px rgba(108,92,231,.25);
-    }
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 20px 0 10px 0;
+            color: var(--text-muted);
+            border-top: 3px solid var(--secondary);
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        footer strong {
+            color: var(--primary);
+        }
 
-    /* SECTION */
-    section{
-      padding:50px 20px;
-      max-width:1100px;
-      margin:auto;
-    }
-
-    h2{
-      font-size:22px;
-      margin-bottom:18px;
-    }
-
-    /* TABS */
-    .tabs{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:25px;
-    }
-
-    .tab{
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.7);
-      border:1px solid rgba(255,255,255,.6);
-      cursor:pointer;
-      transition:.25s;
-      backdrop-filter:blur(10px);
-      font-size:14px;
-    }
-
-    .tab.active{
-      background:var(--accent);
-      color:#fff;
-      transform:scale(1.05);
-    }
-
-    /* GRID */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-    }
-
-    /* CARD */
-    .card{
-      background:var(--card);
-      border:1px solid var(--stroke);
-      backdrop-filter:blur(20px);
-      border-radius:20px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      transition:.35s;
-    }
-
-    .card:hover{
-      transform:translateY(-8px);
-    }
-
-    .img{
-      height:140px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:40px;
-      background:linear-gradient(135deg,#ffe0ec,#e6ddff);
-    }
-
-    .content{
-      padding:14px;
-    }
-
-    .tag{
-      display:inline-block;
-      font-size:11px;
-      padding:4px 8px;
-      border-radius:999px;
-      background:var(--accent2);
-      color:#fff;
-      margin-bottom:6px;
-    }
-
-    .price{
-      margin-top:8px;
-      font-weight:700;
-    }
-
-    /* SVG ICON */
-    .icon{
-      width:18px;
-      height:18px;
-      fill:none;
-      stroke:white;
-      stroke-width:2;
-    }
-
-    .select{
-      margin-top:10px;
-      width:100%;
-      padding:10px;
-      border:none;
-      border-radius:14px;
-      background:var(--accent);
-      color:#fff;
-      cursor:pointer;
-      transition:.25s;
-    }
-
-    .select:hover{
-      transform:scale(1.03);
-    }
-
-    /* FLOAT WA */
-    .float{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      width:58px;
-      height:58px;
-      border-radius:50%;
-      background:#25d366;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:var(--shadow);
-      text-decoration:none;
-      font-size:26px;
-      animation:pulse 2.5s infinite;
-    }
-
-    @keyframes pulse{
-      0%,100%{transform:scale(1)}
-      50%{transform:scale(1.1)}
-    }
-
-    /* CTA */
-    .cta{
-      text-align:center;
-      padding:60px 20px;
-      border-radius:24px;
-      background:linear-gradient(135deg,#ffe0ec,#e6ddff);
-      box-shadow:var(--shadow);
-    }
-
-    footer{
-      text-align:center;
-      padding:30px 20px;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .fade{
-      animation:fadeIn .6s ease;
-    }
-
-    @keyframes fadeIn{
-      from{opacity:0; transform:translateY(10px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-  </style>
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            nav { margin-top: 15px; }
+            nav a { margin: 0 8px; display: inline-block; }
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero-text h2 { font-size: 2.5rem; }
+            .hero-text .sub-lema { border-left: none; border-top: 6px solid var(--secondary); padding-left: 0; padding-top: 15px; }
+            .container { padding: 15px; border-radius: 25px; }
+            .sabor-chip { width: 100%; text-align: center; }
+            .cobertura-chip { width: 100%; text-align: center; }
+            .contacto .datos { flex-direction: column; gap: 10px; border-radius: 30px; }
+            .btn-group { flex-direction: column; align-items: center; }
+            .btn-wsp, .btn-maps { width: 90%; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="blob b1"></div>
-<div class="blob b2"></div>
+<div class="container">
 
-<header>
-  <div class="logo">DDonas</div>
-  <div class="slogan">Pequeños sabores, grandes antojos</div>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">
+            <h1>🍩 <span>Minidonas</span> Diane</h1>
+            <p>✨ Pequeñas DONITAS, Grandes SONRISAS ✨</p>
+        </div>
+        <nav>
+            <a href="#contacto" class="btn-cta-nav">¡Pedir Ahora!</a>
+        </nav>
+    </header>
 
-  <div class="hero fade">
-    <div class="hero-img">🍩✨</div>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Minidonas <i>Diane</i> <br>El sabor que enamora</h2>
+            <div class="sub-lema">✨ Hechas con amor en Santiago de Cuba</div>
+            <p>La dosis exacta de dulzura con ingredientes Premium y tambien naturales. Perfectas para cualquier momento.</p>
+            <a href="#contacto" class="btn-principal">📦 Ordena tu caja</a>
+        </div>
+        <div class="hero-image">
+            🍩<span>+15 combinaciones</span>
+        </div>
+    </section>
 
-    <a class="btn" id="mainWA">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M20 11.5a8.5 8.5 0 1 1-4-7.2"/>
-        <path d="M20 4v7h-7"/>
-      </svg>
-      Pedir por WhatsApp
-    </a>
-  </div>
-</header>
+    <!-- ===== MENÚ COMPLETO ===== -->
+    <section id="menu" class="menu-completo">
+        <h3>📋 Nuestras Delicias</h3>
+        <p class="subtitulo-menu">Elige tu sabor, cobertura, tema y agregos favoritos</p>
 
-<section>
-  <h2>Catálogo premium</h2>
+        <!-- Sabores -->
+        <div class="menu-block">
+            <h4><span>🍩</span> Sabores</h4>
+            <div class="sabores-grid">
+                <span class="sabor-chip">Vainilla</span>
+                <span class="sabor-chip">Chocolate</span>
+                <span class="sabor-chip">Mixtas</span>
+            </div>
+        </div>
 
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('choco')">Chocolate</div>
-    <div class="tab" onclick="showTab('vainilla')">Vainilla</div>
-    <div class="tab" onclick="showTab('glaseados')">Glaseados</div>
-    <div class="tab" onclick="showTab('mixto')">Mixto</div>
-    <div class="tab" onclick="showTab('otros')">Otros</div>
-  </div>
+        <!-- Coberturas -->
+        <div class="menu-block">
+            <h4><span>🍫</span> Coberturas</h4>
+            <div class="coberturas-grid">
+                <span class="cobertura-chip">Chocolate oscuro</span>
+                <span class="cobertura-chip">Chocolate blanco</span>
+                <span class="cobertura-chip">Chocolate blanco con color</span>
+                <span class="cobertura-chip">Dulce de leche</span>
+            </div>
+        </div>
 
-  <div id="choco" class="grid fade">
-    <div class="card">
-      <div class="img">🍫</div>
-      <div class="content">
-        <span class="tag">Más pedido</span>
-        <h3>Choco Velvet</h3>
-        <p>Chocolate suave premium</p>
-        <div class="price">$1.00</div>
-        <button class="select" onclick="select('Choco Velvet')">Elegir</button>
-      </div>
-    </div>
-  </div>
+        <!-- Agregos -->
+        <div class="menu-block">
+            <h4><span>✨</span> Agregos</h4>
+            <div class="agregos-wrap">
+                <span class="agrego-tag">Grajeas</span>
+                <span class="agrego-tag">Perlas comestibles</span>
+                <span class="agrego-tag">Galleticas</span>
+                <span class="agrego-tag">Sorbeto</span>
+                <span class="agrego-tag">Botonetas</span>
+                <span class="agrego-tag">Maní</span>
+                <span class="agrego-tag">Coco</span>
+                <span class="agrego-tag destacado">✨ Y mucho más...!</span>
+            </div>
+        </div>
+    </section>
 
-  <div id="vainilla" class="grid" style="display:none">
-    <div class="card">
-      <div class="img">🍦</div>
-      <div class="content">
-        <h3>Vainilla Cloud</h3>
-        <p>Suave y cremosa</p>
-        <div class="price">$1.00</div>
-        <button class="select" onclick="select('Vainilla Cloud')">Elegir</button>
-      </div>
-    </div>
-  </div>
+    <!-- ===== NOSOTROS ===== -->
+    <section id="nosotros" class="nosotros">
+        <h3>🧑‍🍳 Hechas con amor artesanal</h3>
+        <p>En <strong>Minidonas Diane</strong> cada minidona se hornea con ingredientes Premium y tambien naturales.</p>
+    </section>
 
-  <div id="glaseados" class="grid" style="display:none">
-    <div class="card">
-      <div class="img">🍓</div>
-      <div class="content">
-        <span class="tag">Nuevo</span>
-        <h3>Glaseado Pink</h3>
-        <p>Dulce brillante</p>
-        <div class="price">$1.10</div>
-        <button class="select" onclick="select('Glaseado Pink')">Elegir</button>
-      </div>
-    </div>
-  </div>
+    <!-- ===== CONTACTO / PEDIDO (Con ubicación) ===== -->
+    <section id="contacto" class="contacto">
+        <h3>📲 ¡Haz tu pedido YA!</h3>
+        <p>Escoge tus sabores y coberturas favoritas. ¡Las recibes en la puerta de tu casa o las recoges en la puerta de la mía, TU DECIDES!</p>
+        
+        <div class="btn-group">
+            <a href="https://wa.me/5355123300?text=Hola%20Minidonas%20Diane!%20Quiero%20pedir%20una%20caja%20de%20minidonas" target="_blank" class="btn-wsp">
+                💬 Pedir por WhatsApp
+            </a>
+            <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps">
+                📍 Ubicación en Google Maps
+            </a>
+        </div>
 
-  <div id="mixto" class="grid" style="display:none">
-    <div class="card">
-      <div class="img">🍩</div>
-      <div class="content">
-        <h3>Mix Deluxe</h3>
-        <p>Variedad premium</p>
-        <div class="price">$1.30</div>
-        <button class="select" onclick="select('Mix Deluxe')">Elegir</button>
-      </div>
-    </div>
-  </div>
+        <div class="datos">
+            <span>📍 Edificio 17 apto 10, Reparto Rajayoga, Santiago de Cuba, Cuba</span>
+            <span>📞 +53 55123300</span>
+            
+        </div>
+    </section>
 
-  <div id="otros" class="grid" style="display:none">
-    <div class="card">
-      <div class="img">✨</div>
-      <div class="content">
-        <h3>Edición Chef</h3>
-        <p>Sorpresa artesanal</p>
-        <div class="price">$1.50</div>
-        <button class="select" onclick="select('Edición Chef')">Elegir</button>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>© 2026 · <strong>Minidonas Diane</strong> · Santiago de Cuba · Hechas con Amor</p>
+        <p style="font-size:0.8rem; opacity:0.7;">Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora</p>
+    </footer>
 
-<section class="cta fade">
-  <h2>Ordena experiencia premium</h2>
-  <p>Un clic y tu pedido entra directo</p>
-  <a class="btn secondary" id="ctaWA">Abrir WhatsApp</a>
-</section>
-
-<footer>
-  DDonas © 2026<br/>
-  📍 Reparto Rajayoga, Santiago de Cuba
-</footer>
-
-<a class="float" id="floatWA">💬</a>
-
-<script>
-let selected = null;
-const phone = "55123300";
-
-function link(text){
-  return `https://wa.me/${phone}?text=${encodeURIComponent("Quiero pedir: " + text)}`;
-}
-
-function update(){
-  const t = selected || "minidonas";
-  const url = link(t);
-
-  document.getElementById("mainWA").href = url;
-  document.getElementById("ctaWA").href = url;
-  document.getElementById("floatWA").href = url;
-}
-
-function select(name){
-  selected = name;
-  update();
-}
-
-function showTab(id){
-  document.querySelectorAll('.grid').forEach(g => g.style.display='none');
-  document.getElementById(id).style.display='grid';
-
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
-update();
-</script>
+</div>
 
 </body>
 </html>
