@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minidonas Diane · Santiago de Cuba</title>
-    <!-- Fuentes -->
+    <title>Minidonas Diane · Donas artesanales en Santiago de Cuba</title>
+    
+    <!-- ===== SEO ===== -->
+    <meta name="description" content="Minidonas Diane – Donas artesanales en Santiago de Cuba. Elige sabores, coberturas y temas personalizados. ¡Pide por WhatsApp!">
+    <meta property="og:title" content="Minidonas Diane · Donas artesanales">
+    <meta property="og:description" content="Las mejores minidonas hechas con amor en Santiago de Cuba. Personaliza tu pedido y recíbelo en casa.">
+    <meta property="og:url" content="https://tunombredeusuario.github.io"> <!-- ⚠️ CAMBIA ESTO -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tunombredeusuario.github.io/donas-destacada.jpg"> <!-- ⚠️ CAMBIA ESTO -->
+    
+    <!-- ===== FUENTES ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         /* ===== PALETA DE COLORES ===== */
         :root {
@@ -83,29 +93,6 @@
             margin-top: -5px;
         }
 
-        nav a {
-            font-weight: 600;
-            color: var(--text-dark);
-            text-decoration: none;
-            margin-left: 25px;
-            padding: 8px 16px;
-            border-radius: 60px;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-        nav a:hover {
-            background: var(--secondary);
-            color: var(--primary-dark);
-        }
-        .btn-cta-nav {
-            background: var(--primary) !important;
-            color: white !important;
-        }
-        .btn-cta-nav:hover {
-            background: var(--primary-dark) !important;
-            transform: scale(1.05);
-        }
-
         /* ===== HERO ===== */
         .hero {
             display: flex;
@@ -152,69 +139,149 @@
             margin-bottom: 25px;
             max-width: 450px;
         }
-        .btn-principal {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 16px 50px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 8px 20px rgba(217, 91, 122, 0.4);
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-        .btn-principal:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(217, 91, 122, 0.3);
-        }
 
         .hero-image {
             flex: 0 1 280px;
             text-align: center;
-            font-size: 7rem;
-            line-height: 1;
-            filter: drop-shadow(0 15px 20px rgba(217, 91, 122, 0.15));
             background: rgba(255,255,255,0.5);
             padding: 20px;
             border-radius: 100%;
             backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .hero-image span {
+        .hero-image .logo-hero-img {
+            max-width: 180px;
+            height: auto;
             display: block;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            background: white;
-            padding: 5px 20px;
-            border-radius: 60px;
-            margin-top: 10px;
+            border-radius: 50%;
             box-shadow: var(--shadow-soft);
         }
 
-        /* Mensaje explicativo en el Hero */
-        .hero-explicativo {
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(2px);
-            border-radius: 60px;
-            padding: 12px 25px;
+        /* ===== TABS ===== */
+        .tabs-container {
+            margin: 40px 0 30px 0;
+        }
+        .tabs-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            background: var(--bg-cream);
+            border: 2px solid #e8dccc;
+            padding: 12px 28px;
+            border-radius: 60px 60px 0 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+            border-bottom: none;
+            position: relative;
+            bottom: -3px;
+        }
+        .tab-btn:hover {
+            background: var(--secondary);
+            color: var(--text-dark);
+        }
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 -4px 12px rgba(217, 91, 122, 0.2);
+        }
+        .tab-content {
+            display: none;
+            padding: 30px 0 10px 0;
+            animation: fadeIn 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== MENSAJE EXPLICATIVO ===== */
+        .mensaje-pedido {
+            text-align: center;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-dark);
+            background: linear-gradient(135deg, rgba(217, 91, 122, 0.08), rgba(249, 201, 110, 0.15));
+            border: 3px solid var(--primary);
+            border-radius: 60px;
+            padding: 18px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(217, 91, 122, 0.15);
+            position: relative;
+            animation: glowPulse 3s infinite ease-in-out;
+            backdrop-filter: blur(2px);
+        }
+        @keyframes glowPulse {
+            0% { box-shadow: 0 4px 20px rgba(217, 91, 122, 0.15); border-color: var(--primary); }
+            50% { box-shadow: 0 8px 40px rgba(217, 91, 122, 0.4); border-color: var(--secondary); }
+            100% { box-shadow: 0 4px 20px rgba(217, 91, 122, 0.15); border-color: var(--primary); }
+        }
+        .mensaje-pedido .icono-grande {
+            font-size: 1.8rem;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .mensaje-pedido .texto-suave {
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        /* ===== BADGE CTA (estilo WhatsApp) ===== */
+        .mensaje-pedido .highlight-cta {
+            background: #25D366;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            margin: 0 5px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 2px solid #25D366;
+            animation: pulse-completo 2s infinite ease-in-out;
+        }
+        .mensaje-pedido .highlight-cta:hover {
+            transform: scale(1.05);
+            background: white;
+            color: #25D366;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ===== TEXTO "INFINITAS COMBINACIONES" ===== */
+        .subtitulo-combinaciones {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            background: rgba(249, 201, 110, 0.2);
+            padding: 10px 20px;
+            border-radius: 60px;
             border: 2px dashed var(--secondary);
             display: inline-block;
-            margin-top: 10px;
-            font-size: 1rem;
-        }
-        .hero-explicativo span {
-            font-size: 1.2rem;
+            width: 100%;
+            letter-spacing: 1px;
         }
 
         /* ===== BOTONES INTERACTIVOS ===== */
         .productos-grid {
-            margin: 50px 0;
             display: flex;
             flex-direction: column;
             gap: 30px;
@@ -243,6 +310,13 @@
             font-size: 2.2rem;
         }
 
+        /* ===== ANIMACIÓN DE PULSO SUTIL ===== */
+        @keyframes pulse-sutil {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
         .opcion-btn {
             background: var(--bg-cream);
             border: 2px solid #e8dccc;
@@ -255,7 +329,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0,0,0,0.04);
             font-family: var(--font-body);
-            animation: pulse 2s infinite ease-in-out;
+            animation: pulse-sutil 2s infinite ease-in-out;
         }
         .opcion-btn:hover {
             transform: scale(1.05);
@@ -268,6 +342,50 @@
             box-shadow: 0 6px 16px rgba(217, 91, 122, 0.3);
         }
 
+        /* ===== ANIMACIÓN DE PULSO COMPLETA ===== */
+        @keyframes pulse-completo {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== BOTÓN DE WHATSAPP EN EL RESUMEN (ahora con el mismo estilo que el badge) ===== */
+        .btn-pedido-resumen {
+            background: #25D366;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);  /* misma sombra que el badge */
+            border: 2px solid #25D366;                       /* borde igual que el badge */
+            cursor: pointer;
+            margin-top: 15px;
+            text-align: center;
+            align-self: center;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            animation: pulse-completo 2s infinite ease-in-out;
+        }
+        .btn-pedido-resumen:hover {
+            transform: scale(1.05);
+            background: white;
+            color: #25D366;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);  /* mismo hover que el badge */
+        }
+        .btn-pedido-resumen:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+            animation: none !important;
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+
         .opcion-btn:nth-child(1) { animation-delay: 0s; }
         .opcion-btn:nth-child(2) { animation-delay: 0.15s; }
         .opcion-btn:nth-child(3) { animation-delay: 0.3s; }
@@ -277,15 +395,12 @@
         .opcion-btn:nth-child(7) { animation-delay: 0.9s; }
         .opcion-btn:nth-child(8) { animation-delay: 1.05s; }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-            100% { transform: scale(1); }
-        }
-
         .sabores-grid,
         .coberturas-grid,
-        .temas-container {
+        .temas-container,
+        .domicilio-grid,
+        .envases-grid,
+        .caja-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
@@ -296,22 +411,61 @@
             gap: 10px;
             align-items: center;
         }
-        .agrego-btn.destacado {
+
+        /* ===== CAMPOS CONDICIONALES ===== */
+        .campo-condicional {
+            margin-top: 15px;
+            padding: 15px 20px;
+            background: #fcf3ea;
+            border-radius: 30px;
+            border: 1px dashed var(--secondary);
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .campo-condicional.visible {
+            display: flex;
+        }
+        .campo-condicional label {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        .campo-condicional input[type="text"],
+        .campo-condicional input[type="number"],
+        .campo-condicional input[type="datetime-local"] {
+            padding: 10px 18px;
+            border-radius: 60px;
+            border: 2px solid #e8dccc;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+        .campo-condicional input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .campo-condicional .btn-maps-pequeno {
             background: var(--accent);
-            border-color: var(--accent);
             color: white;
+            padding: 8px 20px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            width: fit-content;
+            box-shadow: 0 4px 12px rgba(91, 191, 196, 0.3);
         }
-        .agrego-btn.destacado.active {
+        .campo-condicional .btn-maps-pequeno:hover {
+            transform: scale(1.05);
             background: #4BA8AD;
-            border-color: #4BA8AD;
-            box-shadow: 0 6px 16px rgba(91, 191, 196, 0.4);
-        }
-        .agrego-btn.destacado:hover {
-            background: #4BA8AD;
-            border-color: #4BA8AD;
         }
 
-        /* ===== PREVISUALIZACIÓN DE IMAGEN POR CATEGORÍA ===== */
+        /* ===== PREVISUALIZACIÓN ===== */
         .preview-imagen {
             margin-top: 15px;
             padding: 12px;
@@ -340,7 +494,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* ===== PANEL DE RESUMEN CON BOTÓN WHATSAPP ===== */
+        /* ===== PANEL DE RESUMEN ===== */
         .seleccion-preview {
             margin-top: 30px;
             background: #fcf3ea;
@@ -369,30 +523,162 @@
             color: var(--primary);
         }
 
-        /* Botón de WhatsApp dentro del resumen */
-        .btn-pedido-resumen {
-            background: #25D366;
-            color: white;
-            padding: 14px 35px;
-            border-radius: 60px;
-            text-decoration: none;
+        /* ===== REDES SOCIALES ===== */
+        .rrss-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px 0;
+        }
+        .rrss-card {
+            background: var(--card-white);
+            border-radius: var(--radius-donut);
+            padding: 30px 35px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #f3e3d3;
+            text-align: center;
+            min-width: 180px;
+            transition: all 0.3s ease;
+        }
+        .rrss-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        .rrss-card .rrss-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .rrss-card .rrss-nombre {
             font-weight: 700;
             font-size: 1.2rem;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-            border: none;
-            cursor: pointer;
-            margin-top: 15px;
-            text-align: center;
-            align-self: center;
+            color: var(--primary-dark);
         }
-        .btn-pedido-resumen:hover {
+        .rrss-card .rrss-link {
+            display: inline-block;
+            margin-top: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .rrss-card .rrss-link:hover {
+            background: var(--primary-dark);
             transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+        }
+        .rrss-mensaje {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+        .rrss-mensaje strong {
+            color: var(--primary);
         }
 
-        /* ===== CONTACTO (sección inferior) ===== */
+        /* ===== COMENTARIOS ===== */
+        .testimonios-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        .testimonio-card {
+            background: var(--card-white);
+            border-radius: var(--radius-donut);
+            padding: 25px 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #f3e3d3;
+            max-width: 340px;
+            flex: 1 1 280px;
+            transition: all 0.3s ease;
+        }
+        .testimonio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .testimonio-card .test-avatar {
+            font-size: 3.5rem;
+            display: inline-block;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+        .testimonio-card .test-header {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .testimonio-card .test-nombre {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+        }
+        .testimonio-card .test-estrellas {
+            color: #F9C96E;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        .testimonio-card .test-texto {
+            margin-top: 12px;
+            font-style: italic;
+            color: var(--text-dark);
+            line-height: 1.5;
+            border-top: 1px solid #f3e3d3;
+            padding-top: 12px;
+        }
+
+        /* ===== CATÁLOGO DE IMÁGENES ===== */
+        .catalogo-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 3px solid var(--secondary);
+        }
+        .catalogo-section h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .catalogo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .catalogo-item {
+            background: var(--card-white);
+            border-radius: var(--radius-donut);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #f3e3d3;
+            transition: all 0.3s ease;
+        }
+        .catalogo-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-hover);
+        }
+        .catalogo-item .cat-img {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .catalogo-item .cat-nombre {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1rem;
+        }
+        .catalogo-item .cat-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== CONTACTO ===== */
         .contacto {
             background: var(--primary);
             color: white;
@@ -407,10 +693,6 @@
             font-family: var(--font-heading);
             font-size: 2.5rem;
             color: white;
-        }
-        .contacto p {
-            margin-bottom: 25px;
-            opacity: 0.95;
         }
         .contacto .datos {
             margin: 20px 0 15px 0;
@@ -432,22 +714,6 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
-        }
-        .btn-wsp {
-            background: #25D366;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        }
-        .btn-wsp:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
         }
         .btn-maps {
             background: var(--accent);
@@ -479,10 +745,23 @@
             color: var(--primary);
         }
 
+        /* ===== OPTIMIZACIÓN ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .opcion-btn { animation: none !important; }
+            .opcion-btn:hover { transform: none !important; }
+            .btn-pedido-resumen { animation: none !important; }
+            .btn-pedido-resumen:hover { transform: none !important; }
+            .btn-maps:hover { transform: none !important; }
+            .rrss-card:hover { transform: none !important; }
+            .testimonio-card:hover { transform: none !important; }
+            .catalogo-item:hover { transform: none !important; }
+            .mensaje-pedido { animation: none !important; }
+            .mensaje-pedido .highlight-cta { animation: none !important; }
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; }
-            nav { margin-top: 15px; }
-            nav a { margin: 0 8px; display: inline-block; }
             .hero { flex-direction: column-reverse; text-align: center; }
             .hero-text h2 { font-size: 2.5rem; }
             .hero-text .sub-lema { border-left: none; border-top: 6px solid var(--secondary); padding-left: 0; padding-top: 15px; }
@@ -490,9 +769,18 @@
             .opcion-btn { width: 100%; text-align: center; }
             .contacto .datos { flex-direction: column; gap: 10px; border-radius: 30px; }
             .btn-group { flex-direction: column; align-items: center; }
-            .btn-wsp, .btn-maps { width: 90%; }
+            .btn-maps { width: 90%; }
             .seleccion-preview { padding: 20px; }
             .btn-pedido-resumen { width: 100%; }
+            .campo-condicional input { max-width: 100%; }
+            .tab-btn { flex: 1; text-align: center; font-size: 0.9rem; padding: 10px 15px; }
+            .tabs-header { gap: 5px; }
+            .rrss-card { min-width: 140px; padding: 20px; }
+            .testimonio-card { max-width: 100%; }
+            .catalogo-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+            .hero-image .logo-hero-img { max-width: 120px; }
+            .mensaje-pedido { font-size: 1rem; padding: 15px; }
+            .mensaje-pedido .highlight-cta { font-size: 0.9rem; padding: 4px 12px; }
         }
     </style>
 </head>
@@ -506,10 +794,6 @@
             <h1>🍩 <span>Minidonas</span> Diane</h1>
             <p>✨ Pequeñas DONITAS, Grandes SONRISAS ✨</p>
         </div>
-        <nav>
-            <a href="#productos">Productos</a>
-            <a href="#contacto" class="btn-cta-nav">¡Pedir Ahora!</a>
-        </nav>
     </header>
 
     <!-- ===== HERO ===== -->
@@ -518,121 +802,310 @@
             <h2>Minidonas <i>Diane</i> <br>El sabor que enamora</h2>
             <div class="sub-lema">✨ Hechas con amor en Santiago de Cuba</div>
             <p>La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.</p>
-            <!-- Mensaje explicativo -->
-            <div class="hero-explicativo">
-                <span>📋</span> Elige tus opciones abajo y al tocar <strong>"Pedir mis donas"</strong> se enviará tu pedido por WhatsApp
-            </div>
         </div>
         <div class="hero-image">
-            🍩<span>+15 combinaciones</span>
+            <!-- ⚠️ AQUÍ VA TU LOGO: reemplaza "logo.png" por el nombre real de tu imagen -->
+            <img src="logo.png" alt="Logo Minidonas Diane" class="logo-hero-img">
         </div>
     </section>
 
-    <!-- ===== PRODUCTOS ===== -->
-    <section id="productos" class="productos-grid">
+    <!-- ===== TABS ===== -->
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="tab-pedido">🍩 Seleccionar Pedido</button>
+            <button class="tab-btn" data-tab="tab-rrss">📱 Redes Sociales</button>
+            <button class="tab-btn" data-tab="tab-comentarios">⭐ Comentarios</button>
+        </div>
 
-        <!-- ====== SABORES ====== -->
-        <div class="menu-block">
-            <h4><span>🍩</span> Sabores</h4>
-            <div class="sabores-grid">
-                <button class="opcion-btn sabor-btn" data-sabor="Vainilla">Vainilla</button>
-                <button class="opcion-btn sabor-btn" data-sabor="Chocolate">Chocolate</button>
-                <button class="opcion-btn sabor-btn" data-sabor="Mixtas">Mixtas</button>
+        <!-- ===== TAB 1: PEDIDO ===== -->
+        <div id="tab-pedido" class="tab-content active">
+            
+            <div class="mensaje-pedido">
+                <span class="icono-grande">📋</span> 
+                <span class="texto-suave">Elige tus opciones abajo y al tocar</span> 
+                <span class="highlight-cta">PEDIR MIS DONAS YA</span> 
+                <span class="texto-suave">se enviará tu pedido por WhatsApp</span>
             </div>
-            <!-- Previsualización de imagen para Sabores -->
-            <div id="previewSabor" class="preview-imagen">
-                <span class="label">🖼️ Imagen del sabor</span>
-                <span class="imagen-item">🍩</span>
+
+            <div class="subtitulo-combinaciones">
+                ✨ Infinitas Combinaciones ✨
+            </div>
+
+            <section class="productos-grid">
+
+                <!-- SABORES -->
+                <div class="menu-block">
+                    <h4><span>🍩</span> Sabores</h4>
+                    <div class="sabores-grid">
+                        <button class="opcion-btn sabor-btn" data-sabor="Vainilla" aria-label="Seleccionar sabor Vainilla">🍦 Vainilla</button>
+                        <button class="opcion-btn sabor-btn" data-sabor="Chocolate" aria-label="Seleccionar sabor Chocolate">🍫 Chocolate</button>
+                        <button class="opcion-btn sabor-btn" data-sabor="Mixtas" aria-label="Seleccionar sabor Mixtas">🍩🍫 Mixtas</button>
+                    </div>
+                    <div id="previewSabor" class="preview-imagen">
+                        <span class="label">🖼️ Imagen del sabor</span>
+                        <span class="imagen-item">🍩</span>
+                    </div>
+                </div>
+
+                <!-- COBERTURAS -->
+                <div class="menu-block">
+                    <h4><span>🍫</span> Cobertura</h4>
+                    <div class="coberturas-grid">
+                        <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate oscuro" aria-label="Seleccionar cobertura Chocolate oscuro">🍫 Chocolate oscuro</button>
+                        <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco" aria-label="Seleccionar cobertura Chocolate blanco">🍫🤍 Chocolate blanco</button>
+                        <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco con color" aria-label="Seleccionar cobertura Chocolate blanco con color">🍫🌈 Chocolate blanco con color</button>
+                        <button class="opcion-btn cobertura-btn" data-cobertura="Dulce de leche" aria-label="Seleccionar cobertura Dulce de leche">🍯 Dulce de leche</button>
+                    </div>
+                    <div id="previewCobertura" class="preview-imagen">
+                        <span class="label">🖼️ Imagen de la cobertura</span>
+                        <span class="imagen-item">🍫</span>
+                    </div>
+                </div>
+
+                <!-- AGREGOS -->
+                <div class="menu-block">
+                    <h4><span>✨</span> Agregos</h4>
+                    <div class="agregos-wrap">
+                        <button class="opcion-btn agrego-btn" data-agrego="Grajeas" aria-label="Seleccionar agregos Grajeas">🌈 Grajeas</button>
+                        <button class="opcion-btn agrego-btn" data-agrego="Perlas comestibles" aria-label="Seleccionar agregos Perlas comestibles">⚪ Perlas comestibles</button>
+                        <button class="opcion-btn agrego-btn" data-agrego="Galleticas" aria-label="Seleccionar agregos Galleticas">🍪 Galleticas</button>
+                        <button class="opcion-btn agrego-btn" data-agrego="Sorbeto" aria-label="Seleccionar agregos Sorbeto">🧋 Sorbeto</button>
+                        <button class="opcion-btn agrego-btn" data-agrego="Botonetas" aria-label="Seleccionar agregos Botonetas">🔵 Botonetas</button>
+                        <button class="opcion-btn agrego-btn" data-agrego="Maní" aria-label="Seleccionar agregos Maní">🥜 Maní</button>
+                        <button class="opcion-btn agrego-btn" data-agrego="Coco" aria-label="Seleccionar agregos Coco">🥥 Coco</button>
+                    </div>
+                    <div id="previewAgregos" class="preview-imagen">
+                        <span class="label">🖼️ Agregos seleccionados</span>
+                        <span class="imagen-item">✨</span>
+                    </div>
+                </div>
+
+                <!-- TEMAS -->
+                <div class="menu-block">
+                    <h4><span>🎨</span> Temas Personalizados</h4>
+                    <div class="temas-container">
+                        <button class="opcion-btn tema-btn" data-tema="Futbol" aria-label="Seleccionar tema Futbol">⚽ Futbol</button>
+                        <button class="opcion-btn tema-btn" data-tema="Paw Patrol" aria-label="Seleccionar tema Paw Patrol">🐶 Paw Patrol</button>
+                        <button class="opcion-btn tema-btn" data-tema="Dinosaurios" aria-label="Seleccionar tema Dinosaurios">🦕 Dinosaurios</button>
+                        <button class="opcion-btn tema-btn" data-tema="Cumpleaños" aria-label="Seleccionar tema Cumpleaños">🎂 Cumpleaños</button>
+                        <button class="opcion-btn tema-btn" data-tema="Navidad" aria-label="Seleccionar tema Navidad">🎄 Navidad</button>
+                        <button class="opcion-btn tema-btn" data-tema="Lo que el cliente desee" aria-label="Seleccionar tema Lo que el cliente desee">✨ LO QUE EL CLIENTE DESEE</button>
+                    </div>
+                    <div id="previewTema" class="preview-imagen">
+                        <span class="label">🖼️ Imagen del tema</span>
+                        <span class="imagen-item">🎨</span>
+                    </div>
+                </div>
+
+                <!-- DOMICILIO -->
+                <div class="menu-block">
+                    <h4><span>📍</span> Domicilio</h4>
+                    <div class="domicilio-grid">
+                        <button class="opcion-btn domicilio-btn" data-domicilio="Sí" aria-label="Domicilio Sí">✅ Sí</button>
+                        <button class="opcion-btn domicilio-btn" data-domicilio="No" aria-label="Domicilio No">❌ No</button>
+                    </div>
+                    <div id="campoDireccion" class="campo-condicional">
+                        <label for="direccionInput">✏️ Escribe tu dirección:</label>
+                        <input type="text" id="direccionInput" placeholder="Calle, número, reparto...">
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps-pequeno">📍 Abrir Google Maps</a>
+                            <span style="font-size:0.9rem; color: var(--text-muted); align-self:center;">o comparte tu ubicación por WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FECHA -->
+                <div class="menu-block">
+                    <h4><span>📅</span> Lo quiero para el día</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+                        <label for="fechaEntrega" style="font-weight:600; color: var(--primary-dark);">Fecha y hora:</label>
+                        <input type="datetime-local" id="fechaEntrega" style="padding:10px 18px; border-radius:60px; border:2px solid #e8dccc; font-family:var(--font-body); font-size:1rem; background:white; max-width:250px;">
+                    </div>
+                </div>
+
+                <!-- ENVASES -->
+                <div class="menu-block">
+                    <h4><span>📦</span> Envases</h4>
+                    <div class="envases-grid">
+                        <button class="opcion-btn envase-btn" data-envase="Sí" aria-label="Envase Sí">✅ Sí</button>
+                        <button class="opcion-btn envase-btn" data-envase="No" aria-label="Envase No">❌ No</button>
+                    </div>
+                    <div id="campoCaja" class="campo-condicional">
+                        <label style="font-weight:600; color: var(--primary-dark);">¿Caja personalizada?</label>
+                        <div class="caja-grid">
+                            <button class="opcion-btn caja-btn" data-caja="Sí" aria-label="Caja personalizada Sí">✅ Sí</button>
+                            <button class="opcion-btn caja-btn" data-caja="No" aria-label="Caja personalizada No">❌ No</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CANTIDAD -->
+                <div class="menu-block">
+                    <h4><span>🔢</span> Cantidad</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+                        <label for="cantidadInput" style="font-weight:600; color: var(--primary-dark);">Número de minidonas (mínimo 9):</label>
+                        <input type="number" id="cantidadInput" min="9" value="9" style="padding:10px 18px; border-radius:60px; border:2px solid #e8dccc; font-family:var(--font-body); font-size:1rem; background:white; max-width:120px;">
+                    </div>
+                </div>
+
+                <!-- RESUMEN -->
+                <div id="seleccionPreview" class="seleccion-preview">
+                    <h4>📋 Tu selección</h4>
+                    <div class="resumen-linea"><strong>Sabor:</strong> <span id="saborSeleccionado" class="valor">Ninguno</span></div>
+                    <div class="resumen-linea"><strong>Cobertura:</strong> <span id="coberturaSeleccionado" class="valor">Ninguno</span></div>
+                    <div class="resumen-linea"><strong>Agregos:</strong> <span id="agregosSeleccionados" class="valor">Ninguno</span></div>
+                    <div class="resumen-linea"><strong>Tema:</strong> <span id="temaSeleccionado" class="valor">Ninguno</span></div>
+                    <div class="resumen-linea"><strong>Domicilio:</strong> <span id="domicilioSeleccionado" class="valor">No</span></div>
+                    <div class="resumen-linea"><strong>Dirección:</strong> <span id="direccionMostrada" class="valor">-</span></div>
+                    <div class="resumen-linea"><strong>Fecha/Hora:</strong> <span id="fechaMostrada" class="valor">-</span></div>
+                    <div class="resumen-linea"><strong>Envases:</strong> <span id="envaseSeleccionado" class="valor">No</span></div>
+                    <div class="resumen-linea"><strong>Caja personalizada:</strong> <span id="cajaSeleccionado" class="valor">-</span></div>
+                    <div class="resumen-linea"><strong>Cantidad:</strong> <span id="cantidadMostrada" class="valor">9</span></div>
+                    <button id="btnPedidoResumen" class="btn-pedido-resumen">
+                        PEDIR MIS DONAS YA
+                    </button>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- ===== TAB 2: REDES SOCIALES ===== -->
+        <div id="tab-rrss" class="tab-content">
+            <div class="rrss-grid">
+                <div class="rrss-card">
+                    <span class="rrss-icon">📸</span>
+                    <div class="rrss-nombre">Instagram</div>
+                    <a href="#" target="_blank" class="rrss-link">Síguenos</a>
+                </div>
+                <div class="rrss-card">
+                    <span class="rrss-icon">👍</span>
+                    <div class="rrss-nombre">Facebook</div>
+                    <a href="#" target="_blank" class="rrss-link">Síguenos</a>
+                </div>
+                <div class="rrss-card">
+                    <span class="rrss-icon">🎵</span>
+                    <div class="rrss-nombre">TikTok</div>
+                    <a href="#" target="_blank" class="rrss-link">Síguenos</a>
+                </div>
+                <div class="rrss-card">
+                    <span class="rrss-icon">💬</span>
+                    <div class="rrss-nombre">WhatsApp Business</div>
+                    <a href="https://wa.me/5355123300" target="_blank" class="rrss-link">Contáctanos</a>
+                </div>
+            </div>
+            <div class="rrss-mensaje">
+                ✨ Síguenos en redes para ver nuestras promociones y nuevos sabores. <strong>¡Te esperamos!</strong>
             </div>
         </div>
 
-        <!-- ====== COBERTURAS ====== -->
-        <div class="menu-block">
-            <h4><span>🍫</span> Cobertura</h4>
-            <div class="coberturas-grid">
-                <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate oscuro">Chocolate oscuro</button>
-                <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco">Chocolate blanco</button>
-                <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco con color">Chocolate blanco con color</button>
-                <button class="opcion-btn cobertura-btn" data-cobertura="Dulce de leche">Dulce de leche</button>
-            </div>
-            <!-- Previsualización de imagen para Coberturas -->
-            <div id="previewCobertura" class="preview-imagen">
-                <span class="label">🖼️ Imagen de la cobertura</span>
-                <span class="imagen-item">🍫</span>
-            </div>
-        </div>
-
-        <!-- ====== AGREGOS ====== -->
-        <div class="menu-block">
-            <h4><span>✨</span> Agregos</h4>
-            <div class="agregos-wrap">
-                <button class="opcion-btn agrego-btn" data-agrego="Grajeas">Grajeas</button>
-                <button class="opcion-btn agrego-btn" data-agrego="Perlas comestibles">Perlas comestibles</button>
-                <button class="opcion-btn agrego-btn" data-agrego="Galleticas">Galleticas</button>
-                <button class="opcion-btn agrego-btn" data-agrego="Sorbeto">Sorbeto</button>
-                <button class="opcion-btn agrego-btn" data-agrego="Botonetas">Botonetas</button>
-                <button class="opcion-btn agrego-btn" data-agrego="Maní">Maní</button>
-                <button class="opcion-btn agrego-btn" data-agrego="Coco">Coco</button>
-                <button class="opcion-btn agrego-btn destacado" data-agrego="Y mucho más...!">✨ Y mucho más...!</button>
-            </div>
-            <!-- Previsualización de imagen para Agregos (múltiple) -->
-            <div id="previewAgregos" class="preview-imagen">
-                <span class="label">🖼️ Agregos seleccionados</span>
-                <span class="imagen-item">✨</span>
-            </div>
-        </div>
-
-        <!-- ====== TEMAS PERSONALIZADOS ====== -->
-        <div class="menu-block">
-            <h4><span>🎨</span> Temas Personalizados</h4>
-            <div class="temas-container">
-                <button class="opcion-btn tema-btn" data-tema="Futbol">⚽ Futbol</button>
-                <button class="opcion-btn tema-btn" data-tema="Paw Patrol">🐶 Paw Patrol</button>
-                <button class="opcion-btn tema-btn" data-tema="Dinosaurios">🦕 Dinosaurios</button>
-                <button class="opcion-btn tema-btn" data-tema="Cumpleaños">🎂 Cumpleaños</button>
-                <button class="opcion-btn tema-btn" data-tema="Navidad">🎄 Navidad</button>
-                <button class="opcion-btn tema-btn" data-tema="Lo que el cliente desee">✨ LO QUE EL CLIENTE DESEE</button>
-            </div>
-            <!-- Previsualización de imagen para Temas -->
-            <div id="previewTema" class="preview-imagen">
-                <span class="label">🖼️ Imagen del tema</span>
-                <span class="imagen-item">🎨</span>
+        <!-- ===== TAB 3: COMENTARIOS ===== -->
+        <div id="tab-comentarios" class="tab-content">
+            <div class="testimonios-grid">
+                <div class="testimonio-card">
+                    <span class="test-avatar">👩</span>
+                    <div class="test-header">
+                        <div class="test-nombre">Mariana G.</div>
+                        <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="test-texto">
+                        "Las minidonas de Diane son las más esponjosas y deliciosas que he probado. El sabor a vainilla es increíble y la atención es excelente. ¡100% recomendadas!"
+                    </div>
+                </div>
+                <div class="testimonio-card">
+                    <span class="test-avatar">👨</span>
+                    <div class="test-header">
+                        <div class="test-nombre">Carlos R.</div>
+                        <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="test-texto">
+                        "Pedí una caja temática de cumpleaños para mi hijo y quedó fascinado. La decoración y el sabor son de primera. Muy profesionales y puntuales."
+                    </div>
+                </div>
+                <div class="testimonio-card">
+                    <span class="test-avatar">👩</span>
+                    <div class="test-header">
+                        <div class="test-nombre">Laura M.</div>
+                        <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="test-texto">
+                        "Siempre pido las de chocolate con coco, son mi debilidad. Además, el trato es súper cálido y se nota que usan ingredientes de calidad."
+                    </div>
+                </div>
+                <div class="testimonio-card">
+                    <span class="test-avatar">👨</span>
+                    <div class="test-header">
+                        <div class="test-nombre">Jorge P.</div>
+                        <div class="test-estrellas">⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="test-texto">
+                        "Excelente opción para regalar. Las minidonas son bonitas y ricas. La única pega es que se acaban muy rápido 😄. Seguro repito."
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- ====== PANEL DE RESUMEN CON BOTÓN WHATSAPP ====== -->
-        <div id="seleccionPreview" class="seleccion-preview">
-            <h4>📋 Tu selección</h4>
-            <div class="resumen-linea"><strong>Sabor:</strong> <span id="saborSeleccionado" class="valor">Ninguno</span></div>
-            <div class="resumen-linea"><strong>Cobertura:</strong> <span id="coberturaSeleccionado" class="valor">Ninguno</span></div>
-            <div class="resumen-linea"><strong>Agregos:</strong> <span id="agregosSeleccionados" class="valor">Ninguno</span></div>
-            <div class="resumen-linea"><strong>Tema:</strong> <span id="temaSeleccionado" class="valor">Ninguno</span></div>
-            <!-- Botón que genera el pedido -->
-            <button id="btnPedidoResumen" class="btn-pedido-resumen">
-                📲 Pedir mis donas
-            </button>
+    <!-- ===== CATÁLOGO DE IMÁGENES ===== -->
+    <div class="catalogo-section">
+        <h3>📸 Catálogo de Imágenes</h3>
+        <div class="catalogo-grid">
+            <div class="catalogo-item">
+                <span class="cat-img">🍩</span>
+                <div class="cat-nombre">Donut Glaseada</div>
+                <div class="cat-desc">Clásica con azúcar glas</div>
+            </div>
+            <div class="catalogo-item">
+                <span class="cat-img">🍫</span>
+                <div class="cat-nombre">Donut Chocolate</div>
+                <div class="cat-desc">Cobertura de chocolate belga</div>
+            </div>
+            <div class="catalogo-item">
+                <span class="cat-img">🍓</span>
+                <div class="cat-nombre">Donut Fresa</div>
+                <div class="cat-desc">Con crema y fresas naturales</div>
+            </div>
+            <div class="catalogo-item">
+                <span class="cat-img">🥥</span>
+                <div class="cat-nombre">Donut Coco</div>
+                <div class="cat-desc">Coco tostado y leche condensada</div>
+            </div>
+            <div class="catalogo-item">
+                <span class="cat-img">🎂</span>
+                <div class="cat-nombre">Donut Cumpleaños</div>
+                <div class="cat-desc">Con sprinkles y vela comestible</div>
+            </div>
+            <div class="catalogo-item">
+                <span class="cat-img">⚽</span>
+                <div class="cat-nombre">Donut Futbol</div>
+                <div class="cat-desc">Temática para fanáticos del deporte</div>
+            </div>
+            <div class="catalogo-item">
+                <span class="cat-img">🐶</span>
+                <div class="cat-nombre">Donut Paw Patrol</div>
+                <div class="cat-desc">Ideal para los más pequeños</div>
+            </div>
+            <div class="catalogo-item">
+                <span class="cat-img">🎄</span>
+                <div class="cat-nombre">Donut Navidad</div>
+                <div class="cat-desc">Edición especial con motivos navideños</div>
+            </div>
         </div>
+        <p style="text-align:center; margin-top:20px; color: var(--text-muted);">
+            📸 Próximamente más imágenes de nuestros productos. ¡Síguenos en redes para ver las novedades!
+        </p>
+    </div>
 
-    </section>
-
-    <!-- ===== CONTACTO (inferior) ===== -->
+    <!-- ===== SECCIÓN "¿DÓNDE ESTAMOS?" ===== -->
     <section id="contacto" class="contacto">
-        <h3>📲 ¡Haz tu pedido!</h3>
-        <p>Escoge tus sabores, cobertura, agregos y el tema que más te guste. ¡Las recibes en la puerta de tu casa!</p>
-        
+        <h3>¿Dónde estamos?</h3>
         <div class="btn-group">
-            <a href="https://wa.me/5355123300?text=Hola%20Minidonas%20Diane!%20Te%20encontr%C3%A9%20por%20tu%20pagina%20web%20y%20quiero%20hacer%20un%20pedido%20de%20minidonas%20con:%0A*%20Sabor:%20%0A*%20Cobertura:%20%0A*%20Agregos:%20%0A*%20Tema:%20%0A*%20Cantidad:%20%0A*%20Caja/Envase:%20%0A*%20Lo%20quiero%20para%20el%20dia:%20%0A*%20Domicilio:" target="_blank" class="btn-wsp">
-                💬 Pedir por WhatsApp
-            </a>
             <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps">
                 📍 Ver ubicación en Google Maps
             </a>
         </div>
-
         <div class="datos">
             <span>📍 Edificio 17 apto 10, Reparto Rajayoga</span>
-            <span>📞 +53 5512 3300</span>
-            <span>✉️ hola@minidonasdiane.com</span>
+            <span>📞 +53 55123300</span>
         </div>
     </section>
 
@@ -644,40 +1117,69 @@
 
 </div>
 
-<!-- ===== JAVASCRIPT ===== -->
+<!-- ===== JAVASCRIPT OPTIMIZADO ===== -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        // ---- Elementos del resumen ----
+        // ===== TABS =====
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                const tabId = this.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // ===== ELEMENTOS DEL RESUMEN =====
         const saborSpan = document.getElementById('saborSeleccionado');
         const coberturaSpan = document.getElementById('coberturaSeleccionado');
         const agregosSpan = document.getElementById('agregosSeleccionados');
         const temaSpan = document.getElementById('temaSeleccionado');
+        const domicilioSpan = document.getElementById('domicilioSeleccionado');
+        const direccionSpan = document.getElementById('direccionMostrada');
+        const fechaSpan = document.getElementById('fechaMostrada');
+        const envaseSpan = document.getElementById('envaseSeleccionado');
+        const cajaSpan = document.getElementById('cajaSeleccionado');
+        const cantidadSpan = document.getElementById('cantidadMostrada');
 
-        // ---- Elementos de previsualización de imágenes ----
+        // ===== PREVISUALIZACIONES =====
         const previewSabor = document.getElementById('previewSabor');
         const previewCobertura = document.getElementById('previewCobertura');
         const previewAgregos = document.getElementById('previewAgregos');
         const previewTema = document.getElementById('previewTema');
 
-        // ---- Estado de selección ----
+        // ===== CAMPOS CONDICIONALES =====
+        const campoDireccion = document.getElementById('campoDireccion');
+        const direccionInput = document.getElementById('direccionInput');
+        const campoCaja = document.getElementById('campoCaja');
+
+        // ===== INPUTS =====
+        const fechaInput = document.getElementById('fechaEntrega');
+        const cantidadInput = document.getElementById('cantidadInput');
+
+        // ===== ESTADO =====
         let selectedSabor = 'Ninguno';
         let selectedCobertura = 'Ninguno';
         let selectedTema = 'Ninguno';
         let selectedAgregos = [];
+        let selectedDomicilio = 'No';
+        let selectedEnvase = 'No';
+        let selectedCaja = '-';
 
-        // ---- Mapeo de emojis/imágenes para cada opción ----
+        // ===== MAPEO DE EMOJIS =====
         const imagenes = {
-            // Sabores
             'Vainilla': '🍦',
             'Chocolate': '🍫',
             'Mixtas': '🍩🍫',
-            // Coberturas
             'Chocolate oscuro': '🍫',
             'Chocolate blanco': '🍫🤍',
             'Chocolate blanco con color': '🍫🌈',
             'Dulce de leche': '🍯',
-            // Agregos
             'Grajeas': '🌈',
             'Perlas comestibles': '⚪',
             'Galleticas': '🍪',
@@ -685,8 +1187,6 @@
             'Botonetas': '🔵',
             'Maní': '🥜',
             'Coco': '🥥',
-            'Y mucho más...!': '✨',
-            // Temas
             'Futbol': '⚽',
             'Paw Patrol': '🐶',
             'Dinosaurios': '🦕',
@@ -695,107 +1195,164 @@
             'Lo que el cliente desee': '✨'
         };
 
-        // ---- Función para actualizar el resumen y las previsualizaciones ----
+        // ===== VALIDACIÓN DE CANTIDAD (mínimo 9) =====
+        function validarCantidad() {
+            let valor = parseInt(cantidadInput.value);
+            if (isNaN(valor) || valor < 9) {
+                alert('⚠️ El pedido mínimo es de 9 minidonas. Por favor, ajusta la cantidad.');
+                cantidadInput.value = 9;
+                cantidadSpan.textContent = '9';
+                return false;
+            }
+            cantidadSpan.textContent = valor;
+            return true;
+        }
+
+        cantidadInput.addEventListener('blur', validarCantidad);
+        cantidadInput.addEventListener('change', validarCantidad);
+
+        // ===== ACTUALIZAR UI =====
         function actualizarTodo() {
-            // Actualizar texto del resumen
             saborSpan.textContent = selectedSabor;
             coberturaSpan.textContent = selectedCobertura;
             temaSpan.textContent = selectedTema;
-            if (selectedAgregos.length === 0) {
-                agregosSpan.textContent = 'Ninguno';
-            } else {
-                agregosSpan.textContent = selectedAgregos.join(', ');
+            agregosSpan.textContent = selectedAgregos.length === 0 ? 'Ninguno' : selectedAgregos.join(', ');
+            domicilioSpan.textContent = selectedDomicilio;
+            direccionSpan.textContent = (selectedDomicilio === 'Sí' && direccionInput.value.trim() !== '') ? direccionInput.value.trim() : '-';
+            envaseSpan.textContent = selectedEnvase;
+            cajaSpan.textContent = (selectedEnvase === 'Sí') ? selectedCaja : '-';
+            if (cantidadInput.value && parseInt(cantidadInput.value) >= 9) {
+                cantidadSpan.textContent = cantidadInput.value;
             }
 
-            // Actualizar previsualización de Sabor
-            const imgSabor = imagenes[selectedSabor] || '🍩';
-            previewSabor.innerHTML = `<span class="label">🖼️ Imagen del sabor</span><span class="imagen-item">${imgSabor}</span>`;
+            if (fechaInput.value) {
+                const fechaObj = new Date(fechaInput.value);
+                const opciones = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                fechaSpan.textContent = fechaObj.toLocaleDateString('es-ES', opciones);
+            } else {
+                fechaSpan.textContent = '-';
+            }
 
-            // Actualizar previsualización de Cobertura
-            const imgCobertura = imagenes[selectedCobertura] || '🍫';
-            previewCobertura.innerHTML = `<span class="label">🖼️ Imagen de la cobertura</span><span class="imagen-item">${imgCobertura}</span>`;
-
-            // Actualizar previsualización de Agregos (mostrar todos los seleccionados)
+            previewSabor.innerHTML = `<span class="label">🖼️ Imagen del sabor</span><span class="imagen-item">${imagenes[selectedSabor] || '🍩'}</span>`;
+            previewCobertura.innerHTML = `<span class="label">🖼️ Imagen de la cobertura</span><span class="imagen-item">${imagenes[selectedCobertura] || '🍫'}</span>`;
+            
             let agregosImagenes = selectedAgregos.map(a => imagenes[a] || '✨');
             if (agregosImagenes.length === 0) agregosImagenes = ['✨'];
             previewAgregos.innerHTML = `<span class="label">🖼️ Agregos seleccionados</span>` + 
                 agregosImagenes.map(img => `<span class="imagen-item">${img}</span>`).join('');
 
-            // Actualizar previsualización de Tema
-            const imgTema = imagenes[selectedTema] || '🎨';
-            previewTema.innerHTML = `<span class="label">🖼️ Imagen del tema</span><span class="imagen-item">${imgTema}</span>`;
+            previewTema.innerHTML = `<span class="label">🖼️ Imagen del tema</span><span class="imagen-item">${imagenes[selectedTema] || '🎨'}</span>`;
+
+            if (selectedDomicilio === 'Sí') {
+                campoDireccion.classList.add('visible');
+            } else {
+                campoDireccion.classList.remove('visible');
+            }
+
+            if (selectedEnvase === 'Sí') {
+                campoCaja.classList.add('visible');
+            } else {
+                campoCaja.classList.remove('visible');
+                if (selectedCaja !== '-') {
+                    selectedCaja = '-';
+                    document.querySelectorAll('.caja-btn').forEach(b => b.classList.remove('active'));
+                }
+            }
         }
 
-        // ---- Función para manejar clic en botones de selección única (Sabor, Cobertura, Tema) ----
-        function setupUnico(selector, estadoSetter, callback) {
-            const botones = document.querySelectorAll(selector);
-            botones.forEach(btn => {
+        // ===== CONFIGURAR BOTONES DE SELECCIÓN ÚNICA =====
+        function setupUnico(selector, setter) {
+            document.querySelectorAll(selector).forEach(btn => {
                 btn.addEventListener('click', function() {
                     const grupo = this.parentElement.querySelectorAll(selector);
                     grupo.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    const valor = this.dataset.sabor || this.dataset.cobertura || this.dataset.tema;
-                    estadoSetter(valor);
-                    callback(valor);
+                    const valor = this.dataset.sabor || this.dataset.cobertura || this.dataset.tema || this.dataset.domicilio || this.dataset.envase || this.dataset.caja;
+                    setter(valor);
                     actualizarTodo();
                 });
             });
         }
 
-        // ---- Configurar SABORES ----
-        setupUnico('.sabor-btn', (val) => { selectedSabor = val; }, () => {});
+        setupUnico('.sabor-btn', (val) => { selectedSabor = val; });
+        setupUnico('.cobertura-btn', (val) => { selectedCobertura = val; });
+        setupUnico('.tema-btn', (val) => { selectedTema = val; });
+        setupUnico('.domicilio-btn', (val) => { selectedDomicilio = val; });
+        setupUnico('.envase-btn', (val) => { selectedEnvase = val; });
+        setupUnico('.caja-btn', (val) => { selectedCaja = val; });
 
-        // ---- Configurar COBERTURAS ----
-        setupUnico('.cobertura-btn', (val) => { selectedCobertura = val; }, () => {});
-
-        // ---- Configurar TEMAS ----
-        setupUnico('.tema-btn', (val) => { selectedTema = val; }, () => {});
-
-        // ---- Configurar AGREGOS (selección múltiple) ----
-        const agregoBotones = document.querySelectorAll('.agrego-btn');
-        agregoBotones.forEach(btn => {
+        // ===== CONFIGURAR AGREGOS (múltiple) =====
+        document.querySelectorAll('.agrego-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const valor = this.dataset.agrego;
                 this.classList.toggle('active');
                 if (this.classList.contains('active')) {
-                    if (!selectedAgregos.includes(valor)) {
-                        selectedAgregos.push(valor);
-                    }
+                    if (!selectedAgregos.includes(valor)) selectedAgregos.push(valor);
                 } else {
                     const index = selectedAgregos.indexOf(valor);
-                    if (index !== -1) {
-                        selectedAgregos.splice(index, 1);
-                    }
+                    if (index !== -1) selectedAgregos.splice(index, 1);
                 }
                 actualizarTodo();
             });
         });
 
-        // ---- Botón "Pedir mis donas" en el resumen ----
-        document.getElementById('btnPedidoResumen').addEventListener('click', function() {
-            // Construir mensaje con los valores seleccionados
+        // ===== EVENTOS PARA INPUTS =====
+        direccionInput.addEventListener('input', actualizarTodo);
+        fechaInput.addEventListener('change', actualizarTodo);
+        cantidadInput.addEventListener('input', function() {
+            const valor = parseInt(this.value);
+            if (isNaN(valor) || valor < 9) {
+                return;
+            }
+            cantidadSpan.textContent = valor;
+            actualizarTodo();
+        });
+
+        // ===== BOTÓN "PEDIR MIS DONAS YA" =====
+        const btnPedido = document.getElementById('btnPedidoResumen');
+        const textoOriginal = btnPedido.textContent;
+
+        btnPedido.addEventListener('click', function() {
+            if (!validarCantidad()) {
+                return;
+            }
+
+            this.textContent = '⏳ Abriendo WhatsApp...';
+            this.disabled = true;
+
             const sabor = selectedSabor !== 'Ninguno' ? selectedSabor : '';
             const cobertura = selectedCobertura !== 'Ninguno' ? selectedCobertura : '';
             const agregos = selectedAgregos.length > 0 ? selectedAgregos.join(', ') : '';
             const tema = selectedTema !== 'Ninguno' ? selectedTema : '';
-            
-            // Mensaje base con los campos que el usuario llenará
+            const domicilio = selectedDomicilio;
+            const direccion = (domicilio === 'Sí' && direccionInput.value.trim() !== '') ? direccionInput.value.trim() : '';
+            const fecha = fechaSpan.textContent !== '-' ? fechaSpan.textContent : '';
+            const envase = selectedEnvase;
+            const caja = (envase === 'Sí') ? selectedCaja : '';
+            const cantidad = cantidadInput.value || '9';
+
             let mensaje = 'Hola Minidonas Diane! Te encontré por tu pagina web y quiero hacer un pedido de minidonas con:\n';
             mensaje += `* Sabor: ${sabor}\n`;
             mensaje += `* Cobertura: ${cobertura}\n`;
             mensaje += `* Agregos: ${agregos}\n`;
             mensaje += `* Tema: ${tema}\n`;
-            mensaje += `* Cantidad: \n`;
-            mensaje += `* Caja/Envase: \n`;
-            mensaje += `* Lo quiero para el dia: \n`;
-            mensaje += `* Domicilio:`;
-            
-            // Codificar para URL
+            mensaje += `* Cantidad: ${cantidad}\n`;
+            mensaje += `* Envases: ${envase}\n`;
+            if (envase === 'Sí') mensaje += `* Caja personalizada: ${caja}\n`;
+            mensaje += `* Lo quiero para el día: ${fecha}\n`;
+            mensaje += `* Domicilio: ${domicilio}\n`;
+            if (domicilio === 'Sí' && direccion) mensaje += `* Dirección: ${direccion}\n`;
+
             const url = `https://wa.me/5355123300?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
+
+            setTimeout(() => {
+                this.textContent = textoOriginal;
+                this.disabled = false;
+            }, 3000);
         });
 
-        // ---- Inicializar ----
+        // ===== INICIALIZAR =====
         actualizarTodo();
 
     });
