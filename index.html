@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-                <html lang="es">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Minidonas Diane · Donas artesanales en Santiago de Cuba</title>
-                    <link rel="preconnect" href="https://fonts.googleapis.com">
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
-                    <style>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minidonas Diane · Donas artesanales en Santiago de Cuba</title>
+
+    <!-- ===== SEO ===== -->
+    <meta name="description" content="Minidonas Diane – Donas artesanales en Santiago de Cuba. Elige sabores, coberturas y temas personalizados. ¡Pide por WhatsApp!">
+    <meta property="og:title" content="Minidonas Diane · Donas artesanales">
+    <meta property="og:description" content="Las mejores minidonas hechas con amor en Santiago de Cuba. Personaliza tu pedido y recíbelo en casa.">
+    <meta property="og:url" content="https://tunombredeusuario.github.io"> <!-- ⚠️ CAMBIA ESTO -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tunombredeusuario.github.io/donas-destacada.jpg"> <!-- ⚠️ CAMBIA ESTO -->
+
+    <!-- ===== FUENTES (se cargarán dinámicamente según la selección) ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Las fuentes se cargarán mediante JS según la configuración -->
+
+    <style>
         /* ===== PALETA DE COLORES (pastelería artesanal) ===== */
         :root {
             --primary: #E6647B;
@@ -34,6 +45,7 @@
             box-sizing: border-box;
         }
 
+        /* ===== FONDO DINÁMICO (se aplica vía JS) ===== */
         body {
             font-family: var(--font-body);
             background-color: var(--cream);
@@ -44,6 +56,7 @@
             min-height: 100vh;
             line-height: 1.6;
             padding: 20px;
+            transition: background-color 0.4s, background-image 0.4s;
         }
 
         .container {
@@ -207,9 +220,21 @@
             justify-content: center;
             border: 4px solid rgba(255, 255, 255, 0.7);
             box-shadow: var(--shadow-soft);
+            /* ===== ANIMACIÓN DEL LOGO ===== */
+            animation: floatLogo 4s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
+        .hero-image:hover {
+            animation-play-state: paused;
+            transform: scale(1.05);
+        }
+        @keyframes floatLogo {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
         .hero-image .logo-hero-img {
-            max-width: 220px;
+            max-width: 280px; /* más grande */
             height: auto;
             display: block;
             border-radius: 50%;
@@ -879,7 +904,7 @@
         }
 
         /* ===================================================== */
-        /* ===== PANEL DE ADMINISTRACIÓN (estilos) ===== */
+        /* ===== PANEL DE ADMINISTRACIÓN (estilos mejorados) ===== */
         /* ===================================================== */
         .admin-overlay {
             display: none;
@@ -900,7 +925,7 @@
         }
         .admin-panel {
             background: var(--paper);
-            max-width: 900px;
+            max-width: 1000px;
             width: 95%;
             max-height: 90vh;
             border-radius: var(--radius-donut);
@@ -945,7 +970,7 @@
         .admin-panel .admin-tab-btn {
             background: var(--white);
             border: 2px solid var(--primary-soft);
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 60px;
             font-weight: 700;
             font-size: 0.95rem;
@@ -953,18 +978,22 @@
             cursor: pointer;
             transition: all 0.3s;
             font-family: var(--font-body);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         .admin-panel .admin-tab-btn:hover {
             background: rgba(230, 100, 123, 0.08);
+            transform: translateY(-2px);
         }
         .admin-panel .admin-tab-btn.active {
             background: var(--primary);
             color: var(--white);
             border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(230, 100, 123, 0.3);
+            box-shadow: 0 4px 16px rgba(230, 100, 123, 0.25);
+            transform: translateY(-2px);
         }
         .admin-panel .admin-tab-content {
             display: none;
+            padding-top: 10px;
         }
         .admin-panel .admin-tab-content.active {
             display: block;
@@ -973,39 +1002,60 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 0;
-            border-bottom: 1px dashed var(--peach);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(230,100,123,0.15);
             flex-wrap: wrap;
+            background: rgba(255,255,255,0.5);
+            border-radius: 12px;
+            padding: 10px 15px;
+            margin-bottom: 6px;
+            transition: background 0.2s;
+        }
+        .admin-panel .admin-item:hover {
+            background: rgba(230,100,123,0.05);
         }
         .admin-panel .admin-item .item-name {
             font-weight: 700;
             flex: 1;
             min-width: 120px;
+            color: var(--chocolate);
         }
         .admin-panel .admin-item input[type="text"],
-        .admin-panel .admin-item input[type="file"] {
+        .admin-panel .admin-item input[type="file"],
+        .admin-panel .admin-item select {
             border: 2px solid var(--primary-soft);
             border-radius: 60px;
-            padding: 6px 14px;
+            padding: 8px 16px;
             font-family: var(--font-body);
             font-size: 0.9rem;
             flex: 2;
             min-width: 150px;
+            background: var(--white);
+            transition: all 0.3s;
+            outline: none;
+        }
+        .admin-panel .admin-item input:focus,
+        .admin-panel .admin-item select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(230,100,123,0.12);
         }
         .admin-panel .admin-item button {
             background: var(--primary);
             color: var(--white);
             border: none;
             border-radius: 60px;
-            padding: 6px 16px;
+            padding: 8px 18px;
             font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
             font-family: var(--font-body);
             font-size: 0.85rem;
+            box-shadow: 0 2px 8px rgba(230,100,123,0.15);
         }
         .admin-panel .admin-item button:hover {
             background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(230,100,123,0.25);
         }
         .admin-panel .admin-item .btn-danger {
             background: #d9534f;
@@ -1013,9 +1063,21 @@
         .admin-panel .admin-item .btn-danger:hover {
             background: #c9302c;
         }
+        .admin-panel .admin-item .btn-edit {
+            background: #f0ad4e;
+        }
+        .admin-panel .admin-item .btn-edit:hover {
+            background: #ec971f;
+        }
+        .admin-panel .admin-item .btn-save-edit {
+            background: #5cb85c;
+        }
+        .admin-panel .admin-item .btn-save-edit:hover {
+            background: #449d44;
+        }
         .admin-panel .admin-add-section {
             margin-top: 20px;
-            padding: 15px;
+            padding: 18px;
             background: rgba(244, 222, 216, 0.2);
             border-radius: 20px;
             border: 1px dashed var(--peach);
@@ -1027,20 +1089,35 @@
         .admin-panel .admin-add-section input {
             flex: 2;
             min-width: 150px;
+            border: 2px solid var(--primary-soft);
+            border-radius: 60px;
+            padding: 8px 16px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background: var(--white);
+            outline: none;
+            transition: border 0.3s;
+        }
+        .admin-panel .admin-add-section input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(230,100,123,0.12);
         }
         .admin-panel .admin-add-section button {
             background: var(--whatsapp);
             color: var(--white);
             border: none;
             border-radius: 60px;
-            padding: 8px 20px;
+            padding: 10px 24px;
             font-weight: 700;
             cursor: pointer;
             font-family: var(--font-body);
-            transition: background 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(37,211,102,0.2);
         }
         .admin-panel .admin-add-section button:hover {
             background: #1da85c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
         }
         .admin-panel .admin-image-preview {
             max-width: 60px;
@@ -1050,18 +1127,21 @@
             border: 2px solid var(--primary-soft);
         }
         .admin-panel .admin-msg {
-            padding: 8px 12px;
-            border-radius: 12px;
-            margin: 5px 0;
+            padding: 10px 16px;
+            border-radius: 16px;
+            margin: 8px 0;
             font-weight: 600;
+            animation: fadeIn 0.3s;
         }
         .admin-panel .admin-msg.success {
             background: #d4edda;
             color: #155724;
+            border-left: 4px solid #28a745;
         }
         .admin-panel .admin-msg.error {
             background: #f8d7da;
             color: #721c24;
+            border-left: 4px solid #dc3545;
         }
 
         /* ===== LOGIN MODAL ===== */
@@ -1097,19 +1177,41 @@
             font-size: 1.8rem;
             margin-bottom: 20px;
         }
-        .login-box input {
+        .login-box .pass-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .login-box .pass-wrapper input {
             width: 100%;
             padding: 12px 18px;
+            padding-right: 48px;
             border-radius: 60px;
             border: 2px solid var(--primary-soft);
             font-family: var(--font-body);
             font-size: 1rem;
-            margin-bottom: 15px;
             outline: none;
+            background: var(--white);
         }
-        .login-box input:focus {
+        .login-box .pass-wrapper input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(230, 100, 123, 0.12);
+            box-shadow: 0 0 0 4px rgba(230,100,123,0.12);
+        }
+        .login-box .pass-wrapper .toggle-pass {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--brown);
+            padding: 4px 8px;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        .login-box .pass-wrapper .toggle-pass:hover {
+            background: rgba(0,0,0,0.05);
         }
         .login-box button {
             background: var(--primary);
@@ -1120,12 +1222,14 @@
             font-weight: 700;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
             font-family: var(--font-body);
             width: 100%;
+            box-shadow: 0 4px 16px rgba(230,100,123,0.25);
         }
         .login-box button:hover {
             background: var(--primary-dark);
+            transform: translateY(-2px);
         }
         .login-box .login-error {
             color: #d9534f;
@@ -1134,16 +1238,95 @@
             display: none;
         }
 
+        /* ===== CONFIGURACIÓN DE GITHUB ===== */
+        .github-config,
+        .appearance-config,
+        .security-config {
+            background: rgba(244, 222, 216, 0.15);
+            border-radius: 24px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid var(--peach);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 12px;
+            align-items: center;
+        }
+        .github-config label,
+        .appearance-config label,
+        .security-config label {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .github-config input[type="text"],
+        .github-config input[type="password"],
+        .appearance-config input[type="text"],
+        .appearance-config input[type="color"],
+        .security-config input[type="password"] {
+            border: 2px solid var(--primary-soft);
+            border-radius: 60px;
+            padding: 10px 16px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background: var(--white);
+            width: 100%;
+            outline: none;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        .github-config input:focus,
+        .appearance-config input:focus,
+        .security-config input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(230,100,123,0.12);
+        }
+        .github-config .btn-save-github,
+        .appearance-config .btn-save-appearance,
+        .security-config .btn-save-security {
+            grid-column: 2;
+            justify-self: start;
+            background: var(--whatsapp);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            padding: 10px 24px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+        }
+        .github-config .btn-save-github:hover,
+        .appearance-config .btn-save-appearance:hover,
+        .security-config .btn-save-security:hover {
+            background: #1da85c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+        }
+        .appearance-config select {
+            border: 2px solid var(--primary-soft);
+            border-radius: 60px;
+            padding: 10px 16px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background: var(--white);
+            width: 100%;
+            outline: none;
+            transition: border 0.3s;
+        }
+        .appearance-config select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(230,100,123,0.12);
+        }
+
         /* ===== BOTONES DE EXPORTACIÓN/IMPORTACIÓN Y PUBLICACIÓN ===== */
         .admin-tools {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
             margin: 15px 0;
-            padding: 15px;
+            padding: 18px;
             background: rgba(244, 222, 216, 0.2);
-            border-radius: 20px;
-            border: 1px dashed var(--peach);
+            border-radius: 24px;
+            border: 1px solid var(--peach);
             justify-content: center;
         }
         .admin-tools button {
@@ -1151,18 +1334,20 @@
             color: var(--white);
             border: none;
             border-radius: 60px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
             font-family: var(--font-body);
             font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 2px 8px rgba(230,100,123,0.15);
         }
         .admin-tools button:hover {
-            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(230,100,123,0.25);
         }
         .admin-tools .btn-export-html {
             background: #f39c12;
@@ -1190,52 +1375,6 @@
         }
         .admin-tools input[type="file"] {
             display: none;
-        }
-
-        /* ===== CONFIGURACIÓN DE GITHUB ===== */
-        .github-config {
-            background: rgba(244, 222, 216, 0.15);
-            border-radius: 20px;
-            padding: 15px;
-            margin: 15px 0;
-            border: 1px dashed var(--peach);
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 10px;
-            align-items: center;
-        }
-        .github-config label {
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-        .github-config input[type="text"],
-        .github-config input[type="password"] {
-            border: 2px solid var(--primary-soft);
-            border-radius: 60px;
-            padding: 8px 14px;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            background: var(--white);
-            width: 100%;
-        }
-        .github-config input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(230, 100, 123, 0.12);
-        }
-        .github-config .btn-save-github {
-            grid-column: 2;
-            justify-self: start;
-            background: var(--whatsapp);
-            color: var(--white);
-            border: none;
-            border-radius: 60px;
-            padding: 8px 20px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .github-config .btn-save-github:hover {
-            background: #1da85c;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1323,7 +1462,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
             .hero-image .logo-hero-img {
-                max-width: 180px;
+                max-width: 200px;
             }
             .hero-image {
                 padding: 15px;
@@ -1376,19 +1515,24 @@
             .admin-tools button {
                 justify-content: center;
             }
-            .github-config {
+            .github-config,
+            .appearance-config,
+            .security-config {
                 grid-template-columns: 1fr;
-                gap: 6px;
+                gap: 8px;
             }
-            .github-config .btn-save-github {
+            .github-config .btn-save-github,
+            .appearance-config .btn-save-appearance,
+            .security-config .btn-save-security {
                 grid-column: 1;
                 justify-self: stretch;
             }
         }
     </style>
-                </head>
-                <body>
-                    <div class="container">
+</head>
+<body>
+
+    <div class="container">
 
         <!-- ===== HEADER ===== -->
         <header>
@@ -1396,7 +1540,7 @@
                 <h1>🍩 <span id="heroTitle">Minidonas</span> <span id="heroTitleSpan">Diane</span></h1>
                 <p id="heroTagline">✨ Pequeñas DONITAS, Grandes SONRISAS ✨</p>
             </div>
-            <button class="admin-toggle" id="adminToggle" aria-label="Panel de administración" title="Administrar contenido" data-enpassid="__0">🔧</button>
+            <button class="admin-toggle" id="adminToggle" aria-label="Panel de administración" title="Administrar contenido">🔧</button>
         </header>
 
         <!-- ===== HERO ===== -->
@@ -1417,62 +1561,89 @@
         <!-- ===== TABS ===== -->
         <div class="tabs-container">
             <div class="tabs-header">
-                <button class="tab-btn active" data-tab="tab-pedido" data-enpassid="__1">🍩 Seleccionar Pedido</button>
-                <button class="tab-btn" data-tab="tab-rrss" data-enpassid="__2">📱 Redes Sociales</button>
-                <button class="tab-btn" data-tab="tab-comentarios" data-enpassid="__3">⭐ Comentarios</button>
+                <button class="tab-btn active" data-tab="tab-pedido">🍩 Seleccionar Pedido</button>
+                <button class="tab-btn" data-tab="tab-rrss">📱 Redes Sociales</button>
+                <button class="tab-btn" data-tab="tab-comentarios">⭐ Comentarios</button>
             </div>
 
             <!-- ===== TAB 1: PEDIDO ===== -->
             <div id="tab-pedido" class="tab-content active">
 
-                <div class="mensaje-pedido" id="mensajePedido">📋 Elige tus opciones abajo y al tocar PEDIR MIS DONAS YA se enviará tu pedido por WhatsApp</div>
+                <div class="mensaje-pedido" id="mensajePedido">
+                    <span class="icono-grande">📋</span>
+                    <span class="texto-suave">Elige tus opciones abajo y al tocar</span>
+                    <span class="highlight-cta">PEDIR MIS DONAS YA</span>
+                    <span class="texto-suave">se enviará tu pedido por WhatsApp</span>
+                </div>
 
-                <div class="subtitulo-combinaciones" id="subtituloCombinaciones">✨ Infinitas Combinaciones ✨</div>
+                <div class="subtitulo-combinaciones" id="subtituloCombinaciones">
+                    ✨ Infinitas Combinaciones ✨
+                </div>
 
                 <section class="productos-grid">
 
                     <!-- ===== SABORES ===== -->
                     <div class="menu-block" id="cardSabores">
                         <h4><span>🍩</span> Sabores</h4>
-                        <div class="sabores-grid" id="saboresContainer"><button class="opcion-btn sabor-btn" data-sabor="Vainilla" aria-label="Seleccionar sabor Vainilla" data-enpassid="__4">🍩 Vainilla</button><button class="opcion-btn sabor-btn" data-sabor="Chocolate" aria-label="Seleccionar sabor Chocolate" data-enpassid="__5">🍩 Chocolate</button><button class="opcion-btn sabor-btn" data-sabor="Mixtas" aria-label="Seleccionar sabor Mixtas" data-enpassid="__6">🍩 Mixtas</button><button class="opcion-btn sabor-btn" data-sabor="Red Velvet" aria-label="Seleccionar sabor Red Velvet" data-enpassid="__7">🍩 Red Velvet</button></div>
-                        <div id="previewSabor" class="preview-imagen"><span class="label">🖼️ Imagen del sabor</span><span class="imagen-item">🍩</span></div>
+                        <div class="sabores-grid" id="saboresContainer">
+                            <!-- Generado dinámicamente -->
+                        </div>
+                        <div id="previewSabor" class="preview-imagen">
+                            <span class="label">🖼️ Imagen del sabor</span>
+                            <span class="imagen-item">🍩</span>
+                        </div>
                     </div>
 
                     <!-- ===== COBERTURAS ===== -->
                     <div class="menu-block" id="cardCoberturas">
                         <h4><span>🍫</span> Cobertura</h4>
-                        <div class="coberturas-grid" id="coberturasContainer"><button class="opcion-btn cobertura-btn" data-cobertura="Chocolate oscuro" aria-label="Seleccionar cobertura Chocolate oscuro" data-enpassid="__8">🍫 Chocolate oscuro</button><button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco" aria-label="Seleccionar cobertura Chocolate blanco" data-enpassid="__9">🍫 Chocolate blanco</button><button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco con color" aria-label="Seleccionar cobertura Chocolate blanco con color" data-enpassid="__10">🍫 Chocolate blanco con color</button><button class="opcion-btn cobertura-btn" data-cobertura="Dulce de leche" aria-label="Seleccionar cobertura Dulce de leche" data-enpassid="__11">🍫 Dulce de leche</button></div>
-                        <div id="previewCobertura" class="preview-imagen"><span class="label">🖼️ Imagen de la cobertura</span><span class="imagen-item">🍫</span></div>
+                        <div class="coberturas-grid" id="coberturasContainer">
+                            <!-- Generado dinámicamente -->
+                        </div>
+                        <div id="previewCobertura" class="preview-imagen">
+                            <span class="label">🖼️ Imagen de la cobertura</span>
+                            <span class="imagen-item">🍫</span>
+                        </div>
                     </div>
 
                     <!-- ===== AGREGOS ===== -->
                     <div class="menu-block full" id="cardAgregos">
                         <h4><span>✨</span> Agregos</h4>
-                        <div class="agregos-wrap" id="agregosContainer"><button class="opcion-btn agrego-btn" data-agrego="Grajeas" aria-label="Seleccionar agrego Grajeas" data-enpassid="__12">✨ Grajeas</button><button class="opcion-btn agrego-btn" data-agrego="Perlas comestibles" aria-label="Seleccionar agrego Perlas comestibles" data-enpassid="__13">✨ Perlas comestibles</button><button class="opcion-btn agrego-btn" data-agrego="Galleticas" aria-label="Seleccionar agrego Galleticas" data-enpassid="__14">✨ Galleticas</button><button class="opcion-btn agrego-btn" data-agrego="Sorbeto" aria-label="Seleccionar agrego Sorbeto" data-enpassid="__15">✨ Sorbeto</button><button class="opcion-btn agrego-btn" data-agrego="Botonetas" aria-label="Seleccionar agrego Botonetas" data-enpassid="__16">✨ Botonetas</button><button class="opcion-btn agrego-btn" data-agrego="Maní" aria-label="Seleccionar agrego Maní" data-enpassid="__17">✨ Maní</button><button class="opcion-btn agrego-btn" data-agrego="Coco" aria-label="Seleccionar agrego Coco" data-enpassid="__18">✨ Coco</button></div>
-                        <div id="previewAgregos" class="preview-imagen"><span class="label">🖼️ Agregos seleccionados</span><span class="imagen-item">✨</span></div>
+                        <div class="agregos-wrap" id="agregosContainer">
+                            <!-- Generado dinámicamente -->
+                        </div>
+                        <div id="previewAgregos" class="preview-imagen">
+                            <span class="label">🖼️ Agregos seleccionados</span>
+                            <span class="imagen-item">✨</span>
+                        </div>
                     </div>
 
                     <!-- ===== TEMAS ===== -->
                     <div class="menu-block" id="cardTemas">
                         <h4><span>🎨</span> Temas Personalizados</h4>
-                        <div class="temas-container" id="temasContainer"><button class="opcion-btn tema-btn" data-tema="Futbol" aria-label="Seleccionar tema Futbol" data-enpassid="__19">⚽ Futbol</button><button class="opcion-btn tema-btn" data-tema="Paw Patrol" aria-label="Seleccionar tema Paw Patrol" data-enpassid="__20">🐶 Paw Patrol</button><button class="opcion-btn tema-btn" data-tema="Dinosaurios" aria-label="Seleccionar tema Dinosaurios" data-enpassid="__21">🦕 Dinosaurios</button><button class="opcion-btn tema-btn" data-tema="Cumpleaños" aria-label="Seleccionar tema Cumpleaños" data-enpassid="__22">🎂 Cumpleaños</button><button class="opcion-btn tema-btn" data-tema="Navidad" aria-label="Seleccionar tema Navidad" data-enpassid="__23">🎄 Navidad</button><button class="opcion-btn tema-btn" data-tema="Lilo &amp; Stitch" aria-label="Seleccionar tema Lilo &amp; Stitch" data-enpassid="__24">💙 Lilo &amp; Stitch</button><button class="opcion-btn tema-btn tema-custom-btn active" data-tema="custom" aria-label="Escribe tu tema personalizado" data-enpassid="__25">✏️ Escribe aquí tu Tema</button></div>
-                        <div id="campoTemaPersonalizado" class="campo-condicional visible">
-                            <label for="temaPersonalizadoInput">✏️ Describe tu tema personalizado:</label>
-                            <input type="text" id="temaPersonalizadoInput" placeholder="Ej: Superhéroes, Unicornios, Videojuegos..." data-enpassusermodified="yes" data-enpassid="__26">
+                        <div class="temas-container" id="temasContainer">
+                            <!-- Generado dinámicamente -->
                         </div>
-                        <div id="previewTema" class="preview-imagen"><span class="label">🖼️ Imagen del tema</span><span class="imagen-item">🎨</span></div>
+                        <div id="campoTemaPersonalizado" class="campo-condicional">
+                            <label for="temaPersonalizadoInput">✏️ Describe tu tema personalizado:</label>
+                            <input type="text" id="temaPersonalizadoInput" placeholder="Ej: Superhéroes, Unicornios, Videojuegos...">
+                        </div>
+                        <div id="previewTema" class="preview-imagen">
+                            <span class="label">🖼️ Imagen del tema</span>
+                            <span class="imagen-item">🎨</span>
+                        </div>
                     </div>
 
                     <!-- ===== DOMICILIO ===== -->
                     <div class="menu-block" id="cardDomicilio">
                         <h4><span id="domicilioIcon">📍</span> <span id="domicilioLabel">Domicilio</span></h4>
                         <div class="domicilio-grid">
-                            <button class="opcion-btn domicilio-btn active" data-domicilio="Sí" aria-label="Domicilio Sí" data-enpassid="__27">✅ Sí</button>
-                            <button class="opcion-btn domicilio-btn" data-domicilio="No" aria-label="Domicilio No" data-enpassid="__28">❌ No</button>
+                            <button class="opcion-btn domicilio-btn" data-domicilio="Sí" aria-label="Domicilio Sí">✅ Sí</button>
+                            <button class="opcion-btn domicilio-btn" data-domicilio="No" aria-label="Domicilio No">❌ No</button>
                         </div>
-                        <div id="campoDireccion" class="campo-condicional visible">
+                        <div id="campoDireccion" class="campo-condicional">
                             <label for="direccionInput" id="direccionLabel">✏️ Escribe tu dirección:</label>
-                            <input type="text" id="direccionInput" placeholder="Calle, número, reparto..." data-enpassid="__29">
+                            <input type="text" id="direccionInput" placeholder="Calle, número, reparto...">
                             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                                 <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps-pequeno">📍 Abrir Google Maps</a>
                                 <span style="font-size:0.9rem; color: var(--brown); align-self:center;">o comparte tu ubicación por WhatsApp</span>
@@ -1485,7 +1656,7 @@
                         <h4><span id="fechaIcon">📅</span> <span id="fechaLabel">Lo quiero para el día</span></h4>
                         <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
                             <label for="fechaEntrega" style="font-weight:600; color: var(--primary-dark);" id="fechaInputLabel">Fecha y hora:</label>
-                            <input type="datetime-local" id="fechaEntrega" style="padding:10px 18px; border-radius:60px; border:2px solid var(--primary-soft); font-family:var(--font-body); font-size:1rem; background:var(--white); max-width:250px;" data-enpassusermodified="yes" data-enpassid="__30">
+                            <input type="datetime-local" id="fechaEntrega" style="padding:10px 18px; border-radius:60px; border:2px solid var(--primary-soft); font-family:var(--font-body); font-size:1rem; background:var(--white); max-width:250px;">
                         </div>
                     </div>
 
@@ -1493,14 +1664,14 @@
                     <div class="menu-block" id="cardEnvases">
                         <h4><span id="envaseIcon">📦</span> <span id="envaseLabel">Envases</span></h4>
                         <div class="envases-grid">
-                            <button class="opcion-btn envase-btn active" data-envase="Sí" aria-label="Envase Sí" data-enpassid="__31">✅ Sí</button>
-                            <button class="opcion-btn envase-btn" data-envase="No" aria-label="Envase No" data-enpassid="__32">❌ No</button>
+                            <button class="opcion-btn envase-btn" data-envase="Sí" aria-label="Envase Sí">✅ Sí</button>
+                            <button class="opcion-btn envase-btn" data-envase="No" aria-label="Envase No">❌ No</button>
                         </div>
-                        <div id="campoCaja" class="campo-condicional visible">
+                        <div id="campoCaja" class="campo-condicional">
                             <label style="font-weight:600; color: var(--primary-dark);" id="cajaLabel">¿Caja personalizada?</label>
                             <div class="caja-grid">
-                                <button class="opcion-btn caja-btn active" data-caja="Sí" aria-label="Caja personalizada Sí" data-enpassid="__33">✅ Sí</button>
-                                <button class="opcion-btn caja-btn" data-caja="No" aria-label="Caja personalizada No" data-enpassid="__34">❌ No</button>
+                                <button class="opcion-btn caja-btn" data-caja="Sí" aria-label="Caja personalizada Sí">✅ Sí</button>
+                                <button class="opcion-btn caja-btn" data-caja="No" aria-label="Caja personalizada No">❌ No</button>
                             </div>
                         </div>
                     </div>
@@ -1510,7 +1681,7 @@
                         <h4><span id="cantidadIcon">🔢</span> <span id="cantidadLabel">Cantidad</span></h4>
                         <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
                             <label for="cantidadInput" style="font-weight:600; color: var(--primary-dark);" id="cantidadInputLabel">Número de minidonas (mínimo 9):</label>
-                            <input type="number" id="cantidadInput" min="9" value="9" style="padding:10px 18px; border-radius:60px; border:2px solid var(--primary-soft); font-family:var(--font-body); font-size:1rem; background:var(--white); max-width:120px;" data-enpassid="__35">
+                            <input type="number" id="cantidadInput" min="9" value="9" style="padding:10px 18px; border-radius:60px; border:2px solid var(--primary-soft); font-family:var(--font-body); font-size:1rem; background:var(--white); max-width:120px;">
                         </div>
                     </div>
 
@@ -1521,15 +1692,17 @@
                             <div class="resumen-linea"><strong id="resSabor">Sabor:</strong> <span id="saborSeleccionado" class="valor">Ninguno</span></div>
                             <div class="resumen-linea"><strong id="resCobertura">Cobertura:</strong> <span id="coberturaSeleccionado" class="valor">Ninguno</span></div>
                             <div class="resumen-linea"><strong id="resAgregos">Agregos:</strong> <span id="agregosSeleccionados" class="valor">Ninguno</span></div>
-                            <div class="resumen-linea"><strong id="resTema">Tema:</strong> <span id="temaSeleccionado" class="valor">kmldldsmlvmsl</span></div>
-                            <div class="resumen-linea"><strong id="resDomicilio">Domicilio:</strong> <span id="domicilioSeleccionado" class="valor">Sí</span></div>
+                            <div class="resumen-linea"><strong id="resTema">Tema:</strong> <span id="temaSeleccionado" class="valor">Ninguno</span></div>
+                            <div class="resumen-linea"><strong id="resDomicilio">Domicilio:</strong> <span id="domicilioSeleccionado" class="valor">No</span></div>
                             <div class="resumen-linea"><strong id="resDireccion">Dirección:</strong> <span id="direccionMostrada" class="valor">-</span></div>
-                            <div class="resumen-linea"><strong id="resFecha">Fecha/Hora:</strong> <span id="fechaMostrada" class="valor">27 de agosto de 2026 a las 21:34</span></div>
-                            <div class="resumen-linea"><strong id="resEnvases">Envases:</strong> <span id="envaseSeleccionado" class="valor">Sí</span></div>
-                            <div class="resumen-linea"><strong id="resCaja">Caja personalizada:</strong> <span id="cajaSeleccionado" class="valor">Sí</span></div>
+                            <div class="resumen-linea"><strong id="resFecha">Fecha/Hora:</strong> <span id="fechaMostrada" class="valor">-</span></div>
+                            <div class="resumen-linea"><strong id="resEnvases">Envases:</strong> <span id="envaseSeleccionado" class="valor">No</span></div>
+                            <div class="resumen-linea"><strong id="resCaja">Caja personalizada:</strong> <span id="cajaSeleccionado" class="valor">-</span></div>
                             <div class="resumen-linea"><strong id="resCantidad">Cantidad:</strong> <span id="cantidadMostrada" class="valor">9</span></div>
                         </div>
-                        <button id="btnPedidoResumen" class="btn-pedido-resumen" data-enpassid="__36">PEDIR MIS DONAS YA</button>
+                        <button id="btnPedidoResumen" class="btn-pedido-resumen">
+                            PEDIR MIS DONAS YA
+                        </button>
                     </div>
 
                 </section>
@@ -1537,23 +1710,9 @@
 
             <!-- ===== TAB 2: REDES SOCIALES ===== -->
             <div id="tab-rrss" class="tab-content">
-                <div class="rrss-grid" id="rrssGrid"><div class="rrss-card">
-                        <div class="rrss-icon">📸</div>
-                        <h3>Instagram</h3>
-                        <a href="#" target="_blank" class="rrss-link">Síguenos</a>
-                    </div><div class="rrss-card">
-                        <div class="rrss-icon">👍</div>
-                        <h3>Facebook</h3>
-                        <a href="#" target="_blank" class="rrss-link">Síguenos</a>
-                    </div><div class="rrss-card">
-                        <div class="rrss-icon">🎵</div>
-                        <h3>TikTok</h3>
-                        <a href="#" target="_blank" class="rrss-link">Síguenos</a>
-                    </div><div class="rrss-card">
-                        <div class="rrss-icon">💬</div>
-                        <h3>WhatsApp</h3>
-                        <a href="https://wa.me/5355123300" target="_blank" class="rrss-link">Síguenos</a>
-                    </div></div>
+                <div class="rrss-grid" id="rrssGrid">
+                    <!-- Generado dinámicamente -->
+                </div>
                 <div class="rrss-mensaje" id="rrssMensaje">
                     ✨ Síguenos en redes para ver nuestras promociones y nuevos sabores. <strong>¡Te esperamos!</strong>
                 </div>
@@ -1561,74 +1720,18 @@
 
             <!-- ===== TAB 3: COMENTARIOS ===== -->
             <div id="tab-comentarios" class="tab-content">
-                <div class="testimonios-grid" id="testimoniosGrid"><div class="testimonio-card">
-                        <span class="test-avatar">👩</span>
-                        <div class="test-header">
-                            <div class="test-nombre">Mariana G.</div>
-                            <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
-                        </div>
-                        <div class="test-texto">Las minidonas de Diane son las más esponjosas y deliciosas que he probado. El sabor a vainilla es increíble y la atención es excelente. ¡100% recomendadas!</div>
-                    </div><div class="testimonio-card">
-                        <span class="test-avatar">👨</span>
-                        <div class="test-header">
-                            <div class="test-nombre">Carlos R.</div>
-                            <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
-                        </div>
-                        <div class="test-texto">Pedí una caja temática de cumpleaños para mi hijo y quedó fascinado. La decoración y el sabor son de primera.</div>
-                    </div><div class="testimonio-card">
-                        <span class="test-avatar">👩</span>
-                        <div class="test-header">
-                            <div class="test-nombre">Laura M.</div>
-                            <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
-                        </div>
-                        <div class="test-texto">Siempre pido las de chocolate con coco, son mi debilidad. Además, el trato es súper cálido y se nota que usan ingredientes de calidad.</div>
-                    </div><div class="testimonio-card">
-                        <span class="test-avatar">👨</span>
-                        <div class="test-header">
-                            <div class="test-nombre">Jorge P.</div>
-                            <div class="test-estrellas">⭐⭐⭐⭐☆</div>
-                        </div>
-                        <div class="test-texto">Excelente opción para regalar. Las minidonas son bonitas y ricas. La única pega es que se acaban muy rápido 😄.</div>
-                    </div></div>
+                <div class="testimonios-grid" id="testimoniosGrid">
+                    <!-- Generado dinámicamente -->
+                </div>
             </div>
         </div>
 
         <!-- ===== CATÁLOGO DE IMÁGENES ===== -->
         <div class="catalogo-section">
             <h3 id="catalogoTitle">📸 Catálogo de Imágenes</h3>
-            <div class="catalogo-grid" id="catalogoGrid"><div class="catalogo-item">
-                        <span class="cat-img">🍩</span>
-                        <div class="cat-nombre">Donut Glaseada</div>
-                        <div class="cat-desc">Clásica con azúcar glas</div>
-                    </div><div class="catalogo-item">
-                        <span class="cat-img">🍫</span>
-                        <div class="cat-nombre">Donut Chocolate</div>
-                        <div class="cat-desc">Cobertura de chocolate belga</div>
-                    </div><div class="catalogo-item">
-                        <span class="cat-img">🍓</span>
-                        <div class="cat-nombre">Donut Fresa</div>
-                        <div class="cat-desc">Con crema y fresas naturales</div>
-                    </div><div class="catalogo-item">
-                        <span class="cat-img">🥥</span>
-                        <div class="cat-nombre">Donut Coco</div>
-                        <div class="cat-desc">Coco tostado y leche condensada</div>
-                    </div><div class="catalogo-item">
-                        <span class="cat-img">🎂</span>
-                        <div class="cat-nombre">Donut Cumpleaños</div>
-                        <div class="cat-desc">Con sprinkles y vela comestible</div>
-                    </div><div class="catalogo-item">
-                        <span class="cat-img">⚽</span>
-                        <div class="cat-nombre">Donut Futbol</div>
-                        <div class="cat-desc">Temática para fanáticos del deporte</div>
-                    </div><div class="catalogo-item">
-                        <span class="cat-img">🐶</span>
-                        <div class="cat-nombre">Donut Paw Patrol</div>
-                        <div class="cat-desc">Ideal para los más pequeños</div>
-                    </div><div class="catalogo-item">
-                        <span class="cat-img">🎄</span>
-                        <div class="cat-nombre">Donut Navidad</div>
-                        <div class="cat-desc">Edición especial con motivos navideños</div>
-                    </div></div>
+            <div class="catalogo-grid" id="catalogoGrid">
+                <!-- Generado dinámicamente -->
+            </div>
             <p style="text-align:center; margin-top:20px; color: var(--brown);" id="catalogoFooter">
                 📸 Próximamente más imágenes de nuestros productos. ¡Síguenos en redes para ver las novedades!
             </p>
@@ -1643,23 +1746,1785 @@
                 </a>
             </div>
             <div class="datos">
-                <span id="contactoDireccion">📍 Edificio 17 apto 10, Reparto Rajayoga, Santiago de Cuba</span>
+                <span id="contactoDireccion">📍 Edificio 17 apto 10, Reparto Rajayoga</span>
                 <span id="contactoTelefono">📞 +53 55123300</span>
             </div>
         </section>
 
         <!-- ===== FOOTER ===== -->
         <footer>
-            <p id="footerText">© 2026 · Minidonas Diane · Santiago de Cuba · Hecho con 🍩</p>
+            <p id="footerText">© 2026 · <strong>Minidonas Diane</strong> · Santiago de Cuba · Hecho con 🍩</p>
             <p style="font-size:0.8rem; opacity:0.7;" id="footerSub">Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora</p>
         </footer>
 
     </div>
+
+    <!-- ===== LOGIN MODAL ===== -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-box">
+            <h3>🔐 Acceso Administrador</h3>
+            <div class="pass-wrapper">
+                <input type="password" id="adminPassword" placeholder="Contraseña" autofocus>
+                <button class="toggle-pass" id="loginTogglePass" type="button">👁️</button>
+            </div>
+            <button id="loginBtn">Ingresar</button>
+            <div class="login-error" id="loginError">Contraseña incorrecta. Intenta de nuevo.</div>
+        </div>
+    </div>
+
+    <!-- ===== PANEL DE ADMINISTRACIÓN ===== -->
+    <div class="admin-overlay" id="adminPanel">
+        <div class="admin-panel">
+            <button class="close-btn" id="closeAdminPanel">✕</button>
+            <h2>⚙️ Panel de Administración</h2>
+
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-admin-tab="admin-general">📝 General</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-temas">🎨 Temas</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-sabores">🍩 Sabores</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-coberturas">🍫 Coberturas</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-agregos">✨ Agregos</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-catalogo">📸 Catálogo</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-rrss">📱 Redes</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-testimonios">⭐ Testimonios</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-textos">📝 Textos</button>
+            </div>
+
+            <!-- ===== TAB GENERAL ===== -->
+            <div class="admin-tab-content active" id="admin-general">
+                <div id="adminGeneralMsg"></div>
+                <p>Gestiona todos los contenidos de la página desde las pestañas.</p>
+                <hr style="margin:15px 0; border-color:var(--peach);">
+
+                <!-- ===== APARIENCIA (fondo, fuente, logo) ===== -->
+                <h3 style="margin:10px 0; color:var(--primary-dark);">🎨 Apariencia</h3>
+                <div class="appearance-config">
+                    <label for="bgColor">Color de fondo:</label>
+                    <input type="color" id="bgColor" value="#FDF0E8">
+                    <label for="bgImage">Imagen de fondo (URL):</label>
+                    <input type="text" id="bgImage" placeholder="https://... (dejar vacío para usar el color)">
+                    <label for="fontSelect">Fuente para textos:</label>
+                    <select id="fontSelect">
+                        <option value="Quicksand">Quicksand (actual)</option>
+                        <option value="Playfair Display">Playfair Display</option>
+                        <option value="Lobster">Lobster</option>
+                        <option value="Oswald">Oswald</option>
+                        <option value="Nunito">Nunito</option>
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Raleway">Raleway</option>
+                        <option value="Dancing Script">Dancing Script</option>
+                        <option value="Pacifico">Pacifico</option>
+                    </select>
+                    <button class="btn-save-appearance" id="saveAppearanceBtn">💾 Guardar apariencia</button>
+                </div>
+
+                <!-- ===== SEGURIDAD (cambiar contraseña) ===== -->
+                <h3 style="margin:10px 0; color:var(--primary-dark);">🔐 Seguridad</h3>
+                <div class="security-config">
+                    <label for="newPass">Nueva contraseña:</label>
+                    <div style="position:relative; width:100%;">
+                        <input type="password" id="newPass" placeholder="Nueva contraseña" style="padding-right:48px;">
+                        <button class="toggle-pass" id="newPassToggle" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--brown);">👁️</button>
+                    </div>
+                    <label for="confirmPass">Confirmar contraseña:</label>
+                    <div style="position:relative; width:100%;">
+                        <input type="password" id="confirmPass" placeholder="Confirmar contraseña" style="padding-right:48px;">
+                        <button class="toggle-pass" id="confirmPassToggle" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--brown);">👁️</button>
+                    </div>
+                    <button class="btn-save-security" id="saveSecurityBtn">💾 Cambiar contraseña</button>
+                </div>
+
+                <!-- ===== CONFIGURACIÓN DE GITHUB ===== -->
+                <h3 style="margin:10px 0; color:var(--primary-dark);">🐙 GitHub</h3>
+                <div class="github-config">
+                    <label for="githubToken">🔑 Token:</label>
+                    <div style="position:relative; width:100%;">
+                        <input type="password" id="githubToken" placeholder="Token de acceso personal" style="padding-right:48px;">
+                        <button class="toggle-pass" id="githubTokenToggle" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--brown);">👁️</button>
+                    </div>
+                    <label for="githubOwner">👤 Propietario:</label>
+                    <input type="text" id="githubOwner" placeholder="Tu usuario de GitHub">
+                    <label for="githubRepo">📁 Repositorio:</label>
+                    <input type="text" id="githubRepo" placeholder="Nombre del repositorio">
+                    <button class="btn-save-github" id="saveGithubConfig">💾 Guardar configuración</button>
+                </div>
+
+                <!-- ===== HERRAMIENTAS ===== -->
+                <h3 style="margin:10px 0; color:var(--primary-dark);">🛠️ Herramientas</h3>
+                <div class="admin-tools">
+                    <button class="btn-export-html" id="exportHtmlBtn">📥 Descargar HTML</button>
+                    <button class="btn-export-json" id="exportJsonBtn">📤 Exportar JSON</button>
+                    <button class="btn-import-json" id="importJsonBtn">📥 Importar JSON</button>
+                    <input type="file" id="importJsonInput" accept=".json">
+                    <button class="btn-publish-github" id="publishGithubBtn">🚀 Publicar en GitHub</button>
+                </div>
+                <p style="font-size:0.9rem; color:var(--brown); margin-top: 5px;">
+                    ✅ <strong>Descargar HTML:</strong> genera un archivo <code>index.html</code> con todos los datos actuales.<br>
+                    📦 <strong>Exportar/Importar JSON:</strong> copias de seguridad o sincronización entre dispositivos.<br>
+                    🚀 <strong>Publicar en GitHub:</strong> sube automáticamente el HTML actualizado a tu repositorio usando la API de GitHub.
+                </p>
+            </div>
+
+            <!-- ===== TAB TEMAS ===== -->
+            <div class="admin-tab-content" id="admin-temas">
+                <div id="adminTemasList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newTemaName" placeholder="Nombre del tema">
+                    <input type="text" id="newTemaEmoji" placeholder="Emoji (ej. ⚽)" style="max-width:80px;">
+                    <input type="file" id="newTemaImage" accept="image/*">
+                    <button id="addTemaBtn">➕ Agregar</button>
+                </div>
+                <div id="adminTemasMsg"></div>
+            </div>
+
+            <!-- ===== TAB SABORES ===== -->
+            <div class="admin-tab-content" id="admin-sabores">
+                <div id="adminSaboresList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newSaborName" placeholder="Nombre del sabor">
+                    <input type="text" id="newSaborEmoji" placeholder="Emoji (ej. 🍫)" style="max-width:80px;">
+                    <button id="addSaborBtn">➕ Agregar</button>
+                </div>
+                <div id="adminSaboresMsg"></div>
+            </div>
+
+            <!-- ===== TAB COBERTURAS ===== -->
+            <div class="admin-tab-content" id="admin-coberturas">
+                <div id="adminCoberturasList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newCoberturaName" placeholder="Nombre de la cobertura">
+                    <input type="text" id="newCoberturaEmoji" placeholder="Emoji (ej. 🍯)" style="max-width:80px;">
+                    <button id="addCoberturaBtn">➕ Agregar</button>
+                </div>
+                <div id="adminCoberturasMsg"></div>
+            </div>
+
+            <!-- ===== TAB AGREGOS ===== -->
+            <div class="admin-tab-content" id="admin-agregos">
+                <div id="adminAgregosList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newAgregoName" placeholder="Nombre del agrego">
+                    <input type="text" id="newAgregoEmoji" placeholder="Emoji (ej. ✨)" style="max-width:80px;">
+                    <button id="addAgregoBtn">➕ Agregar</button>
+                </div>
+                <div id="adminAgregosMsg"></div>
+            </div>
+
+            <!-- ===== TAB CATÁLOGO ===== -->
+            <div class="admin-tab-content" id="admin-catalogo">
+                <div id="adminCatalogoList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newCatalogoNombre" placeholder="Nombre del producto">
+                    <input type="text" id="newCatalogoDesc" placeholder="Descripción">
+                    <input type="text" id="newCatalogoEmoji" placeholder="Emoji (ej. 🍩)" style="max-width:80px;">
+                    <input type="file" id="newCatalogoImage" accept="image/*">
+                    <button id="addCatalogoBtn">➕ Agregar</button>
+                </div>
+                <div id="adminCatalogoMsg"></div>
+            </div>
+
+            <!-- ===== TAB REDES SOCIALES ===== -->
+            <div class="admin-tab-content" id="admin-rrss">
+                <div id="adminRrssList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newRrssNombre" placeholder="Nombre (ej. Instagram)">
+                    <input type="text" id="newRrssIcono" placeholder="Icono (ej. 📸)" style="max-width:80px;">
+                    <input type="text" id="newRrssUrl" placeholder="URL (ej. https://instagram.com/...)" style="flex:3;">
+                    <button id="addRrssBtn">➕ Agregar</button>
+                </div>
+                <div id="adminRrssMsg"></div>
+            </div>
+
+            <!-- ===== TAB TESTIMONIOS ===== -->
+            <div class="admin-tab-content" id="admin-testimonios">
+                <div id="adminTestimoniosList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newTestAvatar" placeholder="Avatar (ej. 👩)" style="max-width:80px;">
+                    <input type="text" id="newTestNombre" placeholder="Nombre">
+                    <input type="text" id="newTestEstrellas" placeholder="Estrellas (ej. 5)" style="max-width:80px;">
+                    <input type="text" id="newTestTexto" placeholder="Texto del testimonio" style="flex:3;">
+                    <button id="addTestimonioBtn">➕ Agregar</button>
+                </div>
+                <div id="adminTestimoniosMsg"></div>
+            </div>
+
+            <!-- ===== TAB TEXTOS ===== -->
+            <div class="admin-tab-content" id="admin-textos">
+                <div style="display:grid; grid-template-columns:1fr 2fr; gap:10px; align-items:center; padding:10px 0;">
+                    <label>Hero Título:</label>
+                    <input type="text" id="editHeroTitle" class="admin-text-input">
+                    <label>Hero Subtítulo (cursiva):</label>
+                    <input type="text" id="editHeroItalic" class="admin-text-input">
+                    <label>Hero Eslogan:</label>
+                    <input type="text" id="editHeroSlogan" class="admin-text-input">
+                    <label>Hero Sub-lema:</label>
+                    <input type="text" id="editHeroSubLema" class="admin-text-input">
+                    <label>Hero Descripción:</label>
+                    <input type="text" id="editHeroDesc" class="admin-text-input">
+                    <label>Mensaje pedido:</label>
+                    <input type="text" id="editMensajePedido" class="admin-text-input">
+                    <label>Subtítulo combinaciones:</label>
+                    <input type="text" id="editSubtituloComb" class="admin-text-input">
+                    <label>Resumen título:</label>
+                    <input type="text" id="editResumenTitle" class="admin-text-input">
+                    <label>WhatsApp texto:</label>
+                    <input type="text" id="editWhatsAppText" class="admin-text-input" placeholder="PEDIR MIS DONAS YA">
+                    <label>Contacto título:</label>
+                    <input type="text" id="editContactoTitle" class="admin-text-input">
+                    <label>Contacto dirección:</label>
+                    <input type="text" id="editContactoDir" class="admin-text-input">
+                    <label>Contacto teléfono:</label>
+                    <input type="text" id="editContactoTel" class="admin-text-input">
+                    <label>Footer texto:</label>
+                    <input type="text" id="editFooterText" class="admin-text-input">
+                    <label>Footer subtítulo:</label>
+                    <input type="text" id="editFooterSub" class="admin-text-input">
+                    <label>Domicilio título:</label>
+                    <input type="text" id="editDomicilioLabel" class="admin-text-input">
+                    <label>Fecha título:</label>
+                    <input type="text" id="editFechaLabel" class="admin-text-input">
+                    <label>Envases título:</label>
+                    <input type="text" id="editEnvaseLabel" class="admin-text-input">
+                    <label>Cantidad título:</label>
+                    <input type="text" id="editCantidadLabel" class="admin-text-input">
+                </div>
+                <button id="saveTextsBtn" style="background:var(--whatsapp); color:white; border:none; border-radius:60px; padding:12px 30px; font-weight:700; cursor:pointer; width:100%;">💾 Guardar Textos</button>
+                <div id="adminTextosMsg"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT COMPLETO ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ============================================================
+            // 0. CONFIGURACIÓN DE TOGGLES DE CONTRASEÑA
+            // ============================================================
+            function setupPasswordToggle(btnId, inputId) {
+                const btn = document.getElementById(btnId);
+                const input = document.getElementById(inputId);
+                if (!btn || !input) return;
+                btn.addEventListener('click', function() {
+                    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                    input.setAttribute('type', type);
+                    this.textContent = type === 'password' ? '👁️' : '🙈';
+                });
+            }
+            setupPasswordToggle('loginTogglePass', 'adminPassword');
+            setupPasswordToggle('newPassToggle', 'newPass');
+            setupPasswordToggle('confirmPassToggle', 'confirmPass');
+            setupPasswordToggle('githubTokenToggle', 'githubToken');
+
+            // ============================================================
+            // 1. CONFIGURACIÓN GENERAL
+            // ============================================================
+            const ADMIN_PASSWORD_KEY = 'minidonas_admin_password';
+            const STORAGE_KEY = 'minidonas_data';
+            const GITHUB_CONFIG_KEY = 'minidonas_github_config';
+            const APPEARANCE_KEY = 'minidonas_appearance';
+
+            let isAdminLogged = false;
+            let appData = {};
+
+            // ============================================================
+            // 2. FUNCIONES DE CONTRASEÑA
+            // ============================================================
+            function getAdminPassword() {
+                return localStorage.getItem(ADMIN_PASSWORD_KEY) || 'admin123';
+            }
+
+            function setAdminPassword(newPass) {
+                localStorage.setItem(ADMIN_PASSWORD_KEY, newPass);
+            }
+
+            // ============================================================
+            // 3. DATOS POR DEFECTO
+            // ============================================================
+            const DEFAULT_DATA = {
+                temas: [
+                    { id: 'Futbol', nombre: 'Futbol', emoji: '⚽', imagen: '' },
+                    { id: 'Paw Patrol', nombre: 'Paw Patrol', emoji: '🐶', imagen: '' },
+                    { id: 'Dinosaurios', nombre: 'Dinosaurios', emoji: '🦕', imagen: '' },
+                    { id: 'Cumpleaños', nombre: 'Cumpleaños', emoji: '🎂', imagen: '' },
+                    { id: 'Navidad', nombre: 'Navidad', emoji: '🎄', imagen: '' }
+                ],
+                sabores: ['Vainilla', 'Chocolate', 'Mixtas'],
+                coberturas: ['Chocolate oscuro', 'Chocolate blanco', 'Chocolate blanco con color', 'Dulce de leche'],
+                agregos: ['Grajeas', 'Perlas comestibles', 'Galleticas', 'Sorbeto', 'Botonetas', 'Maní', 'Coco'],
+                catalogo: [
+                    { nombre: 'Donut Glaseada', desc: 'Clásica con azúcar glas', emoji: '🍩', imagen: '' },
+                    { nombre: 'Donut Chocolate', desc: 'Cobertura de chocolate belga', emoji: '🍫', imagen: '' },
+                    { nombre: 'Donut Fresa', desc: 'Con crema y fresas naturales', emoji: '🍓', imagen: '' },
+                    { nombre: 'Donut Coco', desc: 'Coco tostado y leche condensada', emoji: '🥥', imagen: '' },
+                    { nombre: 'Donut Cumpleaños', desc: 'Con sprinkles y vela comestible', emoji: '🎂', imagen: '' },
+                    { nombre: 'Donut Futbol', desc: 'Temática para fanáticos del deporte', emoji: '⚽', imagen: '' },
+                    { nombre: 'Donut Paw Patrol', desc: 'Ideal para los más pequeños', emoji: '🐶', imagen: '' },
+                    { nombre: 'Donut Navidad', desc: 'Edición especial con motivos navideños', emoji: '🎄', imagen: '' }
+                ],
+                rrss: [
+                    { nombre: 'Instagram', icono: '📸', url: '#' },
+                    { nombre: 'Facebook', icono: '👍', url: '#' },
+                    { nombre: 'TikTok', icono: '🎵', url: '#' },
+                    { nombre: 'WhatsApp', icono: '💬', url: 'https://wa.me/5355123300' }
+                ],
+                testimonios: [
+                    { avatar: '👩', nombre: 'Mariana G.', estrellas: 5,
+                        texto: 'Las minidonas de Diane son las más esponjosas y deliciosas que he probado. El sabor a vainilla es increíble y la atención es excelente. ¡100% recomendadas!' },
+                    { avatar: '👨', nombre: 'Carlos R.', estrellas: 5,
+                        texto: 'Pedí una caja temática de cumpleaños para mi hijo y quedó fascinado. La decoración y el sabor son de primera.' },
+                    { avatar: '👩', nombre: 'Laura M.', estrellas: 5,
+                        texto: 'Siempre pido las de chocolate con coco, son mi debilidad. Además, el trato es súper cálido y se nota que usan ingredientes de calidad.' },
+                    { avatar: '👨', nombre: 'Jorge P.', estrellas: 4,
+                        texto: 'Excelente opción para regalar. Las minidonas son bonitas y ricas. La única pega es que se acaban muy rápido 😄.' }
+                ],
+                textos: {
+                    heroTitle: 'Minidonas',
+                    heroItalic: 'Diane',
+                    heroSlogan: 'El sabor que enamora',
+                    heroSubLema: '✨ Hechas con amor en Santiago de Cuba',
+                    heroDesc: 'La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.',
+                    mensajePedido: '📋 Elige tus opciones abajo y al tocar PEDIR MIS DONAS YA se enviará tu pedido por WhatsApp',
+                    subtituloComb: '✨ Infinitas Combinaciones ✨',
+                    resumenTitle: '📋 Tu selección',
+                    whatsappText: 'PEDIR MIS DONAS YA',
+                    contactoTitle: '¿Dónde estamos?',
+                    contactoDir: '📍 Edificio 17 apto 10, Reparto Rajayoga',
+                    contactoTel: '📞 +53 55123300',
+                    footerText: '© 2026 · Minidonas Diane · Santiago de Cuba · Hecho con 🍩',
+                    footerSub: 'Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora',
+                    domicilioLabel: 'Domicilio',
+                    fechaLabel: 'Lo quiero para el día',
+                    envaseLabel: 'Envases',
+                    cantidadLabel: 'Cantidad'
+                }
+            };
+
+            // ============================================================
+            // 4. CARGAR / GUARDAR DATOS
+            // ============================================================
+            function loadData() {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    try {
+                        const parsed = JSON.parse(stored);
+                        appData = {
+                            temas: parsed.temas || DEFAULT_DATA.temas,
+                            sabores: parsed.sabores || DEFAULT_DATA.sabores,
+                            coberturas: parsed.coberturas || DEFAULT_DATA.coberturas,
+                            agregos: parsed.agregos || DEFAULT_DATA.agregos,
+                            catalogo: parsed.catalogo || DEFAULT_DATA.catalogo,
+                            rrss: parsed.rrss || DEFAULT_DATA.rrss,
+                            testimonios: parsed.testimonios || DEFAULT_DATA.testimonios,
+                            textos: parsed.textos || DEFAULT_DATA.textos
+                        };
+                    } catch (e) {
+                        appData = JSON.parse(JSON.stringify(DEFAULT_DATA));
+                    }
+                } else {
+                    appData = JSON.parse(JSON.stringify(DEFAULT_DATA));
+                    saveData();
+                }
+                applyTexts();
+                renderAll();
+                loadGithubConfig();
+                loadAppearance();
+                applyAppearance();
+            }
+
+            function saveData() {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+            }
+
+            // ============================================================
+            // 5. APARIENCIA (fondo, fuente, etc.)
+            // ============================================================
+            function loadAppearance() {
+                const stored = localStorage.getItem(APPEARANCE_KEY);
+                if (stored) {
+                    try {
+                        const config = JSON.parse(stored);
+                        document.getElementById('bgColor').value = config.bgColor || '#FDF0E8';
+                        document.getElementById('bgImage').value = config.bgImage || '';
+                        document.getElementById('fontSelect').value = config.font || 'Quicksand';
+                    } catch (e) {}
+                }
+            }
+
+            function saveAppearance() {
+                const config = {
+                    bgColor: document.getElementById('bgColor').value,
+                    bgImage: document.getElementById('bgImage').value.trim(),
+                    font: document.getElementById('fontSelect').value
+                };
+                localStorage.setItem(APPEARANCE_KEY, JSON.stringify(config));
+                applyAppearance();
+                showAdminMsg('adminGeneralMsg', '✅ Apariencia guardada.', 'success');
+            }
+
+            function applyAppearance() {
+                const stored = localStorage.getItem(APPEARANCE_KEY);
+                if (stored) {
+                    try {
+                        const config = JSON.parse(stored);
+                        // Fondo
+                        const body = document.body;
+                        if (config.bgImage) {
+                            body.style.backgroundImage = `url(${config.bgImage})`;
+                            body.style.backgroundSize = 'cover';
+                            body.style.backgroundRepeat = 'no-repeat';
+                            body.style.backgroundPosition = 'center center';
+                        } else {
+                            body.style.backgroundImage = 'none';
+                            body.style.backgroundColor = config.bgColor || '#FDF0E8';
+                        }
+                        // Fuente
+                        const font = config.font || 'Quicksand';
+                        document.documentElement.style.setProperty('--font-body', `'${font}', sans-serif`);
+                        document.documentElement.style.setProperty('--font-heading', `'${font}', serif`);
+                        // Cargar la fuente de Google
+                        if (font && font !== 'Quicksand') {
+                            const link = document.createElement('link');
+                            link.href = `https://fonts.googleapis.com/css2?family=${font.replace(/ /g,'+')}:wght@400;700&display=swap`;
+                            link.rel = 'stylesheet';
+                            // Eliminar anteriores para evitar duplicados
+                            document.querySelectorAll('link[data-font]').forEach(el => el.remove());
+                            link.setAttribute('data-font', 'true');
+                            document.head.appendChild(link);
+                        }
+                    } catch (e) {}
+                }
+            }
+
+            document.getElementById('saveAppearanceBtn').addEventListener('click', saveAppearance);
+
+            // ============================================================
+            // 6. CAMBIAR CONTRASEÑA
+            // ============================================================
+            document.getElementById('saveSecurityBtn').addEventListener('click', function() {
+                const newPass = document.getElementById('newPass').value;
+                const confirmPass = document.getElementById('confirmPass').value;
+                if (!newPass || newPass.length < 4) {
+                    showAdminMsg('adminGeneralMsg', '⚠️ La contraseña debe tener al menos 4 caracteres.', 'error');
+                    return;
+                }
+                if (newPass !== confirmPass) {
+                    showAdminMsg('adminGeneralMsg', '⚠️ Las contraseñas no coinciden.', 'error');
+                    return;
+                }
+                setAdminPassword(newPass);
+                document.getElementById('newPass').value = '';
+                document.getElementById('confirmPass').value = '';
+                showAdminMsg('adminGeneralMsg', '✅ Contraseña cambiada correctamente.', 'success');
+            });
+
+            // ============================================================
+            // 7. APLICAR TEXTOS Y RENDERIZAR
+            // ============================================================
+            function applyTexts() {
+                const t = appData.textos || {};
+                document.getElementById('heroTitle').textContent = t.heroTitle || 'Minidonas';
+                document.getElementById('heroTitleSpan').textContent = t.heroItalic || 'Diane';
+                document.getElementById('heroHeadingSlogan').textContent = t.heroSlogan || 'El sabor que enamora';
+                document.getElementById('heroSubLema').textContent = t.heroSubLema ||
+                    '✨ Hechas con amor en Santiago de Cuba';
+                document.getElementById('heroDesc').textContent = t.heroDesc ||
+                    'La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.';
+                document.getElementById('mensajePedido').innerHTML = t.mensajePedido ||
+                    '📋 Elige tus opciones abajo y al tocar PEDIR MIS DONAS YA se enviará tu pedido por WhatsApp';
+                document.getElementById('subtituloCombinaciones').textContent = t.subtituloComb || '✨ Infinitas Combinaciones ✨';
+                document.getElementById('resumenTitle').textContent = t.resumenTitle || '📋 Tu selección';
+                document.getElementById('contactoTitle').textContent = t.contactoTitle || '¿Dónde estamos?';
+                document.getElementById('contactoDireccion').textContent = t.contactoDir ||
+                    '📍 Edificio 17 apto 10, Reparto Rajayoga';
+                document.getElementById('contactoTelefono').textContent = t.contactoTel || '📞 +53 55123300';
+                document.getElementById('footerText').innerHTML = t.footerText ||
+                    '© 2026 · <strong>Minidonas Diane</strong> · Santiago de Cuba · Hecho con 🍩';
+                document.getElementById('footerSub').textContent = t.footerSub ||
+                    'Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora';
+                document.getElementById('domicilioLabel').textContent = t.domicilioLabel || 'Domicilio';
+                document.getElementById('fechaLabel').textContent = t.fechaLabel || 'Lo quiero para el día';
+                document.getElementById('envaseLabel').textContent = t.envaseLabel || 'Envases';
+                document.getElementById('cantidadLabel').textContent = t.cantidadLabel || 'Cantidad';
+                const btnPedido = document.getElementById('btnPedidoResumen');
+                if (btnPedido && t.whatsappText) btnPedido.textContent = t.whatsappText;
+                const highlightCta = document.querySelector('.highlight-cta');
+                if (highlightCta && t.whatsappText) highlightCta.textContent = t.whatsappText;
+            }
+
+            function renderAll() {
+                renderSabores();
+                renderCoberturas();
+                renderAgregos();
+                renderTemas();
+                renderCatalogo();
+                renderRRSS();
+                renderTestimonios();
+                actualizarTodo();
+            }
+
+            function renderSabores() {
+                const container = document.getElementById('saboresContainer');
+                container.innerHTML = '';
+                appData.sabores.forEach((sabor, index) => {
+                    const div = document.createElement('div');
+                    div.style.display = 'flex';
+                    div.style.gap = '6px';
+                    div.style.alignItems = 'center';
+                    const btn = document.createElement('button');
+                    btn.className = 'opcion-btn sabor-btn';
+                    btn.dataset.sabor = sabor;
+                    btn.setAttribute('aria-label', 'Seleccionar sabor ' + sabor);
+                    btn.textContent = '🍩 ' + sabor;
+                    div.appendChild(btn);
+                    container.appendChild(div);
+                });
+            }
+
+            function renderCoberturas() {
+                const container = document.getElementById('coberturasContainer');
+                container.innerHTML = '';
+                appData.coberturas.forEach(cob => {
+                    const btn = document.createElement('button');
+                    btn.className = 'opcion-btn cobertura-btn';
+                    btn.dataset.cobertura = cob;
+                    btn.setAttribute('aria-label', 'Seleccionar cobertura ' + cob);
+                    btn.textContent = '🍫 ' + cob;
+                    container.appendChild(btn);
+                });
+            }
+
+            function renderAgregos() {
+                const container = document.getElementById('agregosContainer');
+                container.innerHTML = '';
+                appData.agregos.forEach(ag => {
+                    const btn = document.createElement('button');
+                    btn.className = 'opcion-btn agrego-btn';
+                    btn.dataset.agrego = ag;
+                    btn.setAttribute('aria-label', 'Seleccionar agrego ' + ag);
+                    btn.textContent = '✨ ' + ag;
+                    container.appendChild(btn);
+                });
+            }
+
+            function renderTemas() {
+                const container = document.getElementById('temasContainer');
+                container.innerHTML = '';
+                appData.temas.forEach(tema => {
+                    const btn = document.createElement('button');
+                    btn.className = 'opcion-btn tema-btn';
+                    btn.dataset.tema = tema.id;
+                    btn.setAttribute('aria-label', 'Seleccionar tema ' + tema.nombre);
+                    const icon = tema.imagen ? '🖼️' : (tema.emoji || '🎨');
+                    btn.textContent = icon + ' ' + tema.nombre;
+                    container.appendChild(btn);
+                });
+                const customBtn = document.createElement('button');
+                customBtn.className = 'opcion-btn tema-btn tema-custom-btn';
+                customBtn.dataset.tema = 'custom';
+                customBtn.setAttribute('aria-label', 'Escribe tu tema personalizado');
+                customBtn.textContent = '✏️ Escribe aquí tu Tema';
+                container.appendChild(customBtn);
+            }
+
+            function renderCatalogo() {
+                const container = document.getElementById('catalogoGrid');
+                container.innerHTML = '';
+                appData.catalogo.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'catalogo-item';
+                    const imgHtml = item.imagen ?
+                        `<img src="${item.imagen}" style="max-width:80px;max-height:80px;border-radius:50%;object-fit:cover;margin-bottom:8px;">` :
+                        `<span class="cat-img">${item.emoji || '🍩'}</span>`;
+                    div.innerHTML = `
+                        ${imgHtml}
+                        <div class="cat-nombre">${item.nombre}</div>
+                        <div class="cat-desc">${item.desc || ''}</div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            function renderRRSS() {
+                const container = document.getElementById('rrssGrid');
+                container.innerHTML = '';
+                appData.rrss.forEach(r => {
+                    const div = document.createElement('div');
+                    div.className = 'rrss-card';
+                    div.innerHTML = `
+                        <div class="rrss-icon">${r.icono || '📱'}</div>
+                        <h3>${r.nombre}</h3>
+                        <a href="${r.url || '#'}" target="_blank" class="rrss-link">Síguenos</a>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            function renderTestimonios() {
+                const container = document.getElementById('testimoniosGrid');
+                container.innerHTML = '';
+                appData.testimonios.forEach(t => {
+                    const div = document.createElement('div');
+                    div.className = 'testimonio-card';
+                    const estrellas = '⭐'.repeat(Math.min(t.estrellas || 0, 5)) + '☆'.repeat(Math.max(0, 5 - (t
+                    .estrellas || 0)));
+                    div.innerHTML = `
+                        <span class="test-avatar">${t.avatar || '👤'}</span>
+                        <div class="test-header">
+                            <div class="test-nombre">${t.nombre || 'Anónimo'}</div>
+                            <div class="test-estrellas">${estrellas}</div>
+                        </div>
+                        <div class="test-texto">${t.texto || ''}</div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            // ============================================================
+            // 8. LÓGICA DE SELECCIÓN Y RESUMEN
+            // ============================================================
+            let selectedSabor = 'Ninguno';
+            let selectedCobertura = 'Ninguno';
+            let selectedTema = 'Ninguno';
+            let selectedAgregos = [];
+            let selectedDomicilio = 'No';
+            let selectedEnvase = 'No';
+            let selectedCaja = '-';
+
+            const saborSpan = document.getElementById('saborSeleccionado');
+            const coberturaSpan = document.getElementById('coberturaSeleccionado');
+            const agregosSpan = document.getElementById('agregosSeleccionados');
+            const temaSpan = document.getElementById('temaSeleccionado');
+            const domicilioSpan = document.getElementById('domicilioSeleccionado');
+            const direccionSpan = document.getElementById('direccionMostrada');
+            const fechaSpan = document.getElementById('fechaMostrada');
+            const envaseSpan = document.getElementById('envaseSeleccionado');
+            const cajaSpan = document.getElementById('cajaSeleccionado');
+            const cantidadSpan = document.getElementById('cantidadMostrada');
+
+            const previewSabor = document.getElementById('previewSabor');
+            const previewCobertura = document.getElementById('previewCobertura');
+            const previewAgregos = document.getElementById('previewAgregos');
+            const previewTema = document.getElementById('previewTema');
+
+            const campoDireccion = document.getElementById('campoDireccion');
+            const direccionInput = document.getElementById('direccionInput');
+            const campoCaja = document.getElementById('campoCaja');
+            const campoTemaCustom = document.getElementById('campoTemaPersonalizado');
+            const temaCustomInput = document.getElementById('temaPersonalizadoInput');
+            const fechaInput = document.getElementById('fechaEntrega');
+            const cantidadInput = document.getElementById('cantidadInput');
+
+            function validarCantidad() {
+                let valor = parseInt(cantidadInput.value);
+                if (isNaN(valor) || valor < 9) {
+                    alert('⚠️ El pedido mínimo es de 9 minidonas. Por favor, ajusta la cantidad.');
+                    cantidadInput.value = 9;
+                    cantidadSpan.textContent = '9';
+                    return false;
+                }
+                cantidadSpan.textContent = valor;
+                return true;
+            }
+
+            cantidadInput.addEventListener('blur', validarCantidad);
+            cantidadInput.addEventListener('change', validarCantidad);
+
+            function actualizarTodo() {
+                saborSpan.textContent = selectedSabor;
+                coberturaSpan.textContent = selectedCobertura;
+                temaSpan.textContent = selectedTema;
+                agregosSpan.textContent = selectedAgregos.length === 0 ? 'Ninguno' : selectedAgregos.join(', ');
+                domicilioSpan.textContent = selectedDomicilio;
+                direccionSpan.textContent = (selectedDomicilio === 'Sí' && direccionInput.value.trim() !== '') ? direccionInput
+                    .value.trim() : '-';
+                envaseSpan.textContent = selectedEnvase;
+                cajaSpan.textContent = (selectedEnvase === 'Sí') ? selectedCaja : '-';
+                if (cantidadInput.value && parseInt(cantidadInput.value) >= 9) {
+                    cantidadSpan.textContent = cantidadInput.value;
+                }
+                if (fechaInput.value) {
+                    const fechaObj = new Date(fechaInput.value);
+                    const opciones = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                    fechaSpan.textContent = fechaObj.toLocaleDateString('es-ES', opciones);
+                } else {
+                    fechaSpan.textContent = '-';
+                }
+
+                previewSabor.innerHTML =
+                    `<span class="label">🖼️ Imagen del sabor</span><span class="imagen-item">${selectedSabor !== 'Ninguno' ? '🍩' : '🍩'}</span>`;
+                previewCobertura.innerHTML =
+                    `<span class="label">🖼️ Imagen de la cobertura</span><span class="imagen-item">${selectedCobertura !== 'Ninguno' ? '🍫' : '🍫'}</span>`;
+                let agregosImagenes = selectedAgregos.length ? selectedAgregos.map(() => '✨') : ['✨'];
+                previewAgregos.innerHTML = `<span class="label">🖼️ Agregos seleccionados</span>` +
+                    agregosImagenes.map(img => `<span class="imagen-item">${img}</span>`).join('');
+
+                let temaEncontrado = appData.temas.find(t => t.id === selectedTema || t.nombre === selectedTema);
+                if (temaEncontrado && temaEncontrado.imagen) {
+                    previewTema.innerHTML = `
+                        <span class="label">🖼️ Imagen del tema</span>
+                        <span class="imagen-item">
+                            <img src="${temaEncontrado.imagen}" alt="${temaEncontrado.nombre}" style="max-width:100px;max-height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--primary-soft);box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+                        </span>
+                    `;
+                } else if (selectedTema === 'custom') {
+                    previewTema.innerHTML = `<span class="label">🖼️ Imagen del tema</span><span class="imagen-item">✏️</span>`;
+                } else {
+                    let temaEmoji = temaEncontrado ? (temaEncontrado.emoji || '🎨') : '🎨';
+                    previewTema.innerHTML =
+                        `<span class="label">🖼️ Imagen del tema</span><span class="imagen-item">${temaEmoji}</span>`;
+                }
+
+                if (selectedDomicilio === 'Sí') campoDireccion.classList.add('visible');
+                else campoDireccion.classList.remove('visible');
+                if (selectedEnvase === 'Sí') campoCaja.classList.add('visible');
+                else {
+                    campoCaja.classList.remove('visible');
+                    if (selectedCaja !== '-') {
+                        selectedCaja = '-';
+                        document.querySelectorAll('.caja-btn').forEach(b => b.classList.remove('active'));
+                    }
+                }
+            }
+
+            // Eventos de selección
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('sabor-btn')) {
+                    document.querySelectorAll('.sabor-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedSabor = e.target.dataset.sabor;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('cobertura-btn')) {
+                    document.querySelectorAll('.cobertura-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedCobertura = e.target.dataset.cobertura;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('domicilio-btn')) {
+                    document.querySelectorAll('.domicilio-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedDomicilio = e.target.dataset.domicilio;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('envase-btn')) {
+                    document.querySelectorAll('.envase-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedEnvase = e.target.dataset.envase;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('caja-btn')) {
+                    document.querySelectorAll('.caja-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedCaja = e.target.dataset.caja;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('tema-btn') && !e.target.classList.contains('tema-custom-btn')) {
+                    document.querySelectorAll('.tema-btn:not(.tema-custom-btn)').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    campoTemaCustom.classList.remove('visible');
+                    document.querySelector('.tema-custom-btn')?.classList.remove('active');
+                    temaCustomInput.value = '';
+                    selectedTema = e.target.dataset.tema;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('tema-custom-btn')) {
+                    document.querySelectorAll('.tema-btn:not(.tema-custom-btn)').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    campoTemaCustom.classList.add('visible');
+                    if (temaCustomInput.value.trim() === '') selectedTema = 'Escribe tu tema...';
+                    else selectedTema = temaCustomInput.value.trim();
+                    actualizarTodo();
+                    setTimeout(() => temaCustomInput.focus(), 100);
+                }
+                if (e.target.classList.contains('agrego-btn')) {
+                    const valor = e.target.dataset.agrego;
+                    e.target.classList.toggle('active');
+                    if (e.target.classList.contains('active')) {
+                        if (!selectedAgregos.includes(valor)) selectedAgregos.push(valor);
+                    } else {
+                        selectedAgregos = selectedAgregos.filter(x => x !== valor);
+                    }
+                    actualizarTodo();
+                }
+            });
+
+            direccionInput.addEventListener('input', actualizarTodo);
+            fechaInput.addEventListener('change', actualizarTodo);
+            cantidadInput.addEventListener('input', function() {
+                const valor = parseInt(this.value);
+                if (isNaN(valor) || valor < 9) return;
+                cantidadSpan.textContent = valor;
+                actualizarTodo();
+            });
+            temaCustomInput.addEventListener('input', function() {
+                if (this.value.trim() === '') selectedTema = 'Escribe tu tema...';
+                else selectedTema = this.value.trim();
+                actualizarTodo();
+            });
+
+            // Botón pedido
+            const btnPedido = document.getElementById('btnPedidoResumen');
+            const textoOriginal = btnPedido.textContent;
+            btnPedido.addEventListener('click', function() {
+                if (!validarCantidad()) return;
+                this.textContent = '⏳ Abriendo WhatsApp...';
+                this.disabled = true;
+                const sabor = selectedSabor !== 'Ninguno' ? selectedSabor : '';
+                const cobertura = selectedCobertura !== 'Ninguno' ? selectedCobertura : '';
+                const agregos = selectedAgregos.length > 0 ? selectedAgregos.join(', ') : '';
+                const tema = selectedTema !== 'Ninguno' ? selectedTema : '';
+                const domicilio = selectedDomicilio;
+                const direccion = (domicilio === 'Sí' && direccionInput.value.trim() !== '') ? direccionInput.value.trim() :
+                    '';
+                const fecha = fechaSpan.textContent !== '-' ? fechaSpan.textContent : '';
+                const envase = selectedEnvase;
+                const caja = (envase === 'Sí') ? selectedCaja : '';
+                const cantidad = cantidadInput.value || '9';
+                let mensaje =
+                    'Hola Minidonas Diane! Te encontré por tu pagina web y quiero hacer un pedido de minidonas con:\n';
+                mensaje += `Sabor: ${sabor}\n`;
+                mensaje += `Cobertura: ${cobertura}\n`;
+                mensaje += `Agregos: ${agregos}\n`;
+                mensaje += `Tema: ${tema}\n`;
+                mensaje += `Cantidad: ${cantidad}\n`;
+                mensaje += `Envases: ${envase}\n`;
+                if (envase === 'Sí') mensaje += `Caja personalizada: ${caja}\n`;
+                mensaje += `Lo quiero para el día: ${fecha}\n`;
+                mensaje += `Domicilio: ${domicilio}\n`;
+                if (domicilio === 'Sí' && direccion) mensaje += `Dirección: ${direccion}\n`;
+                const url = `https://wa.me/5355123300?text=${encodeURIComponent(mensaje)}`;
+                window.open(url, '_blank');
+                setTimeout(() => {
+                    this.textContent = textoOriginal;
+                    this.disabled = false;
+                }, 3000);
+            });
+
+            // ============================================================
+            // 9. PANEL DE ADMINISTRACIÓN
+            // ============================================================
+            document.getElementById('adminToggle').addEventListener('click', function() {
+                if (isAdminLogged) {
+                    document.getElementById('adminPanel').classList.add('open');
+                } else {
+                    document.getElementById('loginModal').classList.add('open');
+                    document.getElementById('adminPassword').focus();
+                }
+            });
+
+            document.getElementById('loginBtn').addEventListener('click', function() {
+                const pass = document.getElementById('adminPassword').value;
+                if (pass === getAdminPassword()) {
+                    isAdminLogged = true;
+                    document.getElementById('loginModal').classList.remove('open');
+                    document.getElementById('adminPanel').classList.add('open');
+                    document.getElementById('adminPassword').value = '';
+                    document.getElementById('loginError').style.display = 'none';
+                    renderAdminTemas();
+                    renderAdminSabores();
+                    renderAdminCoberturas();
+                    renderAdminAgregos();
+                    renderAdminCatalogo();
+                    renderAdminRRSS();
+                    renderAdminTestimonios();
+                    renderAdminTextos();
+                    loadGithubConfig();
+                    loadAppearance();
+                } else {
+                    document.getElementById('loginError').style.display = 'block';
+                    document.getElementById('adminPassword').value = '';
+                    document.getElementById('adminPassword').focus();
+                }
+            });
+
+            document.getElementById('closeAdminPanel').addEventListener('click', function() {
+                document.getElementById('adminPanel').classList.remove('open');
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.getElementById('adminPanel').classList.remove('open');
+                    document.getElementById('loginModal').classList.remove('open');
+                }
+            });
+
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active'));
+                    document.getElementById(this.dataset.adminTab).classList.add('active');
+                });
+            });
+
+            // ============================================================
+            // 10. FUNCIONES RENDER ADMIN (con edición en línea)
+            // ============================================================
+            function renderAdminTemas() {
+                const list = document.getElementById('adminTemasList');
+                list.innerHTML = '';
+                appData.temas.forEach((tema, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    const preview = tema.imagen ?
+                        `<img src="${tema.imagen}" class="admin-image-preview" alt="${tema.nombre}">` :
+                        `<span style="font-size:2rem;">${tema.emoji || '🎨'}</span>`;
+                    div.innerHTML = `
+                        <span class="item-name" id="temaName_${index}">${tema.nombre}</span>
+                        ${preview}
+                        <input type="text" id="temaImgInput_${index}" placeholder="URL imagen" value="${tema.imagen || ''}" style="flex:2;">
+                        <input type="file" id="temaFileInput_${index}" accept="image/*" style="flex:1;min-width:120px;">
+                        <button class="btn-edit" data-index="${index}" data-type="tema">✏️ Editar</button>
+                        <button class="btn-save-edit" data-index="${index}" data-type="tema" style="display:none;">💾 Guardar</button>
+                        <button class="btn-danger btn-delete-tema" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+
+                    // Lógica de edición: al hacer clic en Editar, convertir el nombre en input
+                    const editBtn = div.querySelector('.btn-edit');
+                    const saveBtn = div.querySelector('.btn-save-edit');
+                    const nameSpan = div.querySelector('.item-name');
+
+                    editBtn.addEventListener('click', function() {
+                        const currentName = nameSpan.textContent;
+                        nameSpan.innerHTML = `<input type="text" id="editTemaName_${index}" value="${currentName}" style="width:100%;">`;
+                        editBtn.style.display = 'none';
+                        saveBtn.style.display = 'inline-block';
+                    });
+
+                    saveBtn.addEventListener('click', function() {
+                        const newName = document.getElementById(`editTemaName_${index}`).value.trim();
+                        if (newName && newName !== '') {
+                            appData.temas[index].nombre = newName;
+                            appData.temas[index].id = newName; // actualizar id también
+                            // Actualizar imagen si se subió archivo
+                            const fileInput = document.getElementById(`temaFileInput_${index}`);
+                            const urlInput = document.getElementById(`temaImgInput_${index}`);
+                            if (fileInput.files && fileInput.files[0]) {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                    appData.temas[index].imagen = e.target.result;
+                                    saveData();
+                                    renderAdminTemas();
+                                    renderTemas();
+                                    showAdminMsg('adminTemasMsg', '✅ Tema actualizado.', 'success');
+                                };
+                                reader.readAsDataURL(fileInput.files[0]);
+                            } else if (urlInput.value.trim() !== '') {
+                                appData.temas[index].imagen = urlInput.value.trim();
+                                saveData();
+                                renderAdminTemas();
+                                renderTemas();
+                                showAdminMsg('adminTemasMsg', '✅ Tema actualizado.', 'success');
+                            } else {
+                                saveData();
+                                renderAdminTemas();
+                                renderTemas();
+                                showAdminMsg('adminTemasMsg', '✅ Tema actualizado.', 'success');
+                            }
+                        } else {
+                            showAdminMsg('adminTemasMsg', '⚠️ El nombre no puede estar vacío.', 'error');
+                        }
+                    });
+
+                    div.querySelector('.btn-delete-tema').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el tema "' + appData.temas[idx].nombre + '"?')) {
+                            appData.temas.splice(idx, 1);
+                            saveData();
+                            renderAdminTemas();
+                            renderTemas();
+                            showAdminMsg('adminTemasMsg', '🗑️ Tema eliminado.', 'success');
+                        }
+                    });
+                });
+            }
+
+            function renderAdminSabores() {
+                const list = document.getElementById('adminSaboresList');
+                list.innerHTML = '';
+                appData.sabores.forEach((sabor, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name" id="saborName_${index}">${sabor}</span>
+                        <button class="btn-edit" data-index="${index}" data-type="sabor">✏️ Editar</button>
+                        <button class="btn-save-edit" data-index="${index}" data-type="sabor" style="display:none;">💾 Guardar</button>
+                        <button class="btn-danger btn-delete-sabor" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+
+                    const editBtn = div.querySelector('.btn-edit');
+                    const saveBtn = div.querySelector('.btn-save-edit');
+                    const nameSpan = div.querySelector('.item-name');
+
+                    editBtn.addEventListener('click', function() {
+                        const currentName = nameSpan.textContent;
+                        nameSpan.innerHTML = `<input type="text" id="editSaborName_${index}" value="${currentName}" style="width:100%;">`;
+                        editBtn.style.display = 'none';
+                        saveBtn.style.display = 'inline-block';
+                    });
+
+                    saveBtn.addEventListener('click', function() {
+                        const newName = document.getElementById(`editSaborName_${index}`).value.trim();
+                        if (newName && newName !== '') {
+                            appData.sabores[index] = newName;
+                            saveData();
+                            renderAdminSabores();
+                            renderSabores();
+                            showAdminMsg('adminSaboresMsg', '✅ Sabor actualizado.', 'success');
+                        } else {
+                            showAdminMsg('adminSaboresMsg', '⚠️ El nombre no puede estar vacío.', 'error');
+                        }
+                    });
+
+                    div.querySelector('.btn-delete-sabor').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el sabor "' + appData.sabores[idx] + '"?')) {
+                            appData.sabores.splice(idx, 1);
+                            saveData();
+                            renderAdminSabores();
+                            renderSabores();
+                            showAdminMsg('adminSaboresMsg', '🗑️ Sabor eliminado.', 'success');
+                        }
+                    });
+                });
+            }
+
+            function renderAdminCoberturas() {
+                const list = document.getElementById('adminCoberturasList');
+                list.innerHTML = '';
+                appData.coberturas.forEach((cob, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name" id="cobName_${index}">${cob}</span>
+                        <button class="btn-edit" data-index="${index}" data-type="cobertura">✏️ Editar</button>
+                        <button class="btn-save-edit" data-index="${index}" data-type="cobertura" style="display:none;">💾 Guardar</button>
+                        <button class="btn-danger btn-delete-cobertura" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+
+                    const editBtn = div.querySelector('.btn-edit');
+                    const saveBtn = div.querySelector('.btn-save-edit');
+                    const nameSpan = div.querySelector('.item-name');
+
+                    editBtn.addEventListener('click', function() {
+                        const currentName = nameSpan.textContent;
+                        nameSpan.innerHTML = `<input type="text" id="editCobName_${index}" value="${currentName}" style="width:100%;">`;
+                        editBtn.style.display = 'none';
+                        saveBtn.style.display = 'inline-block';
+                    });
+
+                    saveBtn.addEventListener('click', function() {
+                        const newName = document.getElementById(`editCobName_${index}`).value.trim();
+                        if (newName && newName !== '') {
+                            appData.coberturas[index] = newName;
+                            saveData();
+                            renderAdminCoberturas();
+                            renderCoberturas();
+                            showAdminMsg('adminCoberturasMsg', '✅ Cobertura actualizada.', 'success');
+                        } else {
+                            showAdminMsg('adminCoberturasMsg', '⚠️ El nombre no puede estar vacío.', 'error');
+                        }
+                    });
+
+                    div.querySelector('.btn-delete-cobertura').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar la cobertura "' + appData.coberturas[idx] + '"?')) {
+                            appData.coberturas.splice(idx, 1);
+                            saveData();
+                            renderAdminCoberturas();
+                            renderCoberturas();
+                            showAdminMsg('adminCoberturasMsg', '🗑️ Cobertura eliminada.', 'success');
+                        }
+                    });
+                });
+            }
+
+            function renderAdminAgregos() {
+                const list = document.getElementById('adminAgregosList');
+                list.innerHTML = '';
+                appData.agregos.forEach((ag, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name" id="agName_${index}">${ag}</span>
+                        <button class="btn-edit" data-index="${index}" data-type="agrego">✏️ Editar</button>
+                        <button class="btn-save-edit" data-index="${index}" data-type="agrego" style="display:none;">💾 Guardar</button>
+                        <button class="btn-danger btn-delete-agrego" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+
+                    const editBtn = div.querySelector('.btn-edit');
+                    const saveBtn = div.querySelector('.btn-save-edit');
+                    const nameSpan = div.querySelector('.item-name');
+
+                    editBtn.addEventListener('click', function() {
+                        const currentName = nameSpan.textContent;
+                        nameSpan.innerHTML = `<input type="text" id="editAgName_${index}" value="${currentName}" style="width:100%;">`;
+                        editBtn.style.display = 'none';
+                        saveBtn.style.display = 'inline-block';
+                    });
+
+                    saveBtn.addEventListener('click', function() {
+                        const newName = document.getElementById(`editAgName_${index}`).value.trim();
+                        if (newName && newName !== '') {
+                            appData.agregos[index] = newName;
+                            saveData();
+                            renderAdminAgregos();
+                            renderAgregos();
+                            showAdminMsg('adminAgregosMsg', '✅ Agrego actualizado.', 'success');
+                        } else {
+                            showAdminMsg('adminAgregosMsg', '⚠️ El nombre no puede estar vacío.', 'error');
+                        }
+                    });
+
+                    div.querySelector('.btn-delete-agrego').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el agrego "' + appData.agregos[idx] + '"?')) {
+                            appData.agregos.splice(idx, 1);
+                            saveData();
+                            renderAdminAgregos();
+                            renderAgregos();
+                            showAdminMsg('adminAgregosMsg', '🗑️ Agrego eliminado.', 'success');
+                        }
+                    });
+                });
+            }
+
+            function renderAdminCatalogo() {
+                const list = document.getElementById('adminCatalogoList');
+                list.innerHTML = '';
+                appData.catalogo.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    const preview = item.imagen ?
+                        `<img src="${item.imagen}" class="admin-image-preview" alt="${item.nombre}">` :
+                        `<span style="font-size:2rem;">${item.emoji || '🍩'}</span>`;
+                    div.innerHTML = `
+                        <span class="item-name" id="catName_${index}">${item.nombre}</span>
+                        ${preview}
+                        <input type="text" id="catDescInput_${index}" placeholder="Descripción" value="${item.desc || ''}" style="flex:2;">
+                        <input type="text" id="catEmojiInput_${index}" placeholder="Emoji" value="${item.emoji || '🍩'}" style="max-width:80px;">
+                        <input type="text" id="catImgInput_${index}" placeholder="URL imagen" value="${item.imagen || ''}" style="flex:2;">
+                        <input type="file" id="catFileInput_${index}" accept="image/*" style="flex:1;min-width:120px;">
+                        <button class="btn-edit" data-index="${index}" data-type="catalogo">✏️ Editar</button>
+                        <button class="btn-save-edit" data-index="${index}" data-type="catalogo" style="display:none;">💾 Guardar</button>
+                        <button class="btn-danger btn-delete-cat" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+
+                    const editBtn = div.querySelector('.btn-edit');
+                    const saveBtn = div.querySelector('.btn-save-edit');
+                    const nameSpan = div.querySelector('.item-name');
+
+                    editBtn.addEventListener('click', function() {
+                        const currentName = nameSpan.textContent;
+                        nameSpan.innerHTML = `<input type="text" id="editCatName_${index}" value="${currentName}" style="width:100%;">`;
+                        editBtn.style.display = 'none';
+                        saveBtn.style.display = 'inline-block';
+                    });
+
+                    saveBtn.addEventListener('click', function() {
+                        const newName = document.getElementById(`editCatName_${index}`).value.trim();
+                        const newDesc = document.getElementById(`catDescInput_${index}`).value.trim();
+                        const newEmoji = document.getElementById(`catEmojiInput_${index}`).value.trim() || '🍩';
+                        const urlInput = document.getElementById(`catImgInput_${index}`);
+                        const fileInput = document.getElementById(`catFileInput_${index}`);
+                        if (newName && newName !== '') {
+                            appData.catalogo[index].nombre = newName;
+                            appData.catalogo[index].desc = newDesc;
+                            appData.catalogo[index].emoji = newEmoji;
+                            if (fileInput.files && fileInput.files[0]) {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                    appData.catalogo[index].imagen = e.target.result;
+                                    saveData();
+                                    renderAdminCatalogo();
+                                    renderCatalogo();
+                                    showAdminMsg('adminCatalogoMsg', '✅ Producto actualizado.', 'success');
+                                };
+                                reader.readAsDataURL(fileInput.files[0]);
+                            } else if (urlInput.value.trim() !== '') {
+                                appData.catalogo[index].imagen = urlInput.value.trim();
+                                saveData();
+                                renderAdminCatalogo();
+                                renderCatalogo();
+                                showAdminMsg('adminCatalogoMsg', '✅ Producto actualizado.', 'success');
+                            } else {
+                                saveData();
+                                renderAdminCatalogo();
+                                renderCatalogo();
+                                showAdminMsg('adminCatalogoMsg', '✅ Producto actualizado.', 'success');
+                            }
+                        } else {
+                            showAdminMsg('adminCatalogoMsg', '⚠️ El nombre no puede estar vacío.', 'error');
+                        }
+                    });
+
+                    div.querySelector('.btn-delete-cat').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el producto "' + appData.catalogo[idx].nombre + '"?')) {
+                            appData.catalogo.splice(idx, 1);
+                            saveData();
+                            renderAdminCatalogo();
+                            renderCatalogo();
+                            showAdminMsg('adminCatalogoMsg', '🗑️ Producto eliminado.', 'success');
+                        }
+                    });
+                });
+            }
+
+            function renderAdminRRSS() {
+                const list = document.getElementById('adminRrssList');
+                list.innerHTML = '';
+                appData.rrss.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name" id="rrssName_${index}">${item.icono || '📱'} ${item.nombre}</span>
+                        <input type="text" id="rrssUrlInput_${index}" placeholder="URL" value="${item.url || ''}" style="flex:2;">
+                        <input type="text" id="rrssIconInput_${index}" placeholder="Icono" value="${item.icono || '📱'}" style="max-width:80px;">
+                        <button class="btn-edit" data-index="${index}" data-type="rrss">✏️ Editar</button>
+                        <button class="btn-save-edit" data-index="${index}" data-type="rrss" style="display:none;">💾 Guardar</button>
+                        <button class="btn-danger btn-delete-rrss" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+
+                    const editBtn = div.querySelector('.btn-edit');
+                    const saveBtn = div.querySelector('.btn-save-edit');
+                    const nameSpan = div.querySelector('.item-name');
+
+                    editBtn.addEventListener('click', function() {
+                        const currentName = nameSpan.textContent.replace(/^[^\s]+\s/, ''); // quitar icono
+                        nameSpan.innerHTML = `<input type="text" id="editRrssName_${index}" value="${currentName}" style="width:100%;">`;
+                        editBtn.style.display = 'none';
+                        saveBtn.style.display = 'inline-block';
+                    });
+
+                    saveBtn.addEventListener('click', function() {
+                        const newName = document.getElementById(`editRrssName_${index}`).value.trim();
+                        const newUrl = document.getElementById(`rrssUrlInput_${index}`).value.trim();
+                        const newIcon = document.getElementById(`rrssIconInput_${index}`).value.trim() || '📱';
+                        if (newName && newName !== '') {
+                            appData.rrss[index].nombre = newName;
+                            appData.rrss[index].url = newUrl;
+                            appData.rrss[index].icono = newIcon;
+                            saveData();
+                            renderAdminRRSS();
+                            renderRRSS();
+                            showAdminMsg('adminRrssMsg', '✅ Red social actualizada.', 'success');
+                        } else {
+                            showAdminMsg('adminRrssMsg', '⚠️ El nombre no puede estar vacío.', 'error');
+                        }
+                    });
+
+                    div.querySelector('.btn-delete-rrss').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar la red social "' + appData.rrss[idx].nombre + '"?')) {
+                            appData.rrss.splice(idx, 1);
+                            saveData();
+                            renderAdminRRSS();
+                            renderRRSS();
+                            showAdminMsg('adminRrssMsg', '🗑️ Red social eliminada.', 'success');
+                        }
+                    });
+                });
+            }
+
+            function renderAdminTestimonios() {
+                const list = document.getElementById('adminTestimoniosList');
+                list.innerHTML = '';
+                appData.testimonios.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name" id="testName_${index}">${item.avatar || '👤'} ${item.nombre}</span>
+                        <input type="text" id="testTextoInput_${index}" placeholder="Texto" value="${item.texto || ''}" style="flex:3;">
+                        <input type="text" id="testAvatarInput_${index}" placeholder="Avatar" value="${item.avatar || '👤'}" style="max-width:80px;">
+                        <input type="text" id="testEstrellasInput_${index}" placeholder="Estrellas" value="${item.estrellas || 5}" style="max-width:80px;">
+                        <button class="btn-edit" data-index="${index}" data-type="testimonio">✏️ Editar</button>
+                        <button class="btn-save-edit" data-index="${index}" data-type="testimonio" style="display:none;">💾 Guardar</button>
+                        <button class="btn-danger btn-delete-test" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+
+                    const editBtn = div.querySelector('.btn-edit');
+                    const saveBtn = div.querySelector('.btn-save-edit');
+                    const nameSpan = div.querySelector('.item-name');
+
+                    editBtn.addEventListener('click', function() {
+                        const currentName = nameSpan.textContent.replace(/^[^\s]+\s/, '');
+                        nameSpan.innerHTML = `<input type="text" id="editTestName_${index}" value="${currentName}" style="width:100%;">`;
+                        editBtn.style.display = 'none';
+                        saveBtn.style.display = 'inline-block';
+                    });
+
+                    saveBtn.addEventListener('click', function() {
+                        const newName = document.getElementById(`editTestName_${index}`).value.trim();
+                        const newTexto = document.getElementById(`testTextoInput_${index}`).value.trim();
+                        const newAvatar = document.getElementById(`testAvatarInput_${index}`).value.trim() || '👤';
+                        const newEstrellas = parseInt(document.getElementById(`testEstrellasInput_${index}`).value) || 5;
+                        if (newName && newName !== '' && newTexto) {
+                            appData.testimonios[index].nombre = newName;
+                            appData.testimonios[index].texto = newTexto;
+                            appData.testimonios[index].avatar = newAvatar;
+                            appData.testimonios[index].estrellas = newEstrellas;
+                            saveData();
+                            renderAdminTestimonios();
+                            renderTestimonios();
+                            showAdminMsg('adminTestimoniosMsg', '✅ Testimonio actualizado.', 'success');
+                        } else {
+                            showAdminMsg('adminTestimoniosMsg', '⚠️ Nombre y texto son obligatorios.', 'error');
+                        }
+                    });
+
+                    div.querySelector('.btn-delete-test').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el testimonio de "' + appData.testimonios[idx].nombre + '"?')) {
+                            appData.testimonios.splice(idx, 1);
+                            saveData();
+                            renderAdminTestimonios();
+                            renderTestimonios();
+                            showAdminMsg('adminTestimoniosMsg', '🗑️ Testimonio eliminado.', 'success');
+                        }
+                    });
+                });
+            }
+
+            function renderAdminTextos() {
+                const t = appData.textos || {};
+                document.getElementById('editHeroTitle').value = t.heroTitle || '';
+                document.getElementById('editHeroItalic').value = t.heroItalic || '';
+                document.getElementById('editHeroSlogan').value = t.heroSlogan || '';
+                document.getElementById('editHeroSubLema').value = t.heroSubLema || '';
+                document.getElementById('editHeroDesc').value = t.heroDesc || '';
+                document.getElementById('editMensajePedido').value = t.mensajePedido || '';
+                document.getElementById('editSubtituloComb').value = t.subtituloComb || '';
+                document.getElementById('editResumenTitle').value = t.resumenTitle || '';
+                document.getElementById('editWhatsAppText').value = t.whatsappText || 'PEDIR MIS DONAS YA';
+                document.getElementById('editContactoTitle').value = t.contactoTitle || '';
+                document.getElementById('editContactoDir').value = t.contactoDir || '';
+                document.getElementById('editContactoTel').value = t.contactoTel || '';
+                document.getElementById('editFooterText').value = t.footerText || '';
+                document.getElementById('editFooterSub').value = t.footerSub || '';
+                document.getElementById('editDomicilioLabel').value = t.domicilioLabel || '';
+                document.getElementById('editFechaLabel').value = t.fechaLabel || '';
+                document.getElementById('editEnvaseLabel').value = t.envaseLabel || '';
+                document.getElementById('editCantidadLabel').value = t.cantidadLabel || '';
+            }
+
+            document.getElementById('saveTextsBtn').addEventListener('click', function() {
+                const textos = {
+                    heroTitle: document.getElementById('editHeroTitle').value,
+                    heroItalic: document.getElementById('editHeroItalic').value,
+                    heroSlogan: document.getElementById('editHeroSlogan').value,
+                    heroSubLema: document.getElementById('editHeroSubLema').value,
+                    heroDesc: document.getElementById('editHeroDesc').value,
+                    mensajePedido: document.getElementById('editMensajePedido').value,
+                    subtituloComb: document.getElementById('editSubtituloComb').value,
+                    resumenTitle: document.getElementById('editResumenTitle').value,
+                    whatsappText: document.getElementById('editWhatsAppText').value,
+                    contactoTitle: document.getElementById('editContactoTitle').value,
+                    contactoDir: document.getElementById('editContactoDir').value,
+                    contactoTel: document.getElementById('editContactoTel').value,
+                    footerText: document.getElementById('editFooterText').value,
+                    footerSub: document.getElementById('editFooterSub').value,
+                    domicilioLabel: document.getElementById('editDomicilioLabel').value,
+                    fechaLabel: document.getElementById('editFechaLabel').value,
+                    envaseLabel: document.getElementById('editEnvaseLabel').value,
+                    cantidadLabel: document.getElementById('editCantidadLabel').value
+                };
+                appData.textos = textos;
+                saveData();
+                applyTexts();
+                showAdminMsg('adminTextosMsg', '✅ Textos guardados correctamente.', 'success');
+            });
+
+            // ============================================================
+            // 11. AGREGAR NUEVOS ELEMENTOS
+            // ============================================================
+            document.getElementById('addTemaBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newTemaName').value.trim();
+                const emoji = document.getElementById('newTemaEmoji').value.trim() || '🎨';
+                const fileInput = document.getElementById('newTemaImage');
+                if (!nombre) return showAdminMsg('adminTemasMsg', '⚠️ Escribe un nombre.', 'error');
+                if (appData.temas.some(t => t.nombre.toLowerCase() === nombre.toLowerCase()))
+                    return showAdminMsg('adminTemasMsg', '⚠️ Ya existe.', 'error');
+                const newTema = { id: nombre, nombre, emoji, imagen: '' };
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        newTema.imagen = e.target.result;
+                        appData.temas.push(newTema);
+                        saveData();
+                        renderAdminTemas();
+                        renderTemas();
+                        document.getElementById('newTemaName').value = '';
+                        document.getElementById('newTemaEmoji').value = '';
+                        document.getElementById('newTemaImage').value = '';
+                        showAdminMsg('adminTemasMsg', '✅ Tema agregado.', 'success');
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    appData.temas.push(newTema);
+                    saveData();
+                    renderAdminTemas();
+                    renderTemas();
+                    document.getElementById('newTemaName').value = '';
+                    document.getElementById('newTemaEmoji').value = '';
+                    showAdminMsg('adminTemasMsg', '✅ Tema agregado.', 'success');
+                }
+            });
+
+            document.getElementById('addSaborBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newSaborName').value.trim();
+                if (!nombre) return showAdminMsg('adminSaboresMsg', '⚠️ Escribe un nombre.', 'error');
+                if (appData.sabores.includes(nombre)) return showAdminMsg('adminSaboresMsg', '⚠️ Ya existe.', 'error');
+                appData.sabores.push(nombre);
+                saveData();
+                renderAdminSabores();
+                renderSabores();
+                document.getElementById('newSaborName').value = '';
+                showAdminMsg('adminSaboresMsg', '✅ Sabor agregado.', 'success');
+            });
+
+            document.getElementById('addCoberturaBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newCoberturaName').value.trim();
+                if (!nombre) return showAdminMsg('adminCoberturasMsg', '⚠️ Escribe un nombre.', 'error');
+                if (appData.coberturas.includes(nombre)) return showAdminMsg('adminCoberturasMsg', '⚠️ Ya existe.', 'error');
+                appData.coberturas.push(nombre);
+                saveData();
+                renderAdminCoberturas();
+                renderCoberturas();
+                document.getElementById('newCoberturaName').value = '';
+                showAdminMsg('adminCoberturasMsg', '✅ Cobertura agregada.', 'success');
+            });
+
+            document.getElementById('addAgregoBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newAgregoName').value.trim();
+                if (!nombre) return showAdminMsg('adminAgregosMsg', '⚠️ Escribe un nombre.', 'error');
+                if (appData.agregos.includes(nombre)) return showAdminMsg('adminAgregosMsg', '⚠️ Ya existe.', 'error');
+                appData.agregos.push(nombre);
+                saveData();
+                renderAdminAgregos();
+                renderAgregos();
+                document.getElementById('newAgregoName').value = '';
+                showAdminMsg('adminAgregosMsg', '✅ Agrego agregado.', 'success');
+            });
+
+            document.getElementById('addCatalogoBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newCatalogoNombre').value.trim();
+                const desc = document.getElementById('newCatalogoDesc').value.trim();
+                const emoji = document.getElementById('newCatalogoEmoji').value.trim() || '🍩';
+                const fileInput = document.getElementById('newCatalogoImage');
+                if (!nombre) return showAdminMsg('adminCatalogoMsg', '⚠️ Escribe un nombre.', 'error');
+                const newItem = { nombre, desc, emoji, imagen: '' };
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        newItem.imagen = e.target.result;
+                        appData.catalogo.push(newItem);
+                        saveData();
+                        renderAdminCatalogo();
+                        renderCatalogo();
+                        document.getElementById('newCatalogoNombre').value = '';
+                        document.getElementById('newCatalogoDesc').value = '';
+                        document.getElementById('newCatalogoEmoji').value = '';
+                        document.getElementById('newCatalogoImage').value = '';
+                        showAdminMsg('adminCatalogoMsg', '✅ Producto agregado.', 'success');
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    appData.catalogo.push(newItem);
+                    saveData();
+                    renderAdminCatalogo();
+                    renderCatalogo();
+                    document.getElementById('newCatalogoNombre').value = '';
+                    document.getElementById('newCatalogoDesc').value = '';
+                    document.getElementById('newCatalogoEmoji').value = '';
+                    showAdminMsg('adminCatalogoMsg', '✅ Producto agregado.', 'success');
+                }
+            });
+
+            document.getElementById('addRrssBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newRrssNombre').value.trim();
+                const icono = document.getElementById('newRrssIcono').value.trim() || '📱';
+                const url = document.getElementById('newRrssUrl').value.trim();
+                if (!nombre) return showAdminMsg('adminRrssMsg', '⚠️ Escribe un nombre.', 'error');
+                appData.rrss.push({ nombre, icono, url });
+                saveData();
+                renderAdminRRSS();
+                renderRRSS();
+                document.getElementById('newRrssNombre').value = '';
+                document.getElementById('newRrssIcono').value = '';
+                document.getElementById('newRrssUrl').value = '';
+                showAdminMsg('adminRrssMsg', '✅ Red social agregada.', 'success');
+            });
+
+            document.getElementById('addTestimonioBtn').addEventListener('click', function() {
+                const avatar = document.getElementById('newTestAvatar').value.trim() || '👤';
+                const nombre = document.getElementById('newTestNombre').value.trim();
+                const estrellas = parseInt(document.getElementById('newTestEstrellas').value) || 5;
+                const texto = document.getElementById('newTestTexto').value.trim();
+                if (!nombre || !texto) return showAdminMsg('adminTestimoniosMsg', '⚠️ Completa nombre y texto.', 'error');
+                appData.testimonios.push({ avatar, nombre, estrellas, texto });
+                saveData();
+                renderAdminTestimonios();
+                renderTestimonios();
+                document.getElementById('newTestAvatar').value = '';
+                document.getElementById('newTestNombre').value = '';
+                document.getElementById('newTestEstrellas').value = '';
+                document.getElementById('newTestTexto').value = '';
+                showAdminMsg('adminTestimoniosMsg', '✅ Testimonio agregado.', 'success');
+            });
+
+            function showAdminMsg(containerId, msg, type) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                const div = document.createElement('div');
+                div.className = 'admin-msg ' + type;
+                div.textContent = msg;
+                container.appendChild(div);
+                setTimeout(() => { if (div.parentNode) div.parentNode.removeChild(div); }, 5000);
+            }
+
+            // ============================================================
+            // 12. EXPORTAR / IMPORTAR / DESCARGAR HTML / PUBLICAR EN GITHUB
+            // ============================================================
+            // 12.1 Descargar HTML
+            document.getElementById('exportHtmlBtn').addEventListener('click', function() {
+                const currentData = JSON.stringify(appData);
+                const container = document.querySelector('.container');
+                const style = document.querySelector('style').innerHTML;
+                // Obtener la configuración de apariencia actual
+                const appearance = localStorage.getItem(APPEARANCE_KEY) || '{}';
+                const githubConfig = localStorage.getItem(GITHUB_CONFIG_KEY) || '{}';
+                const newHtml = `<!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Minidonas Diane · Donas artesanales en Santiago de Cuba</title>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+                    <style>${style}</style>
+                </head>
+                <body>
+                    ${container.outerHTML}
                     <script>
-                        const EXPORTED_DATA = {"temas":[{"id":"Futbol","nombre":"Futbol","emoji":"⚽","imagen":""},{"id":"Paw Patrol","nombre":"Paw Patrol","emoji":"🐶","imagen":""},{"id":"Dinosaurios","nombre":"Dinosaurios","emoji":"🦕","imagen":""},{"id":"Cumpleaños","nombre":"Cumpleaños","emoji":"🎂","imagen":""},{"id":"Navidad","nombre":"Navidad","emoji":"🎄","imagen":""},{"id":"Lilo & Stitch","nombre":"Lilo & Stitch","emoji":"💙","imagen":""}],"sabores":["Vainilla","Chocolate","Mixtas","Red Velvet"],"coberturas":["Chocolate oscuro","Chocolate blanco","Chocolate blanco con color","Dulce de leche"],"agregos":["Grajeas","Perlas comestibles","Galleticas","Sorbeto","Botonetas","Maní","Coco"],"catalogo":[{"nombre":"Donut Glaseada","desc":"Clásica con azúcar glas","emoji":"🍩","imagen":""},{"nombre":"Donut Chocolate","desc":"Cobertura de chocolate belga","emoji":"🍫","imagen":""},{"nombre":"Donut Fresa","desc":"Con crema y fresas naturales","emoji":"🍓","imagen":""},{"nombre":"Donut Coco","desc":"Coco tostado y leche condensada","emoji":"🥥","imagen":""},{"nombre":"Donut Cumpleaños","desc":"Con sprinkles y vela comestible","emoji":"🎂","imagen":""},{"nombre":"Donut Futbol","desc":"Temática para fanáticos del deporte","emoji":"⚽","imagen":""},{"nombre":"Donut Paw Patrol","desc":"Ideal para los más pequeños","emoji":"🐶","imagen":""},{"nombre":"Donut Navidad","desc":"Edición especial con motivos navideños","emoji":"🎄","imagen":""}],"rrss":[{"nombre":"Instagram","icono":"📸","url":"#"},{"nombre":"Facebook","icono":"👍","url":"#"},{"nombre":"TikTok","icono":"🎵","url":"#"},{"nombre":"WhatsApp","icono":"💬","url":"https://wa.me/5355123300"}],"testimonios":[{"avatar":"👩","nombre":"Mariana G.","estrellas":5,"texto":"Las minidonas de Diane son las más esponjosas y deliciosas que he probado. El sabor a vainilla es increíble y la atención es excelente. ¡100% recomendadas!"},{"avatar":"👨","nombre":"Carlos R.","estrellas":5,"texto":"Pedí una caja temática de cumpleaños para mi hijo y quedó fascinado. La decoración y el sabor son de primera."},{"avatar":"👩","nombre":"Laura M.","estrellas":5,"texto":"Siempre pido las de chocolate con coco, son mi debilidad. Además, el trato es súper cálido y se nota que usan ingredientes de calidad."},{"avatar":"👨","nombre":"Jorge P.","estrellas":4,"texto":"Excelente opción para regalar. Las minidonas son bonitas y ricas. La única pega es que se acaban muy rápido 😄."}],"textos":{"heroTitle":"Minidonas","heroItalic":"Diane","heroSlogan":"El sabor que enamora","heroSubLema":"✨ Hechas con amor en Santiago de Cuba","heroDesc":"La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.","mensajePedido":"📋 Elige tus opciones abajo y al tocar PEDIR MIS DONAS YA se enviará tu pedido por WhatsApp","subtituloComb":"✨ Infinitas Combinaciones ✨","resumenTitle":"📋 Tu selección","whatsappText":"PEDIR MIS DONAS YA","contactoTitle":"¿Dónde estamos?","contactoDir":"📍 Edificio 17 apto 10, Reparto Rajayoga, Santiago de Cuba","contactoTel":"📞 +53 55123300","footerText":"© 2026 · Minidonas Diane · Santiago de Cuba · Hecho con 🍩","footerSub":"Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora","domicilioLabel":"Domicilio","fechaLabel":"Lo quiero para el día","envaseLabel":"Envases","cantidadLabel":"Cantidad"}};
-                        const STORAGE_KEY = 'minidonas_data';
+                        const EXPORTED_DATA = ${currentData};
+                        const STORAGE_KEY = '${STORAGE_KEY}';
                         localStorage.setItem(STORAGE_KEY, JSON.stringify(EXPORTED_DATA));
+                        const appearanceConfig = ${appearance};
+                        const APPEARANCE_KEY = '${APPEARANCE_KEY}';
+                        localStorage.setItem(APPEARANCE_KEY, JSON.stringify(appearanceConfig));
+                        const githubConfig = ${githubConfig};
+                        const GITHUB_CONFIG_KEY = '${GITHUB_CONFIG_KEY}';
+                        localStorage.setItem(GITHUB_CONFIG_KEY, JSON.stringify(githubConfig));
                         location.reload();
-                    </script>
+                    <\/script>
                 </body>
-                </html>
+                </html>`;
+                const blob = new Blob([newHtml], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'index.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showAdminMsg('adminGeneralMsg', '✅ HTML descargado. Súbelo a GitHub para actualizar la página.', 'success');
+            });
+
+            // 12.2 Exportar JSON
+            document.getElementById('exportJsonBtn').addEventListener('click', function() {
+                const json = JSON.stringify(appData, null, 2);
+                const blob = new Blob([json], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'minidonas_datos.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showAdminMsg('adminGeneralMsg', '✅ Datos exportados correctamente.', 'success');
+            });
+
+            // 12.3 Importar JSON
+            document.getElementById('importJsonBtn').addEventListener('click', function() {
+                document.getElementById('importJsonInput').click();
+            });
+            document.getElementById('importJsonInput').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    try {
+                        const imported = JSON.parse(ev.target.result);
+                        if (imported.temas && imported.sabores && imported.coberturas && imported.agregos) {
+                            appData = imported;
+                            saveData();
+                            applyTexts();
+                            renderAll();
+                            if (isAdminLogged) {
+                                renderAdminTemas();
+                                renderAdminSabores();
+                                renderAdminCoberturas();
+                                renderAdminAgregos();
+                                renderAdminCatalogo();
+                                renderAdminRRSS();
+                                renderAdminTestimonios();
+                                renderAdminTextos();
+                            }
+                            showAdminMsg('adminGeneralMsg', '✅ Datos importados correctamente.', 'success');
+                        } else {
+                            showAdminMsg('adminGeneralMsg', '❌ Archivo JSON inválido.', 'error');
+                        }
+                    } catch (err) {
+                        showAdminMsg('adminGeneralMsg', '❌ Error al leer el archivo: ' + err.message, 'error');
+                    }
+                };
+                reader.readAsText(file);
+                this.value = '';
+            });
+
+            // 12.4 Publicar en GitHub
+            document.getElementById('publishGithubBtn').addEventListener('click', function() {
+                const token = document.getElementById('githubToken').value.trim();
+                const owner = document.getElementById('githubOwner').value.trim();
+                const repo = document.getElementById('githubRepo').value.trim();
+
+                if (!token || !owner || !repo) {
+                    showAdminMsg('adminGeneralMsg', '❌ Configuración de GitHub incompleta. Guarda primero la configuración.', 'error');
+                    return;
+                }
+
+                const currentData = JSON.stringify(appData);
+                const container = document.querySelector('.container');
+                const style = document.querySelector('style').innerHTML;
+                const appearance = localStorage.getItem(APPEARANCE_KEY) || '{}';
+                const githubConfig = localStorage.getItem(GITHUB_CONFIG_KEY) || '{}';
+                const newHtml = `<!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Minidonas Diane · Donas artesanales en Santiago de Cuba</title>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+                    <style>${style}</style>
+                </head>
+                <body>
+                    ${container.outerHTML}
+                    <script>
+                        const EXPORTED_DATA = ${currentData};
+                        const STORAGE_KEY = '${STORAGE_KEY}';
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(EXPORTED_DATA));
+                        const appearanceConfig = ${appearance};
+                        const APPEARANCE_KEY = '${APPEARANCE_KEY}';
+                        localStorage.setItem(APPEARANCE_KEY, JSON.stringify(appearanceConfig));
+                        const githubConfig = ${githubConfig};
+                        const GITHUB_CONFIG_KEY = '${GITHUB_CONFIG_KEY}';
+                        localStorage.setItem(GITHUB_CONFIG_KEY, JSON.stringify(githubConfig));
+                        location.reload();
+                    <\/script>
+                </body>
+                </html>`;
+
+                const encoded = btoa(unescape(encodeURIComponent(newHtml)));
+                const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/index.html`;
+
+                fetch(apiUrl, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        if (response.status === 404) return null;
+                        throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const sha = data ? data.sha : undefined;
+                    const payload = {
+                        message: 'Actualización automática desde el panel de administración',
+                        content: encoded,
+                        branch: 'main'
+                    };
+                    if (sha) payload.sha = sha;
+                    return fetch(apiUrl, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => {
+                            throw new Error(err.message || 'Error al publicar');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    showAdminMsg('adminGeneralMsg', '✅ ¡Publicado en GitHub! La página se actualizará en unos minutos.', 'success');
+                })
+                .catch(error => {
+                    showAdminMsg('adminGeneralMsg', '❌ Error al publicar: ' + error.message, 'error');
+                    console.error(error);
+                });
+            });
+
+            // ============================================================
+            // 13. CONFIGURACIÓN DE GITHUB (cargar/guardar)
+            // ============================================================
+            function loadGithubConfig() {
+                const stored = localStorage.getItem(GITHUB_CONFIG_KEY);
+                if (stored) {
+                    try {
+                        const config = JSON.parse(stored);
+                        document.getElementById('githubToken').value = config.token || '';
+                        document.getElementById('githubOwner').value = config.owner || '';
+                        document.getElementById('githubRepo').value = config.repo || '';
+                    } catch (e) {}
+                }
+            }
+
+            document.getElementById('saveGithubConfig').addEventListener('click', function() {
+                const config = {
+                    token: document.getElementById('githubToken').value.trim(),
+                    owner: document.getElementById('githubOwner').value.trim(),
+                    repo: document.getElementById('githubRepo').value.trim()
+                };
+                localStorage.setItem(GITHUB_CONFIG_KEY, JSON.stringify(config));
+                showAdminMsg('adminGeneralMsg', '✅ Configuración de GitHub guardada.', 'success');
+            });
+
+            // ============================================================
+            // 14. INICIALIZAR
+            // ============================================================
+            loadData();
+            console.log('🍩 Minidonas Diane con todas las mejoras cargado.');
+
+        });
+    </script>
+
+</body>
+</html>
