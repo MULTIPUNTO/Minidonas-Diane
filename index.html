@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minidonas Diane · Donas artesanales en Santiago de Cuba</title>
-    
+
     <!-- ===== SEO ===== -->
     <meta name="description" content="Minidonas Diane – Donas artesanales en Santiago de Cuba. Elige sabores, coberturas y temas personalizados. ¡Pide por WhatsApp!">
     <meta property="og:title" content="Minidonas Diane · Donas artesanales">
@@ -12,28 +12,31 @@
     <meta property="og:url" content="https://tunombredeusuario.github.io"> <!-- ⚠️ CAMBIA ESTO -->
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://tunombredeusuario.github.io/donas-destacada.jpg"> <!-- ⚠️ CAMBIA ESTO -->
-    
+
     <!-- ===== FUENTES ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* ===== PALETA DE COLORES ===== */
+        /* ===== PALETA DE COLORES (pastelería artesanal) ===== */
         :root {
-            --primary: #D95B7A;
-            --primary-dark: #C24A68;
-            --secondary: #F9C96E;
-            --accent: #5BBFC4;
-            --bg-cream: #FFFBF5;
-            --card-white: #FFFFFF;
-            --text-dark: #2D2421;
-            --text-muted: #6B5B55;
+            --primary: #E6647B;
+            --primary-dark: #C62855;
+            --primary-soft: #F2A1A1;
+            --secondary: #F2B84B;
+            --cream: #FDF0E8;
+            --paper: #FFF8F4;
+            --chocolate: #471F14;
+            --brown: #895E4A;
+            --peach: #D49488;
+            --white: #FFFFFF;
+            --whatsapp: #25D366;
+            --radius-donut: 40px;
+            --shadow-soft: 0 12px 35px rgba(137,94,74,0.14);
+            --shadow-hover: 0 25px 40px rgba(230,100,123,0.20);
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Quicksand', sans-serif;
-            --radius-donut: 40px;
-            --shadow-soft: 0 15px 30px rgba(217, 91, 122, 0.12);
-            --shadow-hover: 0 25px 40px rgba(217, 91, 122, 0.20);
         }
 
         * {
@@ -44,10 +47,11 @@
 
         body {
             font-family: var(--font-body);
-            background-color: var(--bg-cream);
-            background-image: radial-gradient(#F1E3D7 1.2px, transparent 1.2px);
-            background-size: 30px 30px;
-            color: var(--text-dark);
+            background-color: var(--cream);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            background-repeat: repeat;
+            background-size: 300px 300px;
+            color: var(--chocolate);
             min-height: 100vh;
             line-height: 1.6;
             padding: 20px;
@@ -57,11 +61,24 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px;
-            background: rgba(255, 251, 245, 0.90);
+            background: rgba(255, 248, 244, 0.92);
             backdrop-filter: blur(4px);
             box-shadow: var(--shadow-soft);
             border-radius: var(--radius-donut);
             border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        .container:before {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(230,100,123,0.06), transparent 70%);
+            pointer-events: none;
         }
 
         /* ===== HEADER ===== */
@@ -70,7 +87,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 10px 30px 10px;
-            border-bottom: 3px solid var(--secondary);
+            border-bottom: 2px dashed var(--peach);
             flex-wrap: wrap;
         }
 
@@ -86,11 +103,28 @@
         }
         .logo p {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--brown);
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-top: -5px;
+        }
+
+        /* ===== BOTÓN ADMIN (engranaje) ===== */
+        .admin-toggle {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--brown);
+            transition: transform 0.3s;
+            padding: 5px 10px;
+            border-radius: 50%;
+            line-height: 1;
+        }
+        .admin-toggle:hover {
+            transform: rotate(60deg) scale(1.1);
+            color: var(--primary);
         }
 
         /* ===== HERO ===== */
@@ -101,17 +135,49 @@
             padding: 40px 30px;
             flex-wrap: wrap;
             gap: 30px;
-            background: linear-gradient(135deg, #FFF1F4 0%, #FDE8E8 100%);
+            background: linear-gradient(135deg, #fff0eb, #fde4e0);
             border-radius: var(--radius-donut);
             margin: 30px 0 40px 0;
-            background-image: radial-gradient(circle at 10% 20%, var(--secondary) 2px, transparent 2px), 
-                              radial-gradient(circle at 90% 80%, var(--accent) 1.5px, transparent 1.5px);
+            background-image: radial-gradient(circle at 10% 20%, rgba(242,184,75,0.12) 2px, transparent 2px), radial-gradient(circle at 90% 80%, rgba(230,100,123,0.12) 1.5px, transparent 1.5px);
             background-size: 50px 50px, 70px 70px;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);
+            border: 2px solid var(--primary-soft);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero:after {
+            content: "✦  ♡  ✦  ♡  ✦";
+            position: absolute;
+            right: 24px;
+            top: 18px;
+            color: var(--primary-soft);
+            font-size: 1.25rem;
+            letter-spacing: 9px;
+            opacity: 0.4;
+        }
+        .hero .heart-deco-1 {
+            position: absolute;
+            left: 5%;
+            top: 12%;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            color: var(--primary-soft);
+            pointer-events: none;
+        }
+        .hero .heart-deco-2 {
+            position: absolute;
+            right: 8%;
+            bottom: 20%;
+            font-size: 2rem;
+            opacity: 0.15;
+            color: var(--primary-soft);
+            pointer-events: none;
         }
 
         .hero-text {
             flex: 1 1 300px;
+            position: relative;
+            z-index: 2;
         }
         .hero-text h2 {
             font-family: var(--font-heading);
@@ -127,7 +193,7 @@
         }
         .hero-text .sub-lema {
             font-size: 1.3rem;
-            color: var(--text-dark);
+            color: var(--chocolate);
             font-weight: 600;
             margin-bottom: 20px;
             border-left: 6px solid var(--secondary);
@@ -135,7 +201,7 @@
         }
         .hero-text p {
             font-size: 1.1rem;
-            color: var(--text-muted);
+            color: var(--brown);
             margin-bottom: 25px;
             max-width: 450px;
         }
@@ -143,15 +209,16 @@
         .hero-image {
             flex: 0 1 280px;
             text-align: center;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.4);
             padding: 20px;
             border-radius: 100%;
             backdrop-filter: blur(2px);
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 4px solid rgba(255, 255, 255, 0.7);
+            box-shadow: var(--shadow-soft);
         }
-        /* LOGO MÁS GRANDE */
         .hero-image .logo-hero-img {
             max-width: 220px;
             height: auto;
@@ -160,41 +227,57 @@
             box-shadow: var(--shadow-soft);
         }
 
-        /* ===== TABS ===== */
+        /* ===== TABS (estilo pastilla) ===== */
         .tabs-container {
             margin: 40px 0 30px 0;
         }
         .tabs-header {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            border-bottom: 3px solid var(--secondary);
-            padding-bottom: 10px;
+            gap: 6px;
+            padding: 8px;
+            background: var(--white);
+            border-radius: 60px;
+            box-shadow: 0 4px 20px rgba(137, 94, 74, 0.10);
+            border: 2px solid var(--primary-soft);
+            justify-content: center;
         }
         .tab-btn {
-            background: var(--bg-cream);
-            border: 2px solid #e8dccc;
+            background: transparent;
+            border: none;
             padding: 12px 28px;
-            border-radius: 60px 60px 0 0;
+            border-radius: 60px;
             font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            font-size: 1.05rem;
+            color: var(--brown);
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: var(--font-body);
-            border-bottom: none;
+            letter-spacing: 0.3px;
             position: relative;
-            bottom: -3px;
+            white-space: nowrap;
         }
         .tab-btn:hover {
-            background: var(--secondary);
-            color: var(--text-dark);
+            background: rgba(230, 100, 123, 0.08);
+            color: var(--primary-dark);
+            transform: translateY(-1px);
         }
         .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(230, 100, 123, 0.35);
+            transform: translateY(-2px);
+        }
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 4px;
             background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 -4px 12px rgba(217, 91, 122, 0.2);
+            border-radius: 4px;
         }
         .tab-content {
             display: none;
@@ -205,8 +288,14 @@
             display: block;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== MENSAJE EXPLICATIVO ===== */
@@ -215,20 +304,29 @@
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-dark);
-            background: linear-gradient(135deg, rgba(217, 91, 122, 0.08), rgba(249, 201, 110, 0.15));
-            border: 3px solid var(--primary);
+            background: linear-gradient(135deg, rgba(230, 100, 123, 0.08), rgba(242, 184, 75, 0.10));
+            border: 3px solid var(--primary-soft);
             border-radius: 60px;
             padding: 18px 30px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(217, 91, 122, 0.15);
+            box-shadow: 0 4px 20px rgba(230, 100, 123, 0.10);
             position: relative;
             animation: glowPulse 3s infinite ease-in-out;
             backdrop-filter: blur(2px);
         }
         @keyframes glowPulse {
-            0% { box-shadow: 0 4px 20px rgba(217, 91, 122, 0.15); border-color: var(--primary); }
-            50% { box-shadow: 0 8px 40px rgba(217, 91, 122, 0.4); border-color: var(--secondary); }
-            100% { box-shadow: 0 4px 20px rgba(217, 91, 122, 0.15); border-color: var(--primary); }
+            0% {
+                box-shadow: 0 4px 20px rgba(230, 100, 123, 0.10);
+                border-color: var(--primary-soft);
+            }
+            50% {
+                box-shadow: 0 8px 40px rgba(230, 100, 123, 0.25);
+                border-color: var(--primary);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(230, 100, 123, 0.10);
+                border-color: var(--primary-soft);
+            }
         }
         .mensaje-pedido .icono-grande {
             font-size: 1.8rem;
@@ -238,30 +336,30 @@
         }
         .mensaje-pedido .texto-suave {
             font-weight: 400;
-            color: var(--text-muted);
+            color: var(--brown);
         }
 
         /* ===== BADGE CTA ===== */
         .mensaje-pedido .highlight-cta {
-            background: #25D366;
-            color: white;
+            background: var(--whatsapp);
+            color: var(--white);
             padding: 6px 20px;
             border-radius: 60px;
             font-weight: 700;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
             margin: 0 5px;
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            border: 2px solid #25D366;
+            border: 2px solid var(--whatsapp);
             animation: pulse-completo 2s infinite ease-in-out;
         }
         .mensaje-pedido .highlight-cta:hover {
             transform: scale(1.05);
-            background: white;
-            color: #25D366;
+            background: var(--white);
+            color: var(--whatsapp);
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
         }
 
@@ -272,7 +370,7 @@
             font-weight: 700;
             color: var(--primary-dark);
             margin-bottom: 20px;
-            background: rgba(249, 201, 110, 0.2);
+            background: rgba(242, 184, 75, 0.12);
             padding: 10px 20px;
             border-radius: 60px;
             border: 2px dashed var(--secondary);
@@ -289,12 +387,16 @@
         }
 
         .menu-block {
-            background: var(--card-white);
+            background: var(--paper);
             border-radius: var(--radius-donut);
             padding: 30px 25px;
             box-shadow: var(--shadow-soft);
-            border: 1px solid #f3e3d3;
+            border: 2px solid var(--primary-soft);
             text-align: left;
+            transition: transform 0.2s;
+        }
+        .menu-block:hover {
+            transform: translateY(-2px);
         }
         .menu-block h4 {
             font-family: var(--font-heading);
@@ -304,7 +406,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 20px;
-            border-bottom: 3px solid var(--secondary);
+            border-bottom: 2px dashed var(--peach);
             padding-bottom: 10px;
         }
         .menu-block h4 span {
@@ -313,22 +415,28 @@
 
         /* ===== ANIMACIÓN DE PULSO SUTIL ===== */
         @keyframes pulse-sutil {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
         .opcion-btn {
-            background: var(--bg-cream);
-            border: 2px solid #e8dccc;
+            background: var(--paper);
+            border: 2px solid var(--primary-soft);
             padding: 10px 24px;
             border-radius: 60px;
             font-weight: 700;
             font-size: 1rem;
-            color: var(--text-dark);
+            color: var(--chocolate);
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
             font-family: var(--font-body);
             animation: pulse-sutil 2s infinite ease-in-out;
         }
@@ -339,20 +447,26 @@
         .opcion-btn.active {
             background: var(--primary);
             border-color: var(--primary);
-            color: white;
-            box-shadow: 0 6px 16px rgba(217, 91, 122, 0.3);
+            color: var(--white);
+            box-shadow: 0 6px 16px rgba(230, 100, 123, 0.30);
         }
 
         /* ===== ANIMACIÓN DE PULSO COMPLETA ===== */
         @keyframes pulse-completo {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.04);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
         .btn-pedido-resumen {
-            background: #25D366;
-            color: white;
+            background: var(--whatsapp);
+            color: var(--white);
             padding: 14px 35px;
             border-radius: 60px;
             text-decoration: none;
@@ -360,8 +474,8 @@
             font-size: 1.2rem;
             display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            border: 2px solid #25D366;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+            border: 2px solid var(--whatsapp);
             cursor: pointer;
             margin-top: 15px;
             text-align: center;
@@ -372,8 +486,8 @@
         }
         .btn-pedido-resumen:hover {
             transform: scale(1.05);
-            background: white;
-            color: #25D366;
+            background: var(--white);
+            color: var(--whatsapp);
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
         }
         .btn-pedido-resumen:disabled {
@@ -381,19 +495,35 @@
             cursor: not-allowed;
             transform: none !important;
             animation: none !important;
-            background: #25D366;
-            color: white;
-            border-color: #25D366;
+            background: var(--whatsapp);
+            color: var(--white);
+            border-color: var(--whatsapp);
         }
 
-        .opcion-btn:nth-child(1) { animation-delay: 0s; }
-        .opcion-btn:nth-child(2) { animation-delay: 0.15s; }
-        .opcion-btn:nth-child(3) { animation-delay: 0.3s; }
-        .opcion-btn:nth-child(4) { animation-delay: 0.45s; }
-        .opcion-btn:nth-child(5) { animation-delay: 0.6s; }
-        .opcion-btn:nth-child(6) { animation-delay: 0.75s; }
-        .opcion-btn:nth-child(7) { animation-delay: 0.9s; }
-        .opcion-btn:nth-child(8) { animation-delay: 1.05s; }
+        .opcion-btn:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .opcion-btn:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+        .opcion-btn:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .opcion-btn:nth-child(4) {
+            animation-delay: 0.45s;
+        }
+        .opcion-btn:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+        .opcion-btn:nth-child(6) {
+            animation-delay: 0.75s;
+        }
+        .opcion-btn:nth-child(7) {
+            animation-delay: 0.9s;
+        }
+        .opcion-btn:nth-child(8) {
+            animation-delay: 1.05s;
+        }
 
         .sabores-grid,
         .coberturas-grid,
@@ -416,9 +546,9 @@
         .campo-condicional {
             margin-top: 15px;
             padding: 15px 20px;
-            background: #fcf3ea;
+            background: rgba(244, 222, 216, 0.25);
             border-radius: 30px;
-            border: 1px dashed var(--secondary);
+            border: 1px dashed var(--peach);
             display: none;
             flex-direction: column;
             gap: 12px;
@@ -435,21 +565,22 @@
         .campo-condicional input[type="datetime-local"] {
             padding: 10px 18px;
             border-radius: 60px;
-            border: 2px solid #e8dccc;
+            border: 2px solid var(--primary-soft);
             font-family: var(--font-body);
             font-size: 1rem;
             width: 100%;
             max-width: 400px;
-            background: white;
+            background: var(--white);
             transition: border-color 0.3s ease;
         }
         .campo-condicional input:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(230, 100, 123, 0.12);
         }
         .campo-condicional .btn-maps-pequeno {
-            background: var(--accent);
-            color: white;
+            background: var(--secondary);
+            color: var(--white);
             padding: 8px 20px;
             border-radius: 60px;
             text-decoration: none;
@@ -458,18 +589,18 @@
             display: inline-block;
             transition: all 0.3s ease;
             width: fit-content;
-            box-shadow: 0 4px 12px rgba(91, 191, 196, 0.3);
+            box-shadow: 0 4px 12px rgba(242, 184, 75, 0.30);
         }
         .campo-condicional .btn-maps-pequeno:hover {
             transform: scale(1.05);
-            background: #4BA8AD;
+            background: #dba34a;
         }
 
         /* ===== PREVISUALIZACIÓN ===== */
         .preview-imagen {
             margin-top: 15px;
             padding: 12px;
-            background: #fcf3ea;
+            background: rgba(230, 100, 123, 0.05);
             border-radius: 30px;
             text-align: center;
             font-size: 3rem;
@@ -479,28 +610,39 @@
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
-            border: 1px solid #e8dccc;
+            border: 1px dashed var(--peach);
             transition: all 0.3s ease;
         }
         .preview-imagen .label {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--brown);
             font-weight: 600;
         }
         .preview-imagen .imagen-item {
-            background: white;
+            background: var(--white);
             border-radius: 60px;
             padding: 8px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .preview-imagen .imagen-item img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-soft);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         /* ===== PANEL DE RESUMEN ===== */
         .seleccion-preview {
             margin-top: 30px;
-            background: #fcf3ea;
+            background: linear-gradient(135deg, #fff0eb, #fef5e8);
             border-radius: var(--radius-donut);
             padding: 25px 30px;
-            border: 2px solid var(--secondary);
+            border: 3px solid var(--primary);
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -513,7 +655,7 @@
         }
         .seleccion-preview .resumen-linea {
             font-size: 1.05rem;
-            color: var(--text-dark);
+            color: var(--chocolate);
         }
         .seleccion-preview .resumen-linea strong {
             color: var(--primary-dark);
@@ -532,11 +674,11 @@
             padding: 20px 0;
         }
         .rrss-card {
-            background: var(--card-white);
+            background: var(--paper);
             border-radius: var(--radius-donut);
             padding: 30px 35px;
             box-shadow: var(--shadow-soft);
-            border: 1px solid #f3e3d3;
+            border: 2px solid var(--primary-soft);
             text-align: center;
             min-width: 180px;
             transition: all 0.3s ease;
@@ -559,13 +701,14 @@
             display: inline-block;
             margin-top: 10px;
             background: var(--primary);
-            color: white;
+            color: var(--white);
             padding: 8px 25px;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(230, 100, 123, 0.25);
         }
         .rrss-card .rrss-link:hover {
             background: var(--primary-dark);
@@ -574,7 +717,7 @@
         .rrss-mensaje {
             text-align: center;
             font-size: 1.2rem;
-            color: var(--text-muted);
+            color: var(--brown);
             margin-top: 20px;
         }
         .rrss-mensaje strong {
@@ -590,11 +733,11 @@
             padding: 10px 0;
         }
         .testimonio-card {
-            background: var(--card-white);
+            background: var(--paper);
             border-radius: var(--radius-donut);
             padding: 25px 30px;
             box-shadow: var(--shadow-soft);
-            border: 1px solid #f3e3d3;
+            border: 2px solid var(--primary-soft);
             max-width: 340px;
             flex: 1 1 280px;
             transition: all 0.3s ease;
@@ -619,16 +762,16 @@
             color: var(--primary-dark);
         }
         .testimonio-card .test-estrellas {
-            color: #F9C96E;
+            color: var(--secondary);
             font-size: 1.2rem;
             letter-spacing: 2px;
         }
         .testimonio-card .test-texto {
             margin-top: 12px;
             font-style: italic;
-            color: var(--text-dark);
+            color: var(--chocolate);
             line-height: 1.5;
-            border-top: 1px solid #f3e3d3;
+            border-top: 1px solid var(--primary-soft);
             padding-top: 12px;
         }
 
@@ -636,7 +779,7 @@
         .catalogo-section {
             margin-top: 50px;
             padding-top: 30px;
-            border-top: 3px solid var(--secondary);
+            border-top: 2px dashed var(--peach);
         }
         .catalogo-section h3 {
             font-family: var(--font-heading);
@@ -651,12 +794,12 @@
             gap: 20px;
         }
         .catalogo-item {
-            background: var(--card-white);
+            background: var(--paper);
             border-radius: var(--radius-donut);
             padding: 20px;
             text-align: center;
             box-shadow: var(--shadow-soft);
-            border: 1px solid #f3e3d3;
+            border: 2px solid var(--primary-soft);
             transition: all 0.3s ease;
         }
         .catalogo-item:hover {
@@ -675,24 +818,25 @@
         }
         .catalogo-item .cat-desc {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: var(--brown);
         }
 
         /* ===== CONTACTO ===== */
         .contacto {
             background: var(--primary);
-            color: white;
+            color: var(--white);
             padding: 40px 30px;
             border-radius: var(--radius-donut);
             text-align: center;
             margin: 40px 0 20px 0;
-            background-image: radial-gradient(circle at 20% 30%, var(--primary-dark) 1px, transparent 1px);
+            background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
             background-size: 40px 40px;
+            position: relative;
         }
         .contacto h3 {
             font-family: var(--font-heading);
             font-size: 2.5rem;
-            color: white;
+            color: var(--white);
         }
         .contacto .datos {
             margin: 20px 0 15px 0;
@@ -701,7 +845,7 @@
             gap: 30px;
             flex-wrap: wrap;
             font-size: 1rem;
-            background: rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.08);
             padding: 15px;
             border-radius: 60px;
             backdrop-filter: blur(2px);
@@ -716,8 +860,8 @@
             gap: 15px;
         }
         .btn-maps {
-            background: var(--accent);
-            color: white;
+            background: var(--secondary);
+            color: var(--white);
             padding: 16px 40px;
             border-radius: 60px;
             text-decoration: none;
@@ -725,19 +869,19 @@
             font-size: 1.1rem;
             display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(91, 191, 196, 0.4);
+            box-shadow: 0 8px 20px rgba(242, 184, 75, 0.40);
         }
         .btn-maps:hover {
             transform: scale(1.05);
-            background: #4BA8AD;
-            box-shadow: 0 12px 30px rgba(91, 191, 196, 0.5);
+            background: #dba34a;
+            box-shadow: 0 12px 30px rgba(242, 184, 75, 0.5);
         }
 
         footer {
             text-align: center;
             padding: 20px 0 10px 0;
-            color: var(--text-muted);
-            border-top: 3px solid var(--secondary);
+            color: var(--brown);
+            border-top: 2px dashed var(--peach);
             margin-top: 30px;
             font-size: 0.9rem;
         }
@@ -745,105 +889,463 @@
             color: var(--primary);
         }
 
-        /* ===== OPTIMIZACIÓN ===== */
-        @media (prefers-reduced-motion: reduce) {
-            .opcion-btn { animation: none !important; }
-            .opcion-btn:hover { transform: none !important; }
-            .btn-pedido-resumen { animation: none !important; }
-            .btn-pedido-resumen:hover { transform: none !important; }
-            .btn-maps:hover { transform: none !important; }
-            .rrss-card:hover { transform: none !important; }
-            .testimonio-card:hover { transform: none !important; }
-            .catalogo-item:hover { transform: none !important; }
-            .mensaje-pedido { animation: none !important; }
-            .mensaje-pedido .highlight-cta { animation: none !important; }
+        /* ===================================================== */
+        /* ===== PANEL DE ADMINISTRACIÓN (estilos) ===== */
+        /* ===================================================== */
+        .admin-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .admin-overlay.open {
+            display: flex;
+        }
+        .admin-panel {
+            background: var(--paper);
+            max-width: 900px;
+            width: 95%;
+            max-height: 90vh;
+            border-radius: var(--radius-donut);
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--primary);
+            overflow-y: auto;
+            position: relative;
+        }
+        .admin-panel h2 {
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px dashed var(--peach);
+            padding-bottom: 15px;
+        }
+        .admin-panel .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--brown);
+            transition: transform 0.3s;
+        }
+        .admin-panel .close-btn:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
+        .admin-panel .admin-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-soft);
+            padding-bottom: 10px;
+        }
+        .admin-panel .admin-tab-btn {
+            background: var(--white);
+            border: 2px solid var(--primary-soft);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--brown);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+        }
+        .admin-panel .admin-tab-btn:hover {
+            background: rgba(230, 100, 123, 0.08);
+        }
+        .admin-panel .admin-tab-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(230, 100, 123, 0.3);
+        }
+        .admin-panel .admin-tab-content {
+            display: none;
+        }
+        .admin-panel .admin-tab-content.active {
+            display: block;
+        }
+        .admin-panel .admin-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--peach);
+            flex-wrap: wrap;
+        }
+        .admin-panel .admin-item .item-name {
+            font-weight: 700;
+            flex: 1;
+            min-width: 120px;
+        }
+        .admin-panel .admin-item input[type="text"],
+        .admin-panel .admin-item input[type="file"] {
+            border: 2px solid var(--primary-soft);
+            border-radius: 60px;
+            padding: 6px 14px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            flex: 2;
+            min-width: 150px;
+        }
+        .admin-panel .admin-item button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            padding: 6px 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+        }
+        .admin-panel .admin-item button:hover {
+            background: var(--primary-dark);
+        }
+        .admin-panel .admin-item .btn-danger {
+            background: #d9534f;
+        }
+        .admin-panel .admin-item .btn-danger:hover {
+            background: #c9302c;
+        }
+        .admin-panel .admin-add-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(244, 222, 216, 0.2);
+            border-radius: 20px;
+            border: 1px dashed var(--peach);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .admin-panel .admin-add-section input {
+            flex: 2;
+            min-width: 150px;
+        }
+        .admin-panel .admin-add-section button {
+            background: var(--whatsapp);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            padding: 8px 20px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background 0.3s;
+        }
+        .admin-panel .admin-add-section button:hover {
+            background: #1da85c;
+        }
+        .admin-panel .admin-image-preview {
+            max-width: 60px;
+            max-height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-soft);
+        }
+        .admin-panel .admin-msg {
+            padding: 8px 12px;
+            border-radius: 12px;
+            margin: 5px 0;
+            font-weight: 600;
+        }
+        .admin-panel .admin-msg.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .admin-panel .admin-msg.error {
+            background: #f8d7da;
+            color: #721c24;
         }
 
-        /* ===== RESPONSIVE (optimizado para móviles) ===== */
+        /* ===== LOGIN MODAL ===== */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-modal.open {
+            display: flex;
+        }
+        .login-box {
+            background: var(--paper);
+            padding: 40px;
+            border-radius: var(--radius-donut);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--primary);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        .login-box h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 60px;
+            border: 2px solid var(--primary-soft);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        .login-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(230, 100, 123, 0.12);
+        }
+        .login-box button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            padding: 12px 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: var(--font-body);
+            width: 100%;
+        }
+        .login-box button:hover {
+            background: var(--primary-dark);
+        }
+        .login-box .login-error {
+            color: #d9534f;
+            font-weight: 700;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* ===== BOTONES DE EXPORTACIÓN/IMPORTACIÓN Y PUBLICACIÓN ===== */
+        .admin-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(244, 222, 216, 0.2);
+            border-radius: 20px;
+            border: 1px dashed var(--peach);
+            justify-content: center;
+        }
+        .admin-tools button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            padding: 10px 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .admin-tools button:hover {
+            background: var(--primary-dark);
+        }
+        .admin-tools .btn-export-html {
+            background: #f39c12;
+        }
+        .admin-tools .btn-export-html:hover {
+            background: #d68910;
+        }
+        .admin-tools .btn-export-json {
+            background: #27ae60;
+        }
+        .admin-tools .btn-export-json:hover {
+            background: #1e8449;
+        }
+        .admin-tools .btn-import-json {
+            background: #2980b9;
+        }
+        .admin-tools .btn-import-json:hover {
+            background: #1f618d;
+        }
+        .admin-tools .btn-publish-github {
+            background: #6f42c1;
+        }
+        .admin-tools .btn-publish-github:hover {
+            background: #5a32a3;
+        }
+        .admin-tools input[type="file"] {
+            display: none;
+        }
+
+        /* ===== CONFIGURACIÓN DE GITHUB ===== */
+        .github-config {
+            background: rgba(244, 222, 216, 0.15);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px dashed var(--peach);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 10px;
+            align-items: center;
+        }
+        .github-config label {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .github-config input[type="text"],
+        .github-config input[type="password"] {
+            border: 2px solid var(--primary-soft);
+            border-radius: 60px;
+            padding: 8px 14px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background: var(--white);
+            width: 100%;
+        }
+        .github-config input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(230, 100, 123, 0.12);
+        }
+        .github-config .btn-save-github {
+            grid-column: 2;
+            justify-self: start;
+            background: var(--whatsapp);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            padding: 8px 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .github-config .btn-save-github:hover {
+            background: #1da85c;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; }
-            .hero { 
-                flex-direction: column-reverse; 
-                text-align: center; 
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .admin-toggle {
+                margin-top: 10px;
+            }
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
                 padding: 30px 20px;
             }
-            .hero-text h2 { font-size: 2.5rem; }
-            .hero-text .sub-lema { 
-                border-left: none; 
-                border-top: 6px solid var(--secondary); 
-                padding-left: 0; 
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+            .hero-text .sub-lema {
+                border-left: none;
+                border-top: 6px solid var(--secondary);
+                padding-left: 0;
                 padding-top: 15px;
             }
-            .hero-text p { max-width: 100%; }
-            .container { 
-                padding: 15px; 
+            .hero-text p {
+                max-width: 100%;
+            }
+            .container {
+                padding: 15px;
                 border-radius: 25px;
             }
-            .opcion-btn { 
-                width: 100%; 
-                text-align: center; 
-                padding: 14px 20px;  /* más grande al tacto */
+            .opcion-btn {
+                width: 100%;
+                text-align: center;
+                padding: 14px 20px;
                 font-size: 1.1rem;
             }
-            .contacto .datos { 
-                flex-direction: column; 
-                gap: 10px; 
-                border-radius: 30px; 
+            .contacto .datos {
+                flex-direction: column;
+                gap: 10px;
+                border-radius: 30px;
                 padding: 20px;
             }
-            .btn-group { 
-                flex-direction: column; 
-                align-items: center; 
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
             }
-            .btn-maps { 
-                width: 90%; 
+            .btn-maps {
+                width: 90%;
                 padding: 18px 20px;
                 font-size: 1.2rem;
             }
-            .seleccion-preview { 
+            .seleccion-preview {
                 padding: 20px;
             }
-            .btn-pedido-resumen { 
-                width: 100%; 
+            .btn-pedido-resumen {
+                width: 100%;
                 padding: 18px 20px;
                 font-size: 1.3rem;
             }
-            .campo-condicional input { 
-                max-width: 100%; 
+            .campo-condicional input {
+                max-width: 100%;
             }
-            .tab-btn { 
-                flex: 1; 
-                text-align: center; 
-                font-size: 0.9rem; 
-                padding: 12px 15px;
+            .tab-btn {
+                flex: 1;
+                text-align: center;
+                font-size: 0.85rem;
+                padding: 10px 8px;
+                white-space: normal;
             }
-            .tabs-header { 
-                gap: 5px; 
+            .tabs-header {
+                padding: 8px;
+                border-radius: 30px;
+                gap: 4px;
             }
-            .rrss-card { 
-                min-width: 140px; 
-                padding: 25px; 
+            .rrss-card {
+                min-width: 140px;
+                padding: 25px;
             }
-            .testimonio-card { 
-                max-width: 100%; 
+            .testimonio-card {
+                max-width: 100%;
             }
-            .catalogo-grid { 
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            .catalogo-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
-            /* LOGO MÁS GRANDE EN MÓVIL */
             .hero-image .logo-hero-img {
-                max-width: 180px;  /* antes 120px */
+                max-width: 180px;
             }
             .hero-image {
                 padding: 15px;
             }
-            .mensaje-pedido { 
-                font-size: 1rem; 
-                padding: 15px; 
+            .mensaje-pedido {
+                font-size: 1rem;
+                padding: 15px;
             }
-            .mensaje-pedido .highlight-cta { 
-                font-size: 0.9rem; 
-                padding: 6px 14px; 
+            .mensaje-pedido .highlight-cta {
+                font-size: 0.9rem;
+                padding: 6px 14px;
             }
             .menu-block {
                 padding: 20px 15px;
@@ -854,583 +1356,1693 @@
             .seleccion-preview .resumen-linea {
                 font-size: 0.95rem;
             }
+            .preview-imagen .imagen-item img {
+                max-width: 80px;
+                max-height: 80px;
+            }
+            .admin-panel {
+                padding: 20px;
+                max-height: 95vh;
+            }
+            .admin-panel .admin-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .admin-panel .admin-item input {
+                max-width: 100%;
+            }
+            .admin-panel .admin-add-section {
+                flex-direction: column;
+            }
+            .admin-panel .admin-add-section input {
+                width: 100%;
+            }
+            .login-box {
+                padding: 25px;
+            }
+            .admin-tools {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .admin-tools button {
+                justify-content: center;
+            }
+            .github-config {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            .github-config .btn-save-github {
+                grid-column: 1;
+                justify-self: stretch;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="logo">
-            <h1>🍩 <span>Minidonas</span> Diane</h1>
-            <p>✨ Pequeñas DONITAS, Grandes SONRISAS ✨</p>
-        </div>
-    </header>
+        <!-- ===== HEADER ===== -->
+        <header>
+            <div class="logo">
+                <h1>🍩 <span id="heroTitle">Minidonas</span> <span id="heroTitleSpan">Diane</span></h1>
+                <p id="heroTagline">✨ Pequeñas DONITAS, Grandes SONRISAS ✨</p>
+            </div>
+            <button class="admin-toggle" id="adminToggle" aria-label="Panel de administración" title="Administrar contenido">🔧</button>
+        </header>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-        <div class="hero-text">
-            <h2>Minidonas <i>Diane</i> <br>El sabor que enamora</h2>
-            <div class="sub-lema">✨ Hechas con amor en Santiago de Cuba</div>
-            <p>La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.</p>
-        </div>
-        <div class="hero-image">
-            <!-- ⚠️ AQUÍ VA TU LOGO: reemplaza "logo.png" por la ruta real -->
-            <img src="logo.png" alt="Logo Minidonas Diane" class="logo-hero-img">
-        </div>
-    </section>
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <span class="heart-deco-1">♡</span>
+            <span class="heart-deco-2">♡</span>
+            <div class="hero-text">
+                <h2 id="heroHeading">Minidonas <i id="heroHeadingItalic">Diane</i> <br id="heroHeadingBr"><span id="heroHeadingSlogan">El sabor que enamora</span></h2>
+                <div class="sub-lema" id="heroSubLema">✨ Hechas con amor en Santiago de Cuba</div>
+                <p id="heroDesc">La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.</p>
+            </div>
+            <div class="hero-image">
+                <!-- ⚠️ AQUÍ VA TU LOGO: reemplaza "logo.png" por la ruta real -->
+                <img src="logo.png" alt="Logo Minidonas Diane" class="logo-hero-img" id="logoImg">
+            </div>
+        </section>
 
-    <!-- ===== TABS ===== -->
-    <div class="tabs-container">
-        <div class="tabs-header">
-            <button class="tab-btn active" data-tab="tab-pedido">🍩 Seleccionar Pedido</button>
-            <button class="tab-btn" data-tab="tab-rrss">📱 Redes Sociales</button>
-            <button class="tab-btn" data-tab="tab-comentarios">⭐ Comentarios</button>
-        </div>
-
-        <!-- ===== TAB 1: PEDIDO ===== -->
-        <div id="tab-pedido" class="tab-content active">
-            
-            <div class="mensaje-pedido">
-                <span class="icono-grande">📋</span> 
-                <span class="texto-suave">Elige tus opciones abajo y al tocar</span> 
-                <span class="highlight-cta">PEDIR MIS DONAS YA</span> 
-                <span class="texto-suave">se enviará tu pedido por WhatsApp</span>
+        <!-- ===== TABS ===== -->
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="tab-pedido">🍩 Seleccionar Pedido</button>
+                <button class="tab-btn" data-tab="tab-rrss">📱 Redes Sociales</button>
+                <button class="tab-btn" data-tab="tab-comentarios">⭐ Comentarios</button>
             </div>
 
-            <div class="subtitulo-combinaciones">
-                ✨ Infinitas Combinaciones ✨
-            </div>
+            <!-- ===== TAB 1: PEDIDO ===== -->
+            <div id="tab-pedido" class="tab-content active">
 
-            <section class="productos-grid">
-
-                <!-- SABORES -->
-                <div class="menu-block">
-                    <h4><span>🍩</span> Sabores</h4>
-                    <div class="sabores-grid">
-                        <button class="opcion-btn sabor-btn" data-sabor="Vainilla" aria-label="Seleccionar sabor Vainilla">🍦 Vainilla</button>
-                        <button class="opcion-btn sabor-btn" data-sabor="Chocolate" aria-label="Seleccionar sabor Chocolate">🍫 Chocolate</button>
-                        <button class="opcion-btn sabor-btn" data-sabor="Mixtas" aria-label="Seleccionar sabor Mixtas">🍩🍫 Mixtas</button>
-                    </div>
-                    <div id="previewSabor" class="preview-imagen">
-                        <span class="label">🖼️ Imagen del sabor</span>
-                        <span class="imagen-item">🍩</span>
-                    </div>
+                <div class="mensaje-pedido" id="mensajePedido">
+                    <span class="icono-grande">📋</span>
+                    <span class="texto-suave">Elige tus opciones abajo y al tocar</span>
+                    <span class="highlight-cta">PEDIR MIS DONAS YA</span>
+                    <span class="texto-suave">se enviará tu pedido por WhatsApp</span>
                 </div>
 
-                <!-- COBERTURAS -->
-                <div class="menu-block">
-                    <h4><span>🍫</span> Cobertura</h4>
-                    <div class="coberturas-grid">
-                        <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate oscuro" aria-label="Seleccionar cobertura Chocolate oscuro">🍫 Chocolate oscuro</button>
-                        <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco" aria-label="Seleccionar cobertura Chocolate blanco">🍫🤍 Chocolate blanco</button>
-                        <button class="opcion-btn cobertura-btn" data-cobertura="Chocolate blanco con color" aria-label="Seleccionar cobertura Chocolate blanco con color">🍫🌈 Chocolate blanco con color</button>
-                        <button class="opcion-btn cobertura-btn" data-cobertura="Dulce de leche" aria-label="Seleccionar cobertura Dulce de leche">🍯 Dulce de leche</button>
-                    </div>
-                    <div id="previewCobertura" class="preview-imagen">
-                        <span class="label">🖼️ Imagen de la cobertura</span>
-                        <span class="imagen-item">🍫</span>
-                    </div>
+                <div class="subtitulo-combinaciones" id="subtituloCombinaciones">
+                    ✨ Infinitas Combinaciones ✨
                 </div>
 
-                <!-- AGREGOS -->
-                <div class="menu-block">
-                    <h4><span>✨</span> Agregos</h4>
-                    <div class="agregos-wrap">
-                        <button class="opcion-btn agrego-btn" data-agrego="Grajeas" aria-label="Seleccionar agregos Grajeas">🌈 Grajeas</button>
-                        <button class="opcion-btn agrego-btn" data-agrego="Perlas comestibles" aria-label="Seleccionar agregos Perlas comestibles">⚪ Perlas comestibles</button>
-                        <button class="opcion-btn agrego-btn" data-agrego="Galleticas" aria-label="Seleccionar agregos Galleticas">🍪 Galleticas</button>
-                        <button class="opcion-btn agrego-btn" data-agrego="Sorbeto" aria-label="Seleccionar agregos Sorbeto">🧋 Sorbeto</button>
-                        <button class="opcion-btn agrego-btn" data-agrego="Botonetas" aria-label="Seleccionar agregos Botonetas">🔵 Botonetas</button>
-                        <button class="opcion-btn agrego-btn" data-agrego="Maní" aria-label="Seleccionar agregos Maní">🥜 Maní</button>
-                        <button class="opcion-btn agrego-btn" data-agrego="Coco" aria-label="Seleccionar agregos Coco">🥥 Coco</button>
-                    </div>
-                    <div id="previewAgregos" class="preview-imagen">
-                        <span class="label">🖼️ Agregos seleccionados</span>
-                        <span class="imagen-item">✨</span>
-                    </div>
-                </div>
+                <section class="productos-grid">
 
-                <!-- TEMAS -->
-                <div class="menu-block">
-                    <h4><span>🎨</span> Temas Personalizados</h4>
-                    <div class="temas-container">
-                        <button class="opcion-btn tema-btn" data-tema="Futbol" aria-label="Seleccionar tema Futbol">⚽ Futbol</button>
-                        <button class="opcion-btn tema-btn" data-tema="Paw Patrol" aria-label="Seleccionar tema Paw Patrol">🐶 Paw Patrol</button>
-                        <button class="opcion-btn tema-btn" data-tema="Dinosaurios" aria-label="Seleccionar tema Dinosaurios">🦕 Dinosaurios</button>
-                        <button class="opcion-btn tema-btn" data-tema="Cumpleaños" aria-label="Seleccionar tema Cumpleaños">🎂 Cumpleaños</button>
-                        <button class="opcion-btn tema-btn" data-tema="Navidad" aria-label="Seleccionar tema Navidad">🎄 Navidad</button>
-                        <button class="opcion-btn tema-btn" data-tema="Lo que el cliente desee" aria-label="Seleccionar tema Lo que el cliente desee">✨ LO QUE EL CLIENTE DESEE</button>
-                    </div>
-                    <div id="previewTema" class="preview-imagen">
-                        <span class="label">🖼️ Imagen del tema</span>
-                        <span class="imagen-item">🎨</span>
-                    </div>
-                </div>
-
-                <!-- DOMICILIO -->
-                <div class="menu-block">
-                    <h4><span>📍</span> Domicilio</h4>
-                    <div class="domicilio-grid">
-                        <button class="opcion-btn domicilio-btn" data-domicilio="Sí" aria-label="Domicilio Sí">✅ Sí</button>
-                        <button class="opcion-btn domicilio-btn" data-domicilio="No" aria-label="Domicilio No">❌ No</button>
-                    </div>
-                    <div id="campoDireccion" class="campo-condicional">
-                        <label for="direccionInput">✏️ Escribe tu dirección:</label>
-                        <input type="text" id="direccionInput" placeholder="Calle, número, reparto...">
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps-pequeno">📍 Abrir Google Maps</a>
-                            <span style="font-size:0.9rem; color: var(--text-muted); align-self:center;">o comparte tu ubicación por WhatsApp</span>
+                    <!-- ===== SABORES ===== -->
+                    <div class="menu-block" id="cardSabores">
+                        <h4><span>🍩</span> Sabores</h4>
+                        <div class="sabores-grid" id="saboresContainer">
+                            <!-- Generado dinámicamente -->
+                        </div>
+                        <div id="previewSabor" class="preview-imagen">
+                            <span class="label">🖼️ Imagen del sabor</span>
+                            <span class="imagen-item">🍩</span>
                         </div>
                     </div>
-                </div>
 
-                <!-- FECHA -->
-                <div class="menu-block">
-                    <h4><span>📅</span> Lo quiero para el día</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
-                        <label for="fechaEntrega" style="font-weight:600; color: var(--primary-dark);">Fecha y hora:</label>
-                        <input type="datetime-local" id="fechaEntrega" style="padding:10px 18px; border-radius:60px; border:2px solid #e8dccc; font-family:var(--font-body); font-size:1rem; background:white; max-width:250px;">
-                    </div>
-                </div>
-
-                <!-- ENVASES -->
-                <div class="menu-block">
-                    <h4><span>📦</span> Envases</h4>
-                    <div class="envases-grid">
-                        <button class="opcion-btn envase-btn" data-envase="Sí" aria-label="Envase Sí">✅ Sí</button>
-                        <button class="opcion-btn envase-btn" data-envase="No" aria-label="Envase No">❌ No</button>
-                    </div>
-                    <div id="campoCaja" class="campo-condicional">
-                        <label style="font-weight:600; color: var(--primary-dark);">¿Caja personalizada?</label>
-                        <div class="caja-grid">
-                            <button class="opcion-btn caja-btn" data-caja="Sí" aria-label="Caja personalizada Sí">✅ Sí</button>
-                            <button class="opcion-btn caja-btn" data-caja="No" aria-label="Caja personalizada No">❌ No</button>
+                    <!-- ===== COBERTURAS ===== -->
+                    <div class="menu-block" id="cardCoberturas">
+                        <h4><span>🍫</span> Cobertura</h4>
+                        <div class="coberturas-grid" id="coberturasContainer">
+                            <!-- Generado dinámicamente -->
+                        </div>
+                        <div id="previewCobertura" class="preview-imagen">
+                            <span class="label">🖼️ Imagen de la cobertura</span>
+                            <span class="imagen-item">🍫</span>
                         </div>
                     </div>
-                </div>
 
-                <!-- CANTIDAD -->
-                <div class="menu-block">
-                    <h4><span>🔢</span> Cantidad</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
-                        <label for="cantidadInput" style="font-weight:600; color: var(--primary-dark);">Número de minidonas (mínimo 9):</label>
-                        <input type="number" id="cantidadInput" min="9" value="9" style="padding:10px 18px; border-radius:60px; border:2px solid #e8dccc; font-family:var(--font-body); font-size:1rem; background:white; max-width:120px;">
+                    <!-- ===== AGREGOS ===== -->
+                    <div class="menu-block full" id="cardAgregos">
+                        <h4><span>✨</span> Agregos</h4>
+                        <div class="agregos-wrap" id="agregosContainer">
+                            <!-- Generado dinámicamente -->
+                        </div>
+                        <div id="previewAgregos" class="preview-imagen">
+                            <span class="label">🖼️ Agregos seleccionados</span>
+                            <span class="imagen-item">✨</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- RESUMEN -->
-                <div id="seleccionPreview" class="seleccion-preview">
-                    <h4>📋 Tu selección</h4>
-                    <div class="resumen-linea"><strong>Sabor:</strong> <span id="saborSeleccionado" class="valor">Ninguno</span></div>
-                    <div class="resumen-linea"><strong>Cobertura:</strong> <span id="coberturaSeleccionado" class="valor">Ninguno</span></div>
-                    <div class="resumen-linea"><strong>Agregos:</strong> <span id="agregosSeleccionados" class="valor">Ninguno</span></div>
-                    <div class="resumen-linea"><strong>Tema:</strong> <span id="temaSeleccionado" class="valor">Ninguno</span></div>
-                    <div class="resumen-linea"><strong>Domicilio:</strong> <span id="domicilioSeleccionado" class="valor">No</span></div>
-                    <div class="resumen-linea"><strong>Dirección:</strong> <span id="direccionMostrada" class="valor">-</span></div>
-                    <div class="resumen-linea"><strong>Fecha/Hora:</strong> <span id="fechaMostrada" class="valor">-</span></div>
-                    <div class="resumen-linea"><strong>Envases:</strong> <span id="envaseSeleccionado" class="valor">No</span></div>
-                    <div class="resumen-linea"><strong>Caja personalizada:</strong> <span id="cajaSeleccionado" class="valor">-</span></div>
-                    <div class="resumen-linea"><strong>Cantidad:</strong> <span id="cantidadMostrada" class="valor">9</span></div>
-                    <button id="btnPedidoResumen" class="btn-pedido-resumen">
-                        PEDIR MIS DONAS YA
-                    </button>
-                </div>
+                    <!-- ===== TEMAS ===== -->
+                    <div class="menu-block" id="cardTemas">
+                        <h4><span>🎨</span> Temas Personalizados</h4>
+                        <div class="temas-container" id="temasContainer">
+                            <!-- Generado dinámicamente -->
+                        </div>
+                        <div id="campoTemaPersonalizado" class="campo-condicional">
+                            <label for="temaPersonalizadoInput">✏️ Describe tu tema personalizado:</label>
+                            <input type="text" id="temaPersonalizadoInput" placeholder="Ej: Superhéroes, Unicornios, Videojuegos...">
+                        </div>
+                        <div id="previewTema" class="preview-imagen">
+                            <span class="label">🖼️ Imagen del tema</span>
+                            <span class="imagen-item">🎨</span>
+                        </div>
+                    </div>
 
-            </section>
+                    <!-- ===== DOMICILIO ===== -->
+                    <div class="menu-block" id="cardDomicilio">
+                        <h4><span id="domicilioIcon">📍</span> <span id="domicilioLabel">Domicilio</span></h4>
+                        <div class="domicilio-grid">
+                            <button class="opcion-btn domicilio-btn" data-domicilio="Sí" aria-label="Domicilio Sí">✅ Sí</button>
+                            <button class="opcion-btn domicilio-btn" data-domicilio="No" aria-label="Domicilio No">❌ No</button>
+                        </div>
+                        <div id="campoDireccion" class="campo-condicional">
+                            <label for="direccionInput" id="direccionLabel">✏️ Escribe tu dirección:</label>
+                            <input type="text" id="direccionInput" placeholder="Calle, número, reparto...">
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps-pequeno">📍 Abrir Google Maps</a>
+                                <span style="font-size:0.9rem; color: var(--brown); align-self:center;">o comparte tu ubicación por WhatsApp</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== FECHA ===== -->
+                    <div class="menu-block" id="cardFecha">
+                        <h4><span id="fechaIcon">📅</span> <span id="fechaLabel">Lo quiero para el día</span></h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+                            <label for="fechaEntrega" style="font-weight:600; color: var(--primary-dark);" id="fechaInputLabel">Fecha y hora:</label>
+                            <input type="datetime-local" id="fechaEntrega" style="padding:10px 18px; border-radius:60px; border:2px solid var(--primary-soft); font-family:var(--font-body); font-size:1rem; background:var(--white); max-width:250px;">
+                        </div>
+                    </div>
+
+                    <!-- ===== ENVASES ===== -->
+                    <div class="menu-block" id="cardEnvases">
+                        <h4><span id="envaseIcon">📦</span> <span id="envaseLabel">Envases</span></h4>
+                        <div class="envases-grid">
+                            <button class="opcion-btn envase-btn" data-envase="Sí" aria-label="Envase Sí">✅ Sí</button>
+                            <button class="opcion-btn envase-btn" data-envase="No" aria-label="Envase No">❌ No</button>
+                        </div>
+                        <div id="campoCaja" class="campo-condicional">
+                            <label style="font-weight:600; color: var(--primary-dark);" id="cajaLabel">¿Caja personalizada?</label>
+                            <div class="caja-grid">
+                                <button class="opcion-btn caja-btn" data-caja="Sí" aria-label="Caja personalizada Sí">✅ Sí</button>
+                                <button class="opcion-btn caja-btn" data-caja="No" aria-label="Caja personalizada No">❌ No</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== CANTIDAD ===== -->
+                    <div class="menu-block" id="cardCantidad">
+                        <h4><span id="cantidadIcon">🔢</span> <span id="cantidadLabel">Cantidad</span></h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+                            <label for="cantidadInput" style="font-weight:600; color: var(--primary-dark);" id="cantidadInputLabel">Número de minidonas (mínimo 9):</label>
+                            <input type="number" id="cantidadInput" min="9" value="9" style="padding:10px 18px; border-radius:60px; border:2px solid var(--primary-soft); font-family:var(--font-body); font-size:1rem; background:var(--white); max-width:120px;">
+                        </div>
+                    </div>
+
+                    <!-- ===== RESUMEN ===== -->
+                    <div id="seleccionPreview" class="seleccion-preview">
+                        <h4 id="resumenTitle">📋 Tu selección</h4>
+                        <div class="summary-grid">
+                            <div class="resumen-linea"><strong id="resSabor">Sabor:</strong> <span id="saborSeleccionado" class="valor">Ninguno</span></div>
+                            <div class="resumen-linea"><strong id="resCobertura">Cobertura:</strong> <span id="coberturaSeleccionado" class="valor">Ninguno</span></div>
+                            <div class="resumen-linea"><strong id="resAgregos">Agregos:</strong> <span id="agregosSeleccionados" class="valor">Ninguno</span></div>
+                            <div class="resumen-linea"><strong id="resTema">Tema:</strong> <span id="temaSeleccionado" class="valor">Ninguno</span></div>
+                            <div class="resumen-linea"><strong id="resDomicilio">Domicilio:</strong> <span id="domicilioSeleccionado" class="valor">No</span></div>
+                            <div class="resumen-linea"><strong id="resDireccion">Dirección:</strong> <span id="direccionMostrada" class="valor">-</span></div>
+                            <div class="resumen-linea"><strong id="resFecha">Fecha/Hora:</strong> <span id="fechaMostrada" class="valor">-</span></div>
+                            <div class="resumen-linea"><strong id="resEnvases">Envases:</strong> <span id="envaseSeleccionado" class="valor">No</span></div>
+                            <div class="resumen-linea"><strong id="resCaja">Caja personalizada:</strong> <span id="cajaSeleccionado" class="valor">-</span></div>
+                            <div class="resumen-linea"><strong id="resCantidad">Cantidad:</strong> <span id="cantidadMostrada" class="valor">9</span></div>
+                        </div>
+                        <button id="btnPedidoResumen" class="btn-pedido-resumen">
+                            PEDIR MIS DONAS YA
+                        </button>
+                    </div>
+
+                </section>
+            </div>
+
+            <!-- ===== TAB 2: REDES SOCIALES ===== -->
+            <div id="tab-rrss" class="tab-content">
+                <div class="rrss-grid" id="rrssGrid">
+                    <!-- Generado dinámicamente -->
+                </div>
+                <div class="rrss-mensaje" id="rrssMensaje">
+                    ✨ Síguenos en redes para ver nuestras promociones y nuevos sabores. <strong>¡Te esperamos!</strong>
+                </div>
+            </div>
+
+            <!-- ===== TAB 3: COMENTARIOS ===== -->
+            <div id="tab-comentarios" class="tab-content">
+                <div class="testimonios-grid" id="testimoniosGrid">
+                    <!-- Generado dinámicamente -->
+                </div>
+            </div>
         </div>
 
-        <!-- ===== TAB 2: REDES SOCIALES ===== -->
-        <div id="tab-rrss" class="tab-content">
-            <div class="rrss-grid">
-                <div class="rrss-card">
-                    <span class="rrss-icon">📸</span>
-                    <div class="rrss-nombre">Instagram</div>
-                    <a href="#" target="_blank" class="rrss-link">Síguenos</a>
-                </div>
-                <div class="rrss-card">
-                    <span class="rrss-icon">👍</span>
-                    <div class="rrss-nombre">Facebook</div>
-                    <a href="#" target="_blank" class="rrss-link">Síguenos</a>
-                </div>
-                <div class="rrss-card">
-                    <span class="rrss-icon">🎵</span>
-                    <div class="rrss-nombre">TikTok</div>
-                    <a href="#" target="_blank" class="rrss-link">Síguenos</a>
-                </div>
-                <div class="rrss-card">
-                    <span class="rrss-icon">💬</span>
-                    <div class="rrss-nombre">WhatsApp Business</div>
-                    <a href="https://wa.me/5355123300" target="_blank" class="rrss-link">Contáctanos</a>
-                </div>
+        <!-- ===== CATÁLOGO DE IMÁGENES ===== -->
+        <div class="catalogo-section">
+            <h3 id="catalogoTitle">📸 Catálogo de Imágenes</h3>
+            <div class="catalogo-grid" id="catalogoGrid">
+                <!-- Generado dinámicamente -->
             </div>
-            <div class="rrss-mensaje">
-                ✨ Síguenos en redes para ver nuestras promociones y nuevos sabores. <strong>¡Te esperamos!</strong>
-            </div>
+            <p style="text-align:center; margin-top:20px; color: var(--brown);" id="catalogoFooter">
+                📸 Próximamente más imágenes de nuestros productos. ¡Síguenos en redes para ver las novedades!
+            </p>
         </div>
 
-        <!-- ===== TAB 3: COMENTARIOS ===== -->
-        <div id="tab-comentarios" class="tab-content">
-            <div class="testimonios-grid">
-                <div class="testimonio-card">
-                    <span class="test-avatar">👩</span>
-                    <div class="test-header">
-                        <div class="test-nombre">Mariana G.</div>
-                        <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div class="test-texto">
-                        "Las minidonas de Diane son las más esponjosas y deliciosas que he probado. El sabor a vainilla es increíble y la atención es excelente. ¡100% recomendadas!"
-                    </div>
-                </div>
-                <div class="testimonio-card">
-                    <span class="test-avatar">👨</span>
-                    <div class="test-header">
-                        <div class="test-nombre">Carlos R.</div>
-                        <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div class="test-texto">
-                        "Pedí una caja temática de cumpleaños para mi hijo y quedó fascinado. La decoración y el sabor son de primera. Muy profesionales y puntuales."
-                    </div>
-                </div>
-                <div class="testimonio-card">
-                    <span class="test-avatar">👩</span>
-                    <div class="test-header">
-                        <div class="test-nombre">Laura M.</div>
-                        <div class="test-estrellas">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div class="test-texto">
-                        "Siempre pido las de chocolate con coco, son mi debilidad. Además, el trato es súper cálido y se nota que usan ingredientes de calidad."
-                    </div>
-                </div>
-                <div class="testimonio-card">
-                    <span class="test-avatar">👨</span>
-                    <div class="test-header">
-                        <div class="test-nombre">Jorge P.</div>
-                        <div class="test-estrellas">⭐⭐⭐⭐</div>
-                    </div>
-                    <div class="test-texto">
-                        "Excelente opción para regalar. Las minidonas son bonitas y ricas. La única pega es que se acaban muy rápido 😄. Seguro repito."
-                    </div>
-                </div>
+        <!-- ===== SECCIÓN "¿DÓNDE ESTAMOS?" ===== -->
+        <section id="contacto" class="contacto">
+            <h3 id="contactoTitle">¿Dónde estamos?</h3>
+            <div class="btn-group">
+                <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps" id="mapsLink">
+                    📍 Ver ubicación en Google Maps
+                </a>
             </div>
+            <div class="datos">
+                <span id="contactoDireccion">📍 Edificio 17 apto 10, Reparto Rajayoga</span>
+                <span id="contactoTelefono">📞 +53 55123300</span>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <p id="footerText">© 2026 · <strong>Minidonas Diane</strong> · Santiago de Cuba · Hecho con 🍩</p>
+            <p style="font-size:0.8rem; opacity:0.7;" id="footerSub">Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora</p>
+        </footer>
+
+    </div>
+
+    <!-- ===== LOGIN MODAL ===== -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-box">
+            <h3>🔐 Acceso Administrador</h3>
+            <input type="password" id="adminPassword" placeholder="Contraseña" autofocus>
+            <button id="loginBtn">Ingresar</button>
+            <div class="login-error" id="loginError">Contraseña incorrecta. Intenta de nuevo.</div>
         </div>
     </div>
 
-    <!-- ===== CATÁLOGO DE IMÁGENES ===== -->
-    <div class="catalogo-section">
-        <h3>📸 Catálogo de Imágenes</h3>
-        <div class="catalogo-grid">
-            <div class="catalogo-item">
-                <span class="cat-img">🍩</span>
-                <div class="cat-nombre">Donut Glaseada</div>
-                <div class="cat-desc">Clásica con azúcar glas</div>
+    <!-- ===== PANEL DE ADMINISTRACIÓN ===== -->
+    <div class="admin-overlay" id="adminPanel">
+        <div class="admin-panel">
+            <button class="close-btn" id="closeAdminPanel">✕</button>
+            <h2>⚙️ Panel de Administración</h2>
+
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-admin-tab="admin-general">📝 General</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-temas">🎨 Temas</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-sabores">🍩 Sabores</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-coberturas">🍫 Coberturas</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-agregos">✨ Agregos</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-catalogo">📸 Catálogo</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-rrss">📱 Redes</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-testimonios">⭐ Testimonios</button>
+                <button class="admin-tab-btn" data-admin-tab="admin-textos">📝 Textos</button>
             </div>
-            <div class="catalogo-item">
-                <span class="cat-img">🍫</span>
-                <div class="cat-nombre">Donut Chocolate</div>
-                <div class="cat-desc">Cobertura de chocolate belga</div>
+
+            <!-- ===== TAB GENERAL ===== -->
+            <div class="admin-tab-content active" id="admin-general">
+                <div id="adminGeneralMsg"></div>
+                <p>Gestiona todos los contenidos de la página desde las pestañas.</p>
+                <p><strong>Contraseña actual:</strong> <code>admin123</code> (cámbiala en el código si lo deseas).</p>
+                <hr style="margin:15px 0; border-color:var(--peach);">
+
+                <!-- ===== CONFIGURACIÓN DE GITHUB ===== -->
+                <div class="github-config">
+                    <label for="githubToken">🔑 Token de GitHub:</label>
+                    <input type="password" id="githubToken" placeholder="Pega tu token de acceso personal">
+                    <label for="githubOwner">👤 Propietario (usuario):</label>
+                    <input type="text" id="githubOwner" placeholder="Tu nombre de usuario de GitHub">
+                    <label for="githubRepo">📁 Repositorio:</label>
+                    <input type="text" id="githubRepo" placeholder="Nombre del repositorio (ej. minidonas-diane)">
+                    <button class="btn-save-github" id="saveGithubConfig">💾 Guardar configuración</button>
+                </div>
+
+                <div class="admin-tools">
+                    <button class="btn-export-html" id="exportHtmlBtn">📥 Descargar HTML</button>
+                    <button class="btn-export-json" id="exportJsonBtn">📤 Exportar JSON</button>
+                    <button class="btn-import-json" id="importJsonBtn">📥 Importar JSON</button>
+                    <input type="file" id="importJsonInput" accept=".json">
+                    <button class="btn-publish-github" id="publishGithubBtn">🚀 Publicar en GitHub</button>
+                </div>
+                <p style="font-size:0.9rem; color:var(--brown); margin-top: 5px;">
+                    ✅ <strong>Descargar HTML:</strong> genera un archivo <code>index.html</code> con todos los datos actuales.<br>
+                    📦 <strong>Exportar/Importar JSON:</strong> copias de seguridad o sincronización entre dispositivos.<br>
+                    🚀 <strong>Publicar en GitHub:</strong> sube automáticamente el HTML actualizado a tu repositorio usando la API de GitHub.
+                </p>
             </div>
-            <div class="catalogo-item">
-                <span class="cat-img">🍓</span>
-                <div class="cat-nombre">Donut Fresa</div>
-                <div class="cat-desc">Con crema y fresas naturales</div>
+
+            <!-- ===== TAB TEMAS ===== -->
+            <div class="admin-tab-content" id="admin-temas">
+                <div id="adminTemasList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newTemaName" placeholder="Nombre del tema">
+                    <input type="text" id="newTemaEmoji" placeholder="Emoji (ej. ⚽)" style="max-width:60px;">
+                    <input type="file" id="newTemaImage" accept="image/*">
+                    <button id="addTemaBtn">➕ Agregar</button>
+                </div>
+                <div id="adminTemasMsg"></div>
             </div>
-            <div class="catalogo-item">
-                <span class="cat-img">🥥</span>
-                <div class="cat-nombre">Donut Coco</div>
-                <div class="cat-desc">Coco tostado y leche condensada</div>
+
+            <!-- ===== TAB SABORES ===== -->
+            <div class="admin-tab-content" id="admin-sabores">
+                <div id="adminSaboresList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newSaborName" placeholder="Nombre del sabor">
+                    <input type="text" id="newSaborEmoji" placeholder="Emoji (ej. 🍫)" style="max-width:60px;">
+                    <button id="addSaborBtn">➕ Agregar</button>
+                </div>
+                <div id="adminSaboresMsg"></div>
             </div>
-            <div class="catalogo-item">
-                <span class="cat-img">🎂</span>
-                <div class="cat-nombre">Donut Cumpleaños</div>
-                <div class="cat-desc">Con sprinkles y vela comestible</div>
+
+            <!-- ===== TAB COBERTURAS ===== -->
+            <div class="admin-tab-content" id="admin-coberturas">
+                <div id="adminCoberturasList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newCoberturaName" placeholder="Nombre de la cobertura">
+                    <input type="text" id="newCoberturaEmoji" placeholder="Emoji (ej. 🍯)" style="max-width:60px;">
+                    <button id="addCoberturaBtn">➕ Agregar</button>
+                </div>
+                <div id="adminCoberturasMsg"></div>
             </div>
-            <div class="catalogo-item">
-                <span class="cat-img">⚽</span>
-                <div class="cat-nombre">Donut Futbol</div>
-                <div class="cat-desc">Temática para fanáticos del deporte</div>
+
+            <!-- ===== TAB AGREGOS ===== -->
+            <div class="admin-tab-content" id="admin-agregos">
+                <div id="adminAgregosList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newAgregoName" placeholder="Nombre del agrego">
+                    <input type="text" id="newAgregoEmoji" placeholder="Emoji (ej. ✨)" style="max-width:60px;">
+                    <button id="addAgregoBtn">➕ Agregar</button>
+                </div>
+                <div id="adminAgregosMsg"></div>
             </div>
-            <div class="catalogo-item">
-                <span class="cat-img">🐶</span>
-                <div class="cat-nombre">Donut Paw Patrol</div>
-                <div class="cat-desc">Ideal para los más pequeños</div>
+
+            <!-- ===== TAB CATÁLOGO ===== -->
+            <div class="admin-tab-content" id="admin-catalogo">
+                <div id="adminCatalogoList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newCatalogoNombre" placeholder="Nombre del producto">
+                    <input type="text" id="newCatalogoDesc" placeholder="Descripción">
+                    <input type="text" id="newCatalogoEmoji" placeholder="Emoji (ej. 🍩)" style="max-width:60px;">
+                    <input type="file" id="newCatalogoImage" accept="image/*">
+                    <button id="addCatalogoBtn">➕ Agregar</button>
+                </div>
+                <div id="adminCatalogoMsg"></div>
             </div>
-            <div class="catalogo-item">
-                <span class="cat-img">🎄</span>
-                <div class="cat-nombre">Donut Navidad</div>
-                <div class="cat-desc">Edición especial con motivos navideños</div>
+
+            <!-- ===== TAB REDES SOCIALES ===== -->
+            <div class="admin-tab-content" id="admin-rrss">
+                <div id="adminRrssList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newRrssNombre" placeholder="Nombre (ej. Instagram)">
+                    <input type="text" id="newRrssIcono" placeholder="Icono (ej. 📸)" style="max-width:60px;">
+                    <input type="text" id="newRrssUrl" placeholder="URL (ej. https://instagram.com/...)" style="flex:3;">
+                    <button id="addRrssBtn">➕ Agregar</button>
+                </div>
+                <div id="adminRrssMsg"></div>
             </div>
+
+            <!-- ===== TAB TESTIMONIOS ===== -->
+            <div class="admin-tab-content" id="admin-testimonios">
+                <div id="adminTestimoniosList"></div>
+                <div class="admin-add-section">
+                    <input type="text" id="newTestAvatar" placeholder="Avatar (ej. 👩)" style="max-width:60px;">
+                    <input type="text" id="newTestNombre" placeholder="Nombre">
+                    <input type="text" id="newTestEstrellas" placeholder="Estrellas (ej. 5)" style="max-width:60px;">
+                    <input type="text" id="newTestTexto" placeholder="Texto del testimonio" style="flex:3;">
+                    <button id="addTestimonioBtn">➕ Agregar</button>
+                </div>
+                <div id="adminTestimoniosMsg"></div>
+            </div>
+
+            <!-- ===== TAB TEXTOS ===== -->
+            <div class="admin-tab-content" id="admin-textos">
+                <div style="display:grid; grid-template-columns:1fr 2fr; gap:10px; align-items:center; padding:10px 0;">
+                    <label>Hero Título:</label>
+                    <input type="text" id="editHeroTitle" class="admin-text-input">
+                    <label>Hero Subtítulo (cursiva):</label>
+                    <input type="text" id="editHeroItalic" class="admin-text-input">
+                    <label>Hero Eslogan:</label>
+                    <input type="text" id="editHeroSlogan" class="admin-text-input">
+                    <label>Hero Sub-lema:</label>
+                    <input type="text" id="editHeroSubLema" class="admin-text-input">
+                    <label>Hero Descripción:</label>
+                    <input type="text" id="editHeroDesc" class="admin-text-input">
+                    <label>Mensaje pedido:</label>
+                    <input type="text" id="editMensajePedido" class="admin-text-input">
+                    <label>Subtítulo combinaciones:</label>
+                    <input type="text" id="editSubtituloComb" class="admin-text-input">
+                    <label>Resumen título:</label>
+                    <input type="text" id="editResumenTitle" class="admin-text-input">
+                    <label>WhatsApp texto:</label>
+                    <input type="text" id="editWhatsAppText" class="admin-text-input" placeholder="PEDIR MIS DONAS YA">
+                    <label>Contacto título:</label>
+                    <input type="text" id="editContactoTitle" class="admin-text-input">
+                    <label>Contacto dirección:</label>
+                    <input type="text" id="editContactoDir" class="admin-text-input">
+                    <label>Contacto teléfono:</label>
+                    <input type="text" id="editContactoTel" class="admin-text-input">
+                    <label>Footer texto:</label>
+                    <input type="text" id="editFooterText" class="admin-text-input">
+                    <label>Footer subtítulo:</label>
+                    <input type="text" id="editFooterSub" class="admin-text-input">
+                    <label>Domicilio título:</label>
+                    <input type="text" id="editDomicilioLabel" class="admin-text-input">
+                    <label>Fecha título:</label>
+                    <input type="text" id="editFechaLabel" class="admin-text-input">
+                    <label>Envases título:</label>
+                    <input type="text" id="editEnvaseLabel" class="admin-text-input">
+                    <label>Cantidad título:</label>
+                    <input type="text" id="editCantidadLabel" class="admin-text-input">
+                </div>
+                <button id="saveTextsBtn" style="background:var(--whatsapp); color:white; border:none; border-radius:60px; padding:12px 30px; font-weight:700; cursor:pointer; width:100%;">💾 Guardar Textos</button>
+                <div id="adminTextosMsg"></div>
+            </div>
+
         </div>
-        <p style="text-align:center; margin-top:20px; color: var(--text-muted);">
-            📸 Próximamente más imágenes de nuestros productos. ¡Síguenos en redes para ver las novedades!
-        </p>
     </div>
 
-    <!-- ===== SECCIÓN "¿DÓNDE ESTAMOS?" ===== -->
-    <section id="contacto" class="contacto">
-        <h3>¿Dónde estamos?</h3>
-        <div class="btn-group">
-            <a href="https://maps.app.goo.gl/vv7e1GeMJzwBi1tN8?g_st=aw" target="_blank" class="btn-maps">
-                📍 Ver ubicación en Google Maps
-            </a>
-        </div>
-        <div class="datos">
-            <span>📍 Edificio 17 apto 10, Reparto Rajayoga</span>
-            <span>📞 +53 55123300</span>
-        </div>
-    </section>
+    <!-- ===== JAVASCRIPT COMPLETO ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <p>© 2026 · <strong>Minidonas Diane</strong> · Santiago de Cuba · Hecho con 🍩</p>
-        <p style="font-size:0.8rem; opacity:0.7;">Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora</p>
-    </footer>
+            // ============================================================
+            // 1. CONFIGURACIÓN
+            // ============================================================
+            const ADMIN_PASSWORD = 'admin123'; // ⚠️ CAMBIA ESTA CONTRASEÑA
+            const STORAGE_KEY = 'minidonas_data';
+            const GITHUB_CONFIG_KEY = 'minidonas_github_config';
 
-</div>
+            let isAdminLogged = false;
+            let appData = {};
 
-<!-- ===== JAVASCRIPT OPTIMIZADO ===== -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-
-        // ===== TABS =====
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                this.classList.add('active');
-                const tabId = this.dataset.tab;
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-
-        // ===== ELEMENTOS DEL RESUMEN =====
-        const saborSpan = document.getElementById('saborSeleccionado');
-        const coberturaSpan = document.getElementById('coberturaSeleccionado');
-        const agregosSpan = document.getElementById('agregosSeleccionados');
-        const temaSpan = document.getElementById('temaSeleccionado');
-        const domicilioSpan = document.getElementById('domicilioSeleccionado');
-        const direccionSpan = document.getElementById('direccionMostrada');
-        const fechaSpan = document.getElementById('fechaMostrada');
-        const envaseSpan = document.getElementById('envaseSeleccionado');
-        const cajaSpan = document.getElementById('cajaSeleccionado');
-        const cantidadSpan = document.getElementById('cantidadMostrada');
-
-        // ===== PREVISUALIZACIONES =====
-        const previewSabor = document.getElementById('previewSabor');
-        const previewCobertura = document.getElementById('previewCobertura');
-        const previewAgregos = document.getElementById('previewAgregos');
-        const previewTema = document.getElementById('previewTema');
-
-        // ===== CAMPOS CONDICIONALES =====
-        const campoDireccion = document.getElementById('campoDireccion');
-        const direccionInput = document.getElementById('direccionInput');
-        const campoCaja = document.getElementById('campoCaja');
-
-        // ===== INPUTS =====
-        const fechaInput = document.getElementById('fechaEntrega');
-        const cantidadInput = document.getElementById('cantidadInput');
-
-        // ===== ESTADO =====
-        let selectedSabor = 'Ninguno';
-        let selectedCobertura = 'Ninguno';
-        let selectedTema = 'Ninguno';
-        let selectedAgregos = [];
-        let selectedDomicilio = 'No';
-        let selectedEnvase = 'No';
-        let selectedCaja = '-';
-
-        // ===== MAPEO DE EMOJIS =====
-        const imagenes = {
-            'Vainilla': '🍦',
-            'Chocolate': '🍫',
-            'Mixtas': '🍩🍫',
-            'Chocolate oscuro': '🍫',
-            'Chocolate blanco': '🍫🤍',
-            'Chocolate blanco con color': '🍫🌈',
-            'Dulce de leche': '🍯',
-            'Grajeas': '🌈',
-            'Perlas comestibles': '⚪',
-            'Galleticas': '🍪',
-            'Sorbeto': '🧋',
-            'Botonetas': '🔵',
-            'Maní': '🥜',
-            'Coco': '🥥',
-            'Futbol': '⚽',
-            'Paw Patrol': '🐶',
-            'Dinosaurios': '🦕',
-            'Cumpleaños': '🎂',
-            'Navidad': '🎄',
-            'Lo que el cliente desee': '✨'
-        };
-
-        // ===== VALIDACIÓN DE CANTIDAD (mínimo 9) =====
-        function validarCantidad() {
-            let valor = parseInt(cantidadInput.value);
-            if (isNaN(valor) || valor < 9) {
-                alert('⚠️ El pedido mínimo es de 9 minidonas. Por favor, ajusta la cantidad.');
-                cantidadInput.value = 9;
-                cantidadSpan.textContent = '9';
-                return false;
-            }
-            cantidadSpan.textContent = valor;
-            return true;
-        }
-
-        cantidadInput.addEventListener('blur', validarCantidad);
-        cantidadInput.addEventListener('change', validarCantidad);
-
-        // ===== ACTUALIZAR UI =====
-        function actualizarTodo() {
-            saborSpan.textContent = selectedSabor;
-            coberturaSpan.textContent = selectedCobertura;
-            temaSpan.textContent = selectedTema;
-            agregosSpan.textContent = selectedAgregos.length === 0 ? 'Ninguno' : selectedAgregos.join(', ');
-            domicilioSpan.textContent = selectedDomicilio;
-            direccionSpan.textContent = (selectedDomicilio === 'Sí' && direccionInput.value.trim() !== '') ? direccionInput.value.trim() : '-';
-            envaseSpan.textContent = selectedEnvase;
-            cajaSpan.textContent = (selectedEnvase === 'Sí') ? selectedCaja : '-';
-            if (cantidadInput.value && parseInt(cantidadInput.value) >= 9) {
-                cantidadSpan.textContent = cantidadInput.value;
-            }
-
-            if (fechaInput.value) {
-                const fechaObj = new Date(fechaInput.value);
-                const opciones = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-                fechaSpan.textContent = fechaObj.toLocaleDateString('es-ES', opciones);
-            } else {
-                fechaSpan.textContent = '-';
-            }
-
-            previewSabor.innerHTML = `<span class="label">🖼️ Imagen del sabor</span><span class="imagen-item">${imagenes[selectedSabor] || '🍩'}</span>`;
-            previewCobertura.innerHTML = `<span class="label">🖼️ Imagen de la cobertura</span><span class="imagen-item">${imagenes[selectedCobertura] || '🍫'}</span>`;
-            
-            let agregosImagenes = selectedAgregos.map(a => imagenes[a] || '✨');
-            if (agregosImagenes.length === 0) agregosImagenes = ['✨'];
-            previewAgregos.innerHTML = `<span class="label">🖼️ Agregos seleccionados</span>` + 
-                agregosImagenes.map(img => `<span class="imagen-item">${img}</span>`).join('');
-
-            previewTema.innerHTML = `<span class="label">🖼️ Imagen del tema</span><span class="imagen-item">${imagenes[selectedTema] || '🎨'}</span>`;
-
-            if (selectedDomicilio === 'Sí') {
-                campoDireccion.classList.add('visible');
-            } else {
-                campoDireccion.classList.remove('visible');
-            }
-
-            if (selectedEnvase === 'Sí') {
-                campoCaja.classList.add('visible');
-            } else {
-                campoCaja.classList.remove('visible');
-                if (selectedCaja !== '-') {
-                    selectedCaja = '-';
-                    document.querySelectorAll('.caja-btn').forEach(b => b.classList.remove('active'));
+            // Datos por defecto
+            const DEFAULT_DATA = {
+                temas: [
+                    { id: 'Futbol', nombre: 'Futbol', emoji: '⚽', imagen: '' },
+                    { id: 'Paw Patrol', nombre: 'Paw Patrol', emoji: '🐶', imagen: '' },
+                    { id: 'Dinosaurios', nombre: 'Dinosaurios', emoji: '🦕', imagen: '' },
+                    { id: 'Cumpleaños', nombre: 'Cumpleaños', emoji: '🎂', imagen: '' },
+                    { id: 'Navidad', nombre: 'Navidad', emoji: '🎄', imagen: '' }
+                ],
+                sabores: ['Vainilla', 'Chocolate', 'Mixtas'],
+                coberturas: ['Chocolate oscuro', 'Chocolate blanco', 'Chocolate blanco con color', 'Dulce de leche'],
+                agregos: ['Grajeas', 'Perlas comestibles', 'Galleticas', 'Sorbeto', 'Botonetas', 'Maní', 'Coco'],
+                catalogo: [
+                    { nombre: 'Donut Glaseada', desc: 'Clásica con azúcar glas', emoji: '🍩', imagen: '' },
+                    { nombre: 'Donut Chocolate', desc: 'Cobertura de chocolate belga', emoji: '🍫', imagen: '' },
+                    { nombre: 'Donut Fresa', desc: 'Con crema y fresas naturales', emoji: '🍓', imagen: '' },
+                    { nombre: 'Donut Coco', desc: 'Coco tostado y leche condensada', emoji: '🥥', imagen: '' },
+                    { nombre: 'Donut Cumpleaños', desc: 'Con sprinkles y vela comestible', emoji: '🎂', imagen: '' },
+                    { nombre: 'Donut Futbol', desc: 'Temática para fanáticos del deporte', emoji: '⚽', imagen: '' },
+                    { nombre: 'Donut Paw Patrol', desc: 'Ideal para los más pequeños', emoji: '🐶', imagen: '' },
+                    { nombre: 'Donut Navidad', desc: 'Edición especial con motivos navideños', emoji: '🎄', imagen: '' }
+                ],
+                rrss: [
+                    { nombre: 'Instagram', icono: '📸', url: '#' },
+                    { nombre: 'Facebook', icono: '👍', url: '#' },
+                    { nombre: 'TikTok', icono: '🎵', url: '#' },
+                    { nombre: 'WhatsApp', icono: '💬', url: 'https://wa.me/5355123300' }
+                ],
+                testimonios: [
+                    { avatar: '👩', nombre: 'Mariana G.', estrellas: 5,
+                        texto: 'Las minidonas de Diane son las más esponjosas y deliciosas que he probado. El sabor a vainilla es increíble y la atención es excelente. ¡100% recomendadas!' },
+                    { avatar: '👨', nombre: 'Carlos R.', estrellas: 5,
+                        texto: 'Pedí una caja temática de cumpleaños para mi hijo y quedó fascinado. La decoración y el sabor son de primera.' },
+                    { avatar: '👩', nombre: 'Laura M.', estrellas: 5,
+                        texto: 'Siempre pido las de chocolate con coco, son mi debilidad. Además, el trato es súper cálido y se nota que usan ingredientes de calidad.' },
+                    { avatar: '👨', nombre: 'Jorge P.', estrellas: 4,
+                        texto: 'Excelente opción para regalar. Las minidonas son bonitas y ricas. La única pega es que se acaban muy rápido 😄.' }
+                ],
+                textos: {
+                    heroTitle: 'Minidonas',
+                    heroItalic: 'Diane',
+                    heroSlogan: 'El sabor que enamora',
+                    heroSubLema: '✨ Hechas con amor en Santiago de Cuba',
+                    heroDesc: 'La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.',
+                    mensajePedido: '📋 Elige tus opciones abajo y al tocar PEDIR MIS DONAS YA se enviará tu pedido por WhatsApp',
+                    subtituloComb: '✨ Infinitas Combinaciones ✨',
+                    resumenTitle: '📋 Tu selección',
+                    whatsappText: 'PEDIR MIS DONAS YA',
+                    contactoTitle: '¿Dónde estamos?',
+                    contactoDir: '📍 Edificio 17 apto 10, Reparto Rajayoga',
+                    contactoTel: '📞 +53 55123300',
+                    footerText: '© 2026 · Minidonas Diane · Santiago de Cuba · Hecho con 🍩',
+                    footerSub: 'Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora',
+                    domicilioLabel: 'Domicilio',
+                    fechaLabel: 'Lo quiero para el día',
+                    envaseLabel: 'Envases',
+                    cantidadLabel: 'Cantidad'
                 }
-            }
-        }
+            };
 
-        // ===== CONFIGURAR BOTONES DE SELECCIÓN ÚNICA =====
-        function setupUnico(selector, setter) {
-            document.querySelectorAll(selector).forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const grupo = this.parentElement.querySelectorAll(selector);
-                    grupo.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    const valor = this.dataset.sabor || this.dataset.cobertura || this.dataset.tema || this.dataset.domicilio || this.dataset.envase || this.dataset.caja;
-                    setter(valor);
-                    actualizarTodo();
-                });
-            });
-        }
-
-        setupUnico('.sabor-btn', (val) => { selectedSabor = val; });
-        setupUnico('.cobertura-btn', (val) => { selectedCobertura = val; });
-        setupUnico('.tema-btn', (val) => { selectedTema = val; });
-        setupUnico('.domicilio-btn', (val) => { selectedDomicilio = val; });
-        setupUnico('.envase-btn', (val) => { selectedEnvase = val; });
-        setupUnico('.caja-btn', (val) => { selectedCaja = val; });
-
-        // ===== CONFIGURAR AGREGOS (múltiple) =====
-        document.querySelectorAll('.agrego-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const valor = this.dataset.agrego;
-                this.classList.toggle('active');
-                if (this.classList.contains('active')) {
-                    if (!selectedAgregos.includes(valor)) selectedAgregos.push(valor);
+            // ============================================================
+            // 2. CARGAR / GUARDAR DATOS EN LOCALSTORAGE
+            // ============================================================
+            function loadData() {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    try {
+                        const parsed = JSON.parse(stored);
+                        appData = {
+                            temas: parsed.temas || DEFAULT_DATA.temas,
+                            sabores: parsed.sabores || DEFAULT_DATA.sabores,
+                            coberturas: parsed.coberturas || DEFAULT_DATA.coberturas,
+                            agregos: parsed.agregos || DEFAULT_DATA.agregos,
+                            catalogo: parsed.catalogo || DEFAULT_DATA.catalogo,
+                            rrss: parsed.rrss || DEFAULT_DATA.rrss,
+                            testimonios: parsed.testimonios || DEFAULT_DATA.testimonios,
+                            textos: parsed.textos || DEFAULT_DATA.textos
+                        };
+                    } catch (e) {
+                        appData = JSON.parse(JSON.stringify(DEFAULT_DATA));
+                    }
                 } else {
-                    const index = selectedAgregos.indexOf(valor);
-                    if (index !== -1) selectedAgregos.splice(index, 1);
+                    appData = JSON.parse(JSON.stringify(DEFAULT_DATA));
+                    saveData();
                 }
+                applyTexts();
+                renderAll();
+                loadGithubConfig();
+            }
+
+            function saveData() {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+            }
+
+            // ============================================================
+            // 3. CONFIGURACIÓN DE GITHUB
+            // ============================================================
+            function loadGithubConfig() {
+                const config = localStorage.getItem(GITHUB_CONFIG_KEY);
+                if (config) {
+                    try {
+                        const parsed = JSON.parse(config);
+                        document.getElementById('githubToken').value = parsed.token || '';
+                        document.getElementById('githubOwner').value = parsed.owner || '';
+                        document.getElementById('githubRepo').value = parsed.repo || '';
+                    } catch (e) { /* ignore */ }
+                }
+            }
+
+            function saveGithubConfig() {
+                const config = {
+                    token: document.getElementById('githubToken').value.trim(),
+                    owner: document.getElementById('githubOwner').value.trim(),
+                    repo: document.getElementById('githubRepo').value.trim()
+                };
+                localStorage.setItem(GITHUB_CONFIG_KEY, JSON.stringify(config));
+                showAdminMsg('adminGeneralMsg', '✅ Configuración de GitHub guardada.', 'success');
+            }
+
+            document.getElementById('saveGithubConfig').addEventListener('click', saveGithubConfig);
+
+            // ============================================================
+            // 4. APLICAR TEXTOS Y RENDERIZAR
+            // ============================================================
+            function applyTexts() {
+                const t = appData.textos || {};
+                document.getElementById('heroTitle').textContent = t.heroTitle || 'Minidonas';
+                document.getElementById('heroTitleSpan').textContent = t.heroItalic || 'Diane';
+                document.getElementById('heroHeadingSlogan').textContent = t.heroSlogan || 'El sabor que enamora';
+                document.getElementById('heroSubLema').textContent = t.heroSubLema ||
+                    '✨ Hechas con amor en Santiago de Cuba';
+                document.getElementById('heroDesc').textContent = t.heroDesc ||
+                    'La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.';
+                document.getElementById('mensajePedido').innerHTML = t.mensajePedido ||
+                    '📋 Elige tus opciones abajo y al tocar PEDIR MIS DONAS YA se enviará tu pedido por WhatsApp';
+                document.getElementById('subtituloCombinaciones').textContent = t.subtituloComb || '✨ Infinitas Combinaciones ✨';
+                document.getElementById('resumenTitle').textContent = t.resumenTitle || '📋 Tu selección';
+                document.getElementById('contactoTitle').textContent = t.contactoTitle || '¿Dónde estamos?';
+                document.getElementById('contactoDireccion').textContent = t.contactoDir ||
+                    '📍 Edificio 17 apto 10, Reparto Rajayoga';
+                document.getElementById('contactoTelefono').textContent = t.contactoTel || '📞 +53 55123300';
+                document.getElementById('footerText').innerHTML = t.footerText ||
+                    '© 2026 · <strong>Minidonas Diane</strong> · Santiago de Cuba · Hecho con 🍩';
+                document.getElementById('footerSub').textContent = t.footerSub ||
+                    'Pequeñas DONITAS, Grandes SONRISAS · El sabor que enamora';
+                document.getElementById('domicilioLabel').textContent = t.domicilioLabel || 'Domicilio';
+                document.getElementById('fechaLabel').textContent = t.fechaLabel || 'Lo quiero para el día';
+                document.getElementById('envaseLabel').textContent = t.envaseLabel || 'Envases';
+                document.getElementById('cantidadLabel').textContent = t.cantidadLabel || 'Cantidad';
+                const btnPedido = document.getElementById('btnPedidoResumen');
+                if (btnPedido && t.whatsappText) btnPedido.textContent = t.whatsappText;
+                const highlightCta = document.querySelector('.highlight-cta');
+                if (highlightCta && t.whatsappText) highlightCta.textContent = t.whatsappText;
+            }
+
+            function renderAll() {
+                renderSabores();
+                renderCoberturas();
+                renderAgregos();
+                renderTemas();
+                renderCatalogo();
+                renderRRSS();
+                renderTestimonios();
+                actualizarTodo();
+            }
+
+            function renderSabores() {
+                const container = document.getElementById('saboresContainer');
+                container.innerHTML = '';
+                appData.sabores.forEach(sabor => {
+                    const btn = document.createElement('button');
+                    btn.className = 'opcion-btn sabor-btn';
+                    btn.dataset.sabor = sabor;
+                    btn.setAttribute('aria-label', 'Seleccionar sabor ' + sabor);
+                    btn.textContent = '🍩 ' + sabor;
+                    container.appendChild(btn);
+                });
+            }
+
+            function renderCoberturas() {
+                const container = document.getElementById('coberturasContainer');
+                container.innerHTML = '';
+                appData.coberturas.forEach(cob => {
+                    const btn = document.createElement('button');
+                    btn.className = 'opcion-btn cobertura-btn';
+                    btn.dataset.cobertura = cob;
+                    btn.setAttribute('aria-label', 'Seleccionar cobertura ' + cob);
+                    btn.textContent = '🍫 ' + cob;
+                    container.appendChild(btn);
+                });
+            }
+
+            function renderAgregos() {
+                const container = document.getElementById('agregosContainer');
+                container.innerHTML = '';
+                appData.agregos.forEach(ag => {
+                    const btn = document.createElement('button');
+                    btn.className = 'opcion-btn agrego-btn';
+                    btn.dataset.agrego = ag;
+                    btn.setAttribute('aria-label', 'Seleccionar agrego ' + ag);
+                    btn.textContent = '✨ ' + ag;
+                    container.appendChild(btn);
+                });
+            }
+
+            function renderTemas() {
+                const container = document.getElementById('temasContainer');
+                container.innerHTML = '';
+                appData.temas.forEach(tema => {
+                    const btn = document.createElement('button');
+                    btn.className = 'opcion-btn tema-btn';
+                    btn.dataset.tema = tema.id;
+                    btn.setAttribute('aria-label', 'Seleccionar tema ' + tema.nombre);
+                    const icon = tema.imagen ? '🖼️' : (tema.emoji || '🎨');
+                    btn.textContent = icon + ' ' + tema.nombre;
+                    container.appendChild(btn);
+                });
+                const customBtn = document.createElement('button');
+                customBtn.className = 'opcion-btn tema-btn tema-custom-btn';
+                customBtn.dataset.tema = 'custom';
+                customBtn.setAttribute('aria-label', 'Escribe tu tema personalizado');
+                customBtn.textContent = '✏️ Escribe aquí tu Tema';
+                container.appendChild(customBtn);
+            }
+
+            function renderCatalogo() {
+                const container = document.getElementById('catalogoGrid');
+                container.innerHTML = '';
+                appData.catalogo.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'catalogo-item';
+                    const imgHtml = item.imagen ?
+                        `<img src="${item.imagen}" style="max-width:80px;max-height:80px;border-radius:50%;object-fit:cover;margin-bottom:8px;">` :
+                        `<span class="cat-img">${item.emoji || '🍩'}</span>`;
+                    div.innerHTML = `
+                        ${imgHtml}
+                        <div class="cat-nombre">${item.nombre}</div>
+                        <div class="cat-desc">${item.desc || ''}</div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            function renderRRSS() {
+                const container = document.getElementById('rrssGrid');
+                container.innerHTML = '';
+                appData.rrss.forEach(r => {
+                    const div = document.createElement('div');
+                    div.className = 'rrss-card';
+                    div.innerHTML = `
+                        <div class="rrss-icon">${r.icono || '📱'}</div>
+                        <h3>${r.nombre}</h3>
+                        <a href="${r.url || '#'}" target="_blank" class="rrss-link">Síguenos</a>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            function renderTestimonios() {
+                const container = document.getElementById('testimoniosGrid');
+                container.innerHTML = '';
+                appData.testimonios.forEach(t => {
+                    const div = document.createElement('div');
+                    div.className = 'testimonio-card';
+                    const estrellas = '⭐'.repeat(Math.min(t.estrellas || 0, 5)) + '☆'.repeat(Math.max(0, 5 - (t
+                    .estrellas || 0)));
+                    div.innerHTML = `
+                        <span class="test-avatar">${t.avatar || '👤'}</span>
+                        <div class="test-header">
+                            <div class="test-nombre">${t.nombre || 'Anónimo'}</div>
+                            <div class="test-estrellas">${estrellas}</div>
+                        </div>
+                        <div class="test-texto">${t.texto || ''}</div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            // ============================================================
+            // 5. LÓGICA DE SELECCIÓN Y RESUMEN
+            // ============================================================
+            let selectedSabor = 'Ninguno';
+            let selectedCobertura = 'Ninguno';
+            let selectedTema = 'Ninguno';
+            let selectedAgregos = [];
+            let selectedDomicilio = 'No';
+            let selectedEnvase = 'No';
+            let selectedCaja = '-';
+
+            const saborSpan = document.getElementById('saborSeleccionado');
+            const coberturaSpan = document.getElementById('coberturaSeleccionado');
+            const agregosSpan = document.getElementById('agregosSeleccionados');
+            const temaSpan = document.getElementById('temaSeleccionado');
+            const domicilioSpan = document.getElementById('domicilioSeleccionado');
+            const direccionSpan = document.getElementById('direccionMostrada');
+            const fechaSpan = document.getElementById('fechaMostrada');
+            const envaseSpan = document.getElementById('envaseSeleccionado');
+            const cajaSpan = document.getElementById('cajaSeleccionado');
+            const cantidadSpan = document.getElementById('cantidadMostrada');
+
+            const previewSabor = document.getElementById('previewSabor');
+            const previewCobertura = document.getElementById('previewCobertura');
+            const previewAgregos = document.getElementById('previewAgregos');
+            const previewTema = document.getElementById('previewTema');
+
+            const campoDireccion = document.getElementById('campoDireccion');
+            const direccionInput = document.getElementById('direccionInput');
+            const campoCaja = document.getElementById('campoCaja');
+            const campoTemaCustom = document.getElementById('campoTemaPersonalizado');
+            const temaCustomInput = document.getElementById('temaPersonalizadoInput');
+            const fechaInput = document.getElementById('fechaEntrega');
+            const cantidadInput = document.getElementById('cantidadInput');
+
+            function validarCantidad() {
+                let valor = parseInt(cantidadInput.value);
+                if (isNaN(valor) || valor < 9) {
+                    alert('⚠️ El pedido mínimo es de 9 minidonas. Por favor, ajusta la cantidad.');
+                    cantidadInput.value = 9;
+                    cantidadSpan.textContent = '9';
+                    return false;
+                }
+                cantidadSpan.textContent = valor;
+                return true;
+            }
+
+            cantidadInput.addEventListener('blur', validarCantidad);
+            cantidadInput.addEventListener('change', validarCantidad);
+
+            function actualizarTodo() {
+                saborSpan.textContent = selectedSabor;
+                coberturaSpan.textContent = selectedCobertura;
+                temaSpan.textContent = selectedTema;
+                agregosSpan.textContent = selectedAgregos.length === 0 ? 'Ninguno' : selectedAgregos.join(', ');
+                domicilioSpan.textContent = selectedDomicilio;
+                direccionSpan.textContent = (selectedDomicilio === 'Sí' && direccionInput.value.trim() !== '') ? direccionInput
+                    .value.trim() : '-';
+                envaseSpan.textContent = selectedEnvase;
+                cajaSpan.textContent = (selectedEnvase === 'Sí') ? selectedCaja : '-';
+                if (cantidadInput.value && parseInt(cantidadInput.value) >= 9) {
+                    cantidadSpan.textContent = cantidadInput.value;
+                }
+                if (fechaInput.value) {
+                    const fechaObj = new Date(fechaInput.value);
+                    const opciones = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                    fechaSpan.textContent = fechaObj.toLocaleDateString('es-ES', opciones);
+                } else {
+                    fechaSpan.textContent = '-';
+                }
+
+                previewSabor.innerHTML =
+                    `<span class="label">🖼️ Imagen del sabor</span><span class="imagen-item">${selectedSabor !== 'Ninguno' ? '🍩' : '🍩'}</span>`;
+                previewCobertura.innerHTML =
+                    `<span class="label">🖼️ Imagen de la cobertura</span><span class="imagen-item">${selectedCobertura !== 'Ninguno' ? '🍫' : '🍫'}</span>`;
+                let agregosImagenes = selectedAgregos.length ? selectedAgregos.map(() => '✨') : ['✨'];
+                previewAgregos.innerHTML = `<span class="label">🖼️ Agregos seleccionados</span>` +
+                    agregosImagenes.map(img => `<span class="imagen-item">${img}</span>`).join('');
+
+                let temaEncontrado = appData.temas.find(t => t.id === selectedTema || t.nombre === selectedTema);
+                if (temaEncontrado && temaEncontrado.imagen) {
+                    previewTema.innerHTML = `
+                        <span class="label">🖼️ Imagen del tema</span>
+                        <span class="imagen-item">
+                            <img src="${temaEncontrado.imagen}" alt="${temaEncontrado.nombre}" style="max-width:100px;max-height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--primary-soft);box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+                        </span>
+                    `;
+                } else if (selectedTema === 'custom') {
+                    previewTema.innerHTML = `<span class="label">🖼️ Imagen del tema</span><span class="imagen-item">✏️</span>`;
+                } else {
+                    let temaEmoji = temaEncontrado ? (temaEncontrado.emoji || '🎨') : '🎨';
+                    previewTema.innerHTML =
+                        `<span class="label">🖼️ Imagen del tema</span><span class="imagen-item">${temaEmoji}</span>`;
+                }
+
+                if (selectedDomicilio === 'Sí') campoDireccion.classList.add('visible');
+                else campoDireccion.classList.remove('visible');
+                if (selectedEnvase === 'Sí') campoCaja.classList.add('visible');
+                else {
+                    campoCaja.classList.remove('visible');
+                    if (selectedCaja !== '-') {
+                        selectedCaja = '-';
+                        document.querySelectorAll('.caja-btn').forEach(b => b.classList.remove('active'));
+                    }
+                }
+            }
+
+            // Eventos de selección
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('sabor-btn')) {
+                    document.querySelectorAll('.sabor-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedSabor = e.target.dataset.sabor;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('cobertura-btn')) {
+                    document.querySelectorAll('.cobertura-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedCobertura = e.target.dataset.cobertura;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('domicilio-btn')) {
+                    document.querySelectorAll('.domicilio-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedDomicilio = e.target.dataset.domicilio;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('envase-btn')) {
+                    document.querySelectorAll('.envase-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedEnvase = e.target.dataset.envase;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('caja-btn')) {
+                    document.querySelectorAll('.caja-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    selectedCaja = e.target.dataset.caja;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('tema-btn') && !e.target.classList.contains('tema-custom-btn')) {
+                    document.querySelectorAll('.tema-btn:not(.tema-custom-btn)').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    campoTemaCustom.classList.remove('visible');
+                    document.querySelector('.tema-custom-btn')?.classList.remove('active');
+                    temaCustomInput.value = '';
+                    selectedTema = e.target.dataset.tema;
+                    actualizarTodo();
+                }
+                if (e.target.classList.contains('tema-custom-btn')) {
+                    document.querySelectorAll('.tema-btn:not(.tema-custom-btn)').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    campoTemaCustom.classList.add('visible');
+                    if (temaCustomInput.value.trim() === '') selectedTema = 'Escribe tu tema...';
+                    else selectedTema = temaCustomInput.value.trim();
+                    actualizarTodo();
+                    setTimeout(() => temaCustomInput.focus(), 100);
+                }
+                if (e.target.classList.contains('agrego-btn')) {
+                    const valor = e.target.dataset.agrego;
+                    e.target.classList.toggle('active');
+                    if (e.target.classList.contains('active')) {
+                        if (!selectedAgregos.includes(valor)) selectedAgregos.push(valor);
+                    } else {
+                        selectedAgregos = selectedAgregos.filter(x => x !== valor);
+                    }
+                    actualizarTodo();
+                }
+            });
+
+            direccionInput.addEventListener('input', actualizarTodo);
+            fechaInput.addEventListener('change', actualizarTodo);
+            cantidadInput.addEventListener('input', function() {
+                const valor = parseInt(this.value);
+                if (isNaN(valor) || valor < 9) return;
+                cantidadSpan.textContent = valor;
                 actualizarTodo();
             });
-        });
+            temaCustomInput.addEventListener('input', function() {
+                if (this.value.trim() === '') selectedTema = 'Escribe tu tema...';
+                else selectedTema = this.value.trim();
+                actualizarTodo();
+            });
 
-        // ===== EVENTOS PARA INPUTS =====
-        direccionInput.addEventListener('input', actualizarTodo);
-        fechaInput.addEventListener('change', actualizarTodo);
-        cantidadInput.addEventListener('input', function() {
-            const valor = parseInt(this.value);
-            if (isNaN(valor) || valor < 9) {
-                return;
+            // Botón pedido
+            const btnPedido = document.getElementById('btnPedidoResumen');
+            const textoOriginal = btnPedido.textContent;
+            btnPedido.addEventListener('click', function() {
+                if (!validarCantidad()) return;
+                this.textContent = '⏳ Abriendo WhatsApp...';
+                this.disabled = true;
+                const sabor = selectedSabor !== 'Ninguno' ? selectedSabor : '';
+                const cobertura = selectedCobertura !== 'Ninguno' ? selectedCobertura : '';
+                const agregos = selectedAgregos.length > 0 ? selectedAgregos.join(', ') : '';
+                const tema = selectedTema !== 'Ninguno' ? selectedTema : '';
+                const domicilio = selectedDomicilio;
+                const direccion = (domicilio === 'Sí' && direccionInput.value.trim() !== '') ? direccionInput.value.trim() :
+                    '';
+                const fecha = fechaSpan.textContent !== '-' ? fechaSpan.textContent : '';
+                const envase = selectedEnvase;
+                const caja = (envase === 'Sí') ? selectedCaja : '';
+                const cantidad = cantidadInput.value || '9';
+                let mensaje =
+                    'Hola Minidonas Diane! Te encontré por tu pagina web y quiero hacer un pedido de minidonas con:\n';
+                mensaje += `Sabor: ${sabor}\n`;
+                mensaje += `Cobertura: ${cobertura}\n`;
+                mensaje += `Agregos: ${agregos}\n`;
+                mensaje += `Tema: ${tema}\n`;
+                mensaje += `Cantidad: ${cantidad}\n`;
+                mensaje += `Envases: ${envase}\n`;
+                if (envase === 'Sí') mensaje += `Caja personalizada: ${caja}\n`;
+                mensaje += `Lo quiero para el día: ${fecha}\n`;
+                mensaje += `Domicilio: ${domicilio}\n`;
+                if (domicilio === 'Sí' && direccion) mensaje += `Dirección: ${direccion}\n`;
+                const url = `https://wa.me/5355123300?text=${encodeURIComponent(mensaje)}`;
+                window.open(url, '_blank');
+                setTimeout(() => {
+                    this.textContent = textoOriginal;
+                    this.disabled = false;
+                }, 3000);
+            });
+
+            // ============================================================
+            // 6. PANEL DE ADMINISTRACIÓN
+            // ============================================================
+            document.getElementById('adminToggle').addEventListener('click', function() {
+                if (isAdminLogged) {
+                    document.getElementById('adminPanel').classList.add('open');
+                } else {
+                    document.getElementById('loginModal').classList.add('open');
+                    document.getElementById('adminPassword').focus();
+                }
+            });
+
+            document.getElementById('loginBtn').addEventListener('click', function() {
+                const pass = document.getElementById('adminPassword').value;
+                if (pass === ADMIN_PASSWORD) {
+                    isAdminLogged = true;
+                    document.getElementById('loginModal').classList.remove('open');
+                    document.getElementById('adminPanel').classList.add('open');
+                    document.getElementById('adminPassword').value = '';
+                    document.getElementById('loginError').style.display = 'none';
+                    renderAdminTemas();
+                    renderAdminSabores();
+                    renderAdminCoberturas();
+                    renderAdminAgregos();
+                    renderAdminCatalogo();
+                    renderAdminRRSS();
+                    renderAdminTestimonios();
+                    renderAdminTextos();
+                    // Cargar configuración de GitHub en el panel
+                    loadGithubConfig();
+                } else {
+                    document.getElementById('loginError').style.display = 'block';
+                    document.getElementById('adminPassword').value = '';
+                    document.getElementById('adminPassword').focus();
+                }
+            });
+
+            document.getElementById('closeAdminPanel').addEventListener('click', function() {
+                document.getElementById('adminPanel').classList.remove('open');
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.getElementById('adminPanel').classList.remove('open');
+                    document.getElementById('loginModal').classList.remove('open');
+                }
+            });
+
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active'));
+                    document.getElementById(this.dataset.adminTab).classList.add('active');
+                });
+            });
+
+            // ============================================================
+            // 7. FUNCIONES RENDER ADMIN (Temas, Sabores, etc.)
+            // ============================================================
+            function renderAdminTemas() {
+                const list = document.getElementById('adminTemasList');
+                list.innerHTML = '';
+                appData.temas.forEach((tema, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    const preview = tema.imagen ?
+                        `<img src="${tema.imagen}" class="admin-image-preview" alt="${tema.nombre}">` :
+                        `<span style="font-size:2rem;">${tema.emoji || '🎨'}</span>`;
+                    div.innerHTML = `
+                        <span class="item-name">${tema.nombre}</span>
+                        ${preview}
+                        <input type="text" id="temaImgInput_${index}" placeholder="URL imagen" value="${tema.imagen || ''}">
+                        <input type="file" id="temaFileInput_${index}" accept="image/*" style="flex:1;min-width:120px;">
+                        <button class="btn-save-tema" data-index="${index}">Guardar</button>
+                        <button class="btn-danger btn-delete-tema" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+                    div.querySelector('.btn-save-tema').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        const urlInput = document.getElementById('temaImgInput_' + idx);
+                        const fileInput = document.getElementById('temaFileInput_' + idx);
+                        if (fileInput.files && fileInput.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                appData.temas[idx].imagen = e.target.result;
+                                saveData();
+                                renderAdminTemas();
+                                renderTemas();
+                                showAdminMsg('adminTemasMsg', '✅ Imagen actualizada.', 'success');
+                            };
+                            reader.readAsDataURL(fileInput.files[0]);
+                        } else if (urlInput.value.trim() !== '') {
+                            appData.temas[idx].imagen = urlInput.value.trim();
+                            saveData();
+                            renderAdminTemas();
+                            renderTemas();
+                            showAdminMsg('adminTemasMsg', '✅ Imagen actualizada.', 'success');
+                        } else {
+                            showAdminMsg('adminTemasMsg', '⚠️ Selecciona un archivo o pega una URL.', 'error');
+                        }
+                    });
+                    div.querySelector('.btn-delete-tema').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el tema "' + appData.temas[idx].nombre + '"?')) {
+                            appData.temas.splice(idx, 1);
+                            saveData();
+                            renderAdminTemas();
+                            renderTemas();
+                            showAdminMsg('adminTemasMsg', '🗑️ Tema eliminado.', 'success');
+                        }
+                    });
+                });
             }
-            cantidadSpan.textContent = valor;
-            actualizarTodo();
-        });
 
-        // ===== BOTÓN "PEDIR MIS DONAS YA" =====
-        const btnPedido = document.getElementById('btnPedidoResumen');
-        const textoOriginal = btnPedido.textContent;
-
-        btnPedido.addEventListener('click', function() {
-            if (!validarCantidad()) {
-                return;
+            function renderAdminSabores() {
+                const list = document.getElementById('adminSaboresList');
+                list.innerHTML = '';
+                appData.sabores.forEach((sabor, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name">${sabor}</span>
+                        <button class="btn-danger btn-delete-sabor" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+                    div.querySelector('.btn-delete-sabor').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el sabor "' + appData.sabores[idx] + '"?')) {
+                            appData.sabores.splice(idx, 1);
+                            saveData();
+                            renderAdminSabores();
+                            renderSabores();
+                            showAdminMsg('adminSaboresMsg', '🗑️ Sabor eliminado.', 'success');
+                        }
+                    });
+                });
             }
 
-            this.textContent = '⏳ Abriendo WhatsApp...';
-            this.disabled = true;
+            function renderAdminCoberturas() {
+                const list = document.getElementById('adminCoberturasList');
+                list.innerHTML = '';
+                appData.coberturas.forEach((cob, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name">${cob}</span>
+                        <button class="btn-danger btn-delete-cobertura" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+                    div.querySelector('.btn-delete-cobertura').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar la cobertura "' + appData.coberturas[idx] + '"?')) {
+                            appData.coberturas.splice(idx, 1);
+                            saveData();
+                            renderAdminCoberturas();
+                            renderCoberturas();
+                            showAdminMsg('adminCoberturasMsg', '🗑️ Cobertura eliminada.', 'success');
+                        }
+                    });
+                });
+            }
 
-            const sabor = selectedSabor !== 'Ninguno' ? selectedSabor : '';
-            const cobertura = selectedCobertura !== 'Ninguno' ? selectedCobertura : '';
-            const agregos = selectedAgregos.length > 0 ? selectedAgregos.join(', ') : '';
-            const tema = selectedTema !== 'Ninguno' ? selectedTema : '';
-            const domicilio = selectedDomicilio;
-            const direccion = (domicilio === 'Sí' && direccionInput.value.trim() !== '') ? direccionInput.value.trim() : '';
-            const fecha = fechaSpan.textContent !== '-' ? fechaSpan.textContent : '';
-            const envase = selectedEnvase;
-            const caja = (envase === 'Sí') ? selectedCaja : '';
-            const cantidad = cantidadInput.value || '9';
+            function renderAdminAgregos() {
+                const list = document.getElementById('adminAgregosList');
+                list.innerHTML = '';
+                appData.agregos.forEach((ag, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name">${ag}</span>
+                        <button class="btn-danger btn-delete-agrego" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+                    div.querySelector('.btn-delete-agrego').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el agrego "' + appData.agregos[idx] + '"?')) {
+                            appData.agregos.splice(idx, 1);
+                            saveData();
+                            renderAdminAgregos();
+                            renderAgregos();
+                            showAdminMsg('adminAgregosMsg', '🗑️ Agrego eliminado.', 'success');
+                        }
+                    });
+                });
+            }
 
-            // ===== NUEVO MENSAJE SIN ASTERISCOS =====
-            let mensaje = 'Hola Minidonas Diane! Te encontré por tu pagina web y quiero hacer un pedido de minidonas con:\n';
-            mensaje += `Sabor: ${sabor}\n`;
-            mensaje += `Cobertura: ${cobertura}\n`;
-            mensaje += `Agregos: ${agregos}\n`;
-            mensaje += `Tema: ${tema}\n`;
-            mensaje += `Cantidad: ${cantidad}\n`;
-            mensaje += `Envases: ${envase}\n`;
-            if (envase === 'Sí') mensaje += `Caja personalizada: ${caja}\n`;
-            mensaje += `Lo quiero para el día: ${fecha}\n`;
-            mensaje += `Domicilio: ${domicilio}\n`;
-            if (domicilio === 'Sí' && direccion) mensaje += `Dirección: ${direccion}\n`;
+            function renderAdminCatalogo() {
+                const list = document.getElementById('adminCatalogoList');
+                list.innerHTML = '';
+                appData.catalogo.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    const preview = item.imagen ?
+                        `<img src="${item.imagen}" class="admin-image-preview" alt="${item.nombre}">` :
+                        `<span style="font-size:2rem;">${item.emoji || '🍩'}</span>`;
+                    div.innerHTML = `
+                        <span class="item-name">${item.nombre}</span>
+                        ${preview}
+                        <input type="text" id="catImgInput_${index}" placeholder="URL imagen" value="${item.imagen || ''}">
+                        <input type="file" id="catFileInput_${index}" accept="image/*" style="flex:1;min-width:120px;">
+                        <button class="btn-save-cat" data-index="${index}">Guardar</button>
+                        <button class="btn-danger btn-delete-cat" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+                    div.querySelector('.btn-save-cat').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        const urlInput = document.getElementById('catImgInput_' + idx);
+                        const fileInput = document.getElementById('catFileInput_' + idx);
+                        if (fileInput.files && fileInput.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                appData.catalogo[idx].imagen = e.target.result;
+                                saveData();
+                                renderAdminCatalogo();
+                                renderCatalogo();
+                                showAdminMsg('adminCatalogoMsg', '✅ Imagen actualizada.', 'success');
+                            };
+                            reader.readAsDataURL(fileInput.files[0]);
+                        } else if (urlInput.value.trim() !== '') {
+                            appData.catalogo[idx].imagen = urlInput.value.trim();
+                            saveData();
+                            renderAdminCatalogo();
+                            renderCatalogo();
+                            showAdminMsg('adminCatalogoMsg', '✅ Imagen actualizada.', 'success');
+                        } else {
+                            showAdminMsg('adminCatalogoMsg', '⚠️ Selecciona un archivo o pega una URL.', 'error');
+                        }
+                    });
+                    div.querySelector('.btn-delete-cat').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el producto "' + appData.catalogo[idx].nombre + '"?')) {
+                            appData.catalogo.splice(idx, 1);
+                            saveData();
+                            renderAdminCatalogo();
+                            renderCatalogo();
+                            showAdminMsg('adminCatalogoMsg', '🗑️ Producto eliminado.', 'success');
+                        }
+                    });
+                });
+            }
 
-            const url = `https://wa.me/5355123300?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
+            function renderAdminRRSS() {
+                const list = document.getElementById('adminRrssList');
+                list.innerHTML = '';
+                appData.rrss.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name">${item.icono || '📱'} ${item.nombre}</span>
+                        <input type="text" id="rrssUrlInput_${index}" placeholder="URL" value="${item.url || ''}" style="flex:2;">
+                        <button class="btn-save-rrss" data-index="${index}">Guardar</button>
+                        <button class="btn-danger btn-delete-rrss" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+                    div.querySelector('.btn-save-rrss').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        const urlInput = document.getElementById('rrssUrlInput_' + idx);
+                        appData.rrss[idx].url = urlInput.value.trim();
+                        saveData();
+                        renderAdminRRSS();
+                        renderRRSS();
+                        showAdminMsg('adminRrssMsg', '✅ URL actualizada.', 'success');
+                    });
+                    div.querySelector('.btn-delete-rrss').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar la red social "' + appData.rrss[idx].nombre + '"?')) {
+                            appData.rrss.splice(idx, 1);
+                            saveData();
+                            renderAdminRRSS();
+                            renderRRSS();
+                            showAdminMsg('adminRrssMsg', '🗑️ Red social eliminada.', 'success');
+                        }
+                    });
+                });
+            }
 
-            setTimeout(() => {
-                this.textContent = textoOriginal;
-                this.disabled = false;
-            }, 3000);
+            function renderAdminTestimonios() {
+                const list = document.getElementById('adminTestimoniosList');
+                list.innerHTML = '';
+                appData.testimonios.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'admin-item';
+                    div.innerHTML = `
+                        <span class="item-name">${item.avatar || '👤'} ${item.nombre}</span>
+                        <input type="text" id="testTextoInput_${index}" placeholder="Texto" value="${item.texto || ''}" style="flex:3;">
+                        <button class="btn-save-test" data-index="${index}">Guardar</button>
+                        <button class="btn-danger btn-delete-test" data-index="${index}">Eliminar</button>
+                    `;
+                    list.appendChild(div);
+                    div.querySelector('.btn-save-test').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        const textInput = document.getElementById('testTextoInput_' + idx);
+                        appData.testimonios[idx].texto = textInput.value.trim();
+                        saveData();
+                        renderAdminTestimonios();
+                        renderTestimonios();
+                        showAdminMsg('adminTestimoniosMsg', '✅ Testimonio actualizado.', 'success');
+                    });
+                    div.querySelector('.btn-delete-test').addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm('¿Eliminar el testimonio de "' + appData.testimonios[idx].nombre + '"?')) {
+                            appData.testimonios.splice(idx, 1);
+                            saveData();
+                            renderAdminTestimonios();
+                            renderTestimonios();
+                            showAdminMsg('adminTestimoniosMsg', '🗑️ Testimonio eliminado.', 'success');
+                        }
+                    });
+                });
+            }
+
+            function renderAdminTextos() {
+                const t = appData.textos || {};
+                document.getElementById('editHeroTitle').value = t.heroTitle || '';
+                document.getElementById('editHeroItalic').value = t.heroItalic || '';
+                document.getElementById('editHeroSlogan').value = t.heroSlogan || '';
+                document.getElementById('editHeroSubLema').value = t.heroSubLema || '';
+                document.getElementById('editHeroDesc').value = t.heroDesc || '';
+                document.getElementById('editMensajePedido').value = t.mensajePedido || '';
+                document.getElementById('editSubtituloComb').value = t.subtituloComb || '';
+                document.getElementById('editResumenTitle').value = t.resumenTitle || '';
+                document.getElementById('editWhatsAppText').value = t.whatsappText || 'PEDIR MIS DONAS YA';
+                document.getElementById('editContactoTitle').value = t.contactoTitle || '';
+                document.getElementById('editContactoDir').value = t.contactoDir || '';
+                document.getElementById('editContactoTel').value = t.contactoTel || '';
+                document.getElementById('editFooterText').value = t.footerText || '';
+                document.getElementById('editFooterSub').value = t.footerSub || '';
+                document.getElementById('editDomicilioLabel').value = t.domicilioLabel || '';
+                document.getElementById('editFechaLabel').value = t.fechaLabel || '';
+                document.getElementById('editEnvaseLabel').value = t.envaseLabel || '';
+                document.getElementById('editCantidadLabel').value = t.cantidadLabel || '';
+            }
+
+            document.getElementById('saveTextsBtn').addEventListener('click', function() {
+                const textos = {
+                    heroTitle: document.getElementById('editHeroTitle').value,
+                    heroItalic: document.getElementById('editHeroItalic').value,
+                    heroSlogan: document.getElementById('editHeroSlogan').value,
+                    heroSubLema: document.getElementById('editHeroSubLema').value,
+                    heroDesc: document.getElementById('editHeroDesc').value,
+                    mensajePedido: document.getElementById('editMensajePedido').value,
+                    subtituloComb: document.getElementById('editSubtituloComb').value,
+                    resumenTitle: document.getElementById('editResumenTitle').value,
+                    whatsappText: document.getElementById('editWhatsAppText').value,
+                    contactoTitle: document.getElementById('editContactoTitle').value,
+                    contactoDir: document.getElementById('editContactoDir').value,
+                    contactoTel: document.getElementById('editContactoTel').value,
+                    footerText: document.getElementById('editFooterText').value,
+                    footerSub: document.getElementById('editFooterSub').value,
+                    domicilioLabel: document.getElementById('editDomicilioLabel').value,
+                    fechaLabel: document.getElementById('editFechaLabel').value,
+                    envaseLabel: document.getElementById('editEnvaseLabel').value,
+                    cantidadLabel: document.getElementById('editCantidadLabel').value
+                };
+                appData.textos = textos;
+                saveData();
+                applyTexts();
+                showAdminMsg('adminTextosMsg', '✅ Textos guardados correctamente.', 'success');
+            });
+
+            // ============================================================
+            // 8. AGREGAR NUEVOS ELEMENTOS DESDE EL PANEL
+            // ============================================================
+            document.getElementById('addTemaBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newTemaName').value.trim();
+                const emoji = document.getElementById('newTemaEmoji').value.trim() || '🎨';
+                const fileInput = document.getElementById('newTemaImage');
+                if (!nombre) return showAdminMsg('adminTemasMsg', '⚠️ Escribe un nombre.', 'error');
+                if (appData.temas.some(t => t.nombre.toLowerCase() === nombre.toLowerCase()))
+                    return showAdminMsg('adminTemasMsg', '⚠️ Ya existe.', 'error');
+                const newTema = { id: nombre, nombre, emoji, imagen: '' };
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        newTema.imagen = e.target.result;
+                        appData.temas.push(newTema);
+                        saveData();
+                        renderAdminTemas();
+                        renderTemas();
+                        document.getElementById('newTemaName').value = '';
+                        document.getElementById('newTemaEmoji').value = '';
+                        document.getElementById('newTemaImage').value = '';
+                        showAdminMsg('adminTemasMsg', '✅ Tema agregado.', 'success');
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    appData.temas.push(newTema);
+                    saveData();
+                    renderAdminTemas();
+                    renderTemas();
+                    document.getElementById('newTemaName').value = '';
+                    document.getElementById('newTemaEmoji').value = '';
+                    showAdminMsg('adminTemasMsg', '✅ Tema agregado.', 'success');
+                }
+            });
+
+            document.getElementById('addSaborBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newSaborName').value.trim();
+                if (!nombre) return showAdminMsg('adminSaboresMsg', '⚠️ Escribe un nombre.', 'error');
+                if (appData.sabores.includes(nombre)) return showAdminMsg('adminSaboresMsg', '⚠️ Ya existe.', 'error');
+                appData.sabores.push(nombre);
+                saveData();
+                renderAdminSabores();
+                renderSabores();
+                document.getElementById('newSaborName').value = '';
+                showAdminMsg('adminSaboresMsg', '✅ Sabor agregado.', 'success');
+            });
+
+            document.getElementById('addCoberturaBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newCoberturaName').value.trim();
+                if (!nombre) return showAdminMsg('adminCoberturasMsg', '⚠️ Escribe un nombre.', 'error');
+                if (appData.coberturas.includes(nombre)) return showAdminMsg('adminCoberturasMsg', '⚠️ Ya existe.', 'error');
+                appData.coberturas.push(nombre);
+                saveData();
+                renderAdminCoberturas();
+                renderCoberturas();
+                document.getElementById('newCoberturaName').value = '';
+                showAdminMsg('adminCoberturasMsg', '✅ Cobertura agregada.', 'success');
+            });
+
+            document.getElementById('addAgregoBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newAgregoName').value.trim();
+                if (!nombre) return showAdminMsg('adminAgregosMsg', '⚠️ Escribe un nombre.', 'error');
+                if (appData.agregos.includes(nombre)) return showAdminMsg('adminAgregosMsg', '⚠️ Ya existe.', 'error');
+                appData.agregos.push(nombre);
+                saveData();
+                renderAdminAgregos();
+                renderAgregos();
+                document.getElementById('newAgregoName').value = '';
+                showAdminMsg('adminAgregosMsg', '✅ Agrego agregado.', 'success');
+            });
+
+            document.getElementById('addCatalogoBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newCatalogoNombre').value.trim();
+                const desc = document.getElementById('newCatalogoDesc').value.trim();
+                const emoji = document.getElementById('newCatalogoEmoji').value.trim() || '🍩';
+                const fileInput = document.getElementById('newCatalogoImage');
+                if (!nombre) return showAdminMsg('adminCatalogoMsg', '⚠️ Escribe un nombre.', 'error');
+                const newItem = { nombre, desc, emoji, imagen: '' };
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        newItem.imagen = e.target.result;
+                        appData.catalogo.push(newItem);
+                        saveData();
+                        renderAdminCatalogo();
+                        renderCatalogo();
+                        document.getElementById('newCatalogoNombre').value = '';
+                        document.getElementById('newCatalogoDesc').value = '';
+                        document.getElementById('newCatalogoEmoji').value = '';
+                        document.getElementById('newCatalogoImage').value = '';
+                        showAdminMsg('adminCatalogoMsg', '✅ Producto agregado.', 'success');
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    appData.catalogo.push(newItem);
+                    saveData();
+                    renderAdminCatalogo();
+                    renderCatalogo();
+                    document.getElementById('newCatalogoNombre').value = '';
+                    document.getElementById('newCatalogoDesc').value = '';
+                    document.getElementById('newCatalogoEmoji').value = '';
+                    showAdminMsg('adminCatalogoMsg', '✅ Producto agregado.', 'success');
+                }
+            });
+
+            document.getElementById('addRrssBtn').addEventListener('click', function() {
+                const nombre = document.getElementById('newRrssNombre').value.trim();
+                const icono = document.getElementById('newRrssIcono').value.trim() || '📱';
+                const url = document.getElementById('newRrssUrl').value.trim();
+                if (!nombre) return showAdminMsg('adminRrssMsg', '⚠️ Escribe un nombre.', 'error');
+                appData.rrss.push({ nombre, icono, url });
+                saveData();
+                renderAdminRRSS();
+                renderRRSS();
+                document.getElementById('newRrssNombre').value = '';
+                document.getElementById('newRrssIcono').value = '';
+                document.getElementById('newRrssUrl').value = '';
+                showAdminMsg('adminRrssMsg', '✅ Red social agregada.', 'success');
+            });
+
+            document.getElementById('addTestimonioBtn').addEventListener('click', function() {
+                const avatar = document.getElementById('newTestAvatar').value.trim() || '👤';
+                const nombre = document.getElementById('newTestNombre').value.trim();
+                const estrellas = parseInt(document.getElementById('newTestEstrellas').value) || 5;
+                const texto = document.getElementById('newTestTexto').value.trim();
+                if (!nombre || !texto) return showAdminMsg('adminTestimoniosMsg', '⚠️ Completa nombre y texto.', 'error');
+                appData.testimonios.push({ avatar, nombre, estrellas, texto });
+                saveData();
+                renderAdminTestimonios();
+                renderTestimonios();
+                document.getElementById('newTestAvatar').value = '';
+                document.getElementById('newTestNombre').value = '';
+                document.getElementById('newTestEstrellas').value = '';
+                document.getElementById('newTestTexto').value = '';
+                showAdminMsg('adminTestimoniosMsg', '✅ Testimonio agregado.', 'success');
+            });
+
+            function showAdminMsg(containerId, msg, type) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                const div = document.createElement('div');
+                div.className = 'admin-msg ' + type;
+                div.textContent = msg;
+                container.appendChild(div);
+                setTimeout(() => { if (div.parentNode) div.parentNode.removeChild(div); }, 4000);
+            }
+
+            // ============================================================
+            // 9. EXPORTAR / IMPORTAR / DESCARGAR HTML / PUBLICAR EN GITHUB
+            // ============================================================
+            // 9.1 Descargar HTML
+            document.getElementById('exportHtmlBtn').addEventListener('click', function() {
+                const currentData = JSON.stringify(appData);
+                const container = document.querySelector('.container');
+                const style = document.querySelector('style').innerHTML;
+                const newHtml = `<!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Minidonas Diane · Donas artesanales en Santiago de Cuba</title>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+                    <style>${style}</style>
+                </head>
+                <body>
+                    ${container.outerHTML}
+                    <script>
+                        // DATOS EXPORTADOS
+                        const EXPORTED_DATA = ${currentData};
+                        const STORAGE_KEY = '${STORAGE_KEY}';
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(EXPORTED_DATA));
+                        // También guardar configuración de GitHub si existe
+                        const githubConfig = localStorage.getItem('${GITHUB_CONFIG_KEY}');
+                        if (githubConfig) {
+                            // se mantiene
+                        }
+                        location.reload();
+                    <\/script>
+                </body>
+                </html>`;
+                const blob = new Blob([newHtml], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'index.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showAdminMsg('adminGeneralMsg', '✅ HTML descargado. Súbelo a GitHub para actualizar la página.', 'success');
+            });
+
+            // 9.2 Exportar JSON
+            document.getElementById('exportJsonBtn').addEventListener('click', function() {
+                const json = JSON.stringify(appData, null, 2);
+                const blob = new Blob([json], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'minidonas_datos.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showAdminMsg('adminGeneralMsg', '✅ Datos exportados correctamente.', 'success');
+            });
+
+            // 9.3 Importar JSON
+            document.getElementById('importJsonBtn').addEventListener('click', function() {
+                document.getElementById('importJsonInput').click();
+            });
+            document.getElementById('importJsonInput').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    try {
+                        const imported = JSON.parse(ev.target.result);
+                        if (imported.temas && imported.sabores && imported.coberturas && imported.agregos) {
+                            appData = imported;
+                            saveData();
+                            applyTexts();
+                            renderAll();
+                            if (isAdminLogged) {
+                                renderAdminTemas();
+                                renderAdminSabores();
+                                renderAdminCoberturas();
+                                renderAdminAgregos();
+                                renderAdminCatalogo();
+                                renderAdminRRSS();
+                                renderAdminTestimonios();
+                                renderAdminTextos();
+                            }
+                            showAdminMsg('adminGeneralMsg', '✅ Datos importados correctamente.', 'success');
+                        } else {
+                            showAdminMsg('adminGeneralMsg', '❌ Archivo JSON inválido.', 'error');
+                        }
+                    } catch (err) {
+                        showAdminMsg('adminGeneralMsg', '❌ Error al leer el archivo: ' + err.message, 'error');
+                    }
+                };
+                reader.readAsText(file);
+                this.value = '';
+            });
+
+            // 9.4 Publicar en GitHub (usando API)
+            document.getElementById('publishGithubBtn').addEventListener('click', function() {
+                const token = document.getElementById('githubToken').value.trim();
+                const owner = document.getElementById('githubOwner').value.trim();
+                const repo = document.getElementById('githubRepo').value.trim();
+
+                if (!token || !owner || !repo) {
+                    showAdminMsg('adminGeneralMsg', '❌ Configuración de GitHub incompleta. Guarda primero la configuración.', 'error');
+                    return;
+                }
+
+                // Generar el HTML completo con los datos actuales
+                const currentData = JSON.stringify(appData);
+                const container = document.querySelector('.container');
+                const style = document.querySelector('style').innerHTML;
+                const newHtml = `<!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Minidonas Diane · Donas artesanales en Santiago de Cuba</title>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+                    <style>${style}</style>
+                </head>
+                <body>
+                    ${container.outerHTML}
+                    <script>
+                        const EXPORTED_DATA = ${currentData};
+                        const STORAGE_KEY = '${STORAGE_KEY}';
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(EXPORTED_DATA));
+                        location.reload();
+                    <\/script>
+                </body>
+                </html>`;
+
+                // Codificar en base64
+                const encoded = btoa(unescape(encodeURIComponent(newHtml)));
+
+                // Obtener el SHA actual del archivo (necesario para actualizar)
+                const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/index.html`;
+
+                // Primero, obtener el SHA actual
+                fetch(apiUrl, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        if (response.status === 404) {
+                            // El archivo no existe, lo crearemos sin SHA
+                            return null;
+                        }
+                        throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const sha = data ? data.sha : undefined;
+                    // Preparar el payload para PUT
+                    const payload = {
+                        message: 'Actualización automática desde el panel de administración',
+                        content: encoded,
+                        branch: 'main' // o 'master' según tu repositorio
+                    };
+                    if (sha) payload.sha = sha;
+
+                    return fetch(apiUrl, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => {
+                            throw new Error(err.message || 'Error al publicar');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    showAdminMsg('adminGeneralMsg', '✅ ¡Publicado en GitHub! La página se actualizará en unos minutos en GitHub Pages.', 'success');
+                })
+                .catch(error => {
+                    showAdminMsg('adminGeneralMsg', '❌ Error al publicar: ' + error.message, 'error');
+                    console.error('Error detallado:', error);
+                });
+            });
+
+            // ============================================================
+            // 10. INICIALIZAR
+            // ============================================================
+            loadData();
+            console.log('🍩 Minidonas Diane con localStorage, exportación y GitHub API cargado.');
+
         });
-
-        // ===== INICIALIZAR =====
-        actualizarTodo();
-
-    });
-</script>
+    </script>
 
 </body>
 </html>
