@@ -13,13 +13,13 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://tunombredeusuario.github.io/donas-destacada.jpg"> <!-- ⚠️ CAMBIA ESTO -->
 
-    <!-- ===== FUENTES (se cargarán dinámicamente según la selección) ===== -->
+    <!-- ===== FUENTES ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Las fuentes se cargarán mediante JS según la configuración -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== PALETA DE COLORES (pastelería artesanal) ===== */
+        /* ===== PALETA DE COLORES ===== */
         :root {
             --primary: #E6647B;
             --primary-dark: #C62855;
@@ -45,7 +45,6 @@
             box-sizing: border-box;
         }
 
-        /* ===== FONDO DINÁMICO (se aplica vía JS) ===== */
         body {
             font-family: var(--font-body);
             background-color: var(--cream);
@@ -112,7 +111,7 @@
             margin-top: -5px;
         }
 
-        /* ===== BOTÓN ADMIN (engranaje) ===== */
+        /* ===== BOTÓN ADMIN (siempre visible) ===== */
         .admin-toggle {
             background: none;
             border: none;
@@ -123,6 +122,7 @@
             padding: 5px 10px;
             border-radius: 50%;
             line-height: 1;
+            display: inline-block;
         }
         .admin-toggle:hover {
             transform: rotate(60deg) scale(1.1);
@@ -220,7 +220,6 @@
             justify-content: center;
             border: 4px solid rgba(255, 255, 255, 0.7);
             box-shadow: var(--shadow-soft);
-            /* ===== ANIMACIÓN DEL LOGO ===== */
             animation: floatLogo 4s ease-in-out infinite;
             transition: transform 0.3s;
         }
@@ -234,14 +233,14 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
         .hero-image .logo-hero-img {
-            max-width: 280px; /* más grande */
+            max-width: 280px;
             height: auto;
             display: block;
             border-radius: 50%;
             box-shadow: var(--shadow-soft);
         }
 
-        /* ===== TABS (estilo pastilla) ===== */
+        /* ===== TABS ===== */
         .tabs-container {
             margin: 40px 0 30px 0;
         }
@@ -1002,12 +1001,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 0;
+            padding: 10px 15px;
             border-bottom: 1px solid rgba(230,100,123,0.15);
             flex-wrap: wrap;
             background: rgba(255,255,255,0.5);
             border-radius: 12px;
-            padding: 10px 15px;
             margin-bottom: 6px;
             transition: background 0.2s;
         }
@@ -1170,6 +1168,23 @@
             max-width: 400px;
             width: 90%;
             text-align: center;
+            position: relative;
+        }
+        .login-box .login-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--brown);
+            transition: transform 0.2s;
+            line-height: 1;
+        }
+        .login-box .login-close:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
         }
         .login-box h3 {
             font-family: var(--font-heading);
@@ -1238,7 +1253,7 @@
             display: none;
         }
 
-        /* ===== CONFIGURACIÓN DE GITHUB ===== */
+        /* ===== CONFIGURACIONES ===== */
         .github-config,
         .appearance-config,
         .security-config {
@@ -1372,6 +1387,12 @@
         }
         .admin-tools .btn-publish-github:hover {
             background: #5a32a3;
+        }
+        .admin-tools .btn-logout {
+            background: #d9534f !important;
+        }
+        .admin-tools .btn-logout:hover {
+            background: #c9302c !important;
         }
         .admin-tools input[type="file"] {
             display: none;
@@ -1582,48 +1603,40 @@
 
                 <section class="productos-grid">
 
-                    <!-- ===== SABORES ===== -->
+                    <!-- SABORES -->
                     <div class="menu-block" id="cardSabores">
                         <h4><span>🍩</span> Sabores</h4>
-                        <div class="sabores-grid" id="saboresContainer">
-                            <!-- Generado dinámicamente -->
-                        </div>
+                        <div class="sabores-grid" id="saboresContainer"></div>
                         <div id="previewSabor" class="preview-imagen">
                             <span class="label">🖼️ Imagen del sabor</span>
                             <span class="imagen-item">🍩</span>
                         </div>
                     </div>
 
-                    <!-- ===== COBERTURAS ===== -->
+                    <!-- COBERTURAS -->
                     <div class="menu-block" id="cardCoberturas">
                         <h4><span>🍫</span> Cobertura</h4>
-                        <div class="coberturas-grid" id="coberturasContainer">
-                            <!-- Generado dinámicamente -->
-                        </div>
+                        <div class="coberturas-grid" id="coberturasContainer"></div>
                         <div id="previewCobertura" class="preview-imagen">
                             <span class="label">🖼️ Imagen de la cobertura</span>
                             <span class="imagen-item">🍫</span>
                         </div>
                     </div>
 
-                    <!-- ===== AGREGOS ===== -->
+                    <!-- AGREGOS -->
                     <div class="menu-block full" id="cardAgregos">
                         <h4><span>✨</span> Agregos</h4>
-                        <div class="agregos-wrap" id="agregosContainer">
-                            <!-- Generado dinámicamente -->
-                        </div>
+                        <div class="agregos-wrap" id="agregosContainer"></div>
                         <div id="previewAgregos" class="preview-imagen">
                             <span class="label">🖼️ Agregos seleccionados</span>
                             <span class="imagen-item">✨</span>
                         </div>
                     </div>
 
-                    <!-- ===== TEMAS ===== -->
+                    <!-- TEMAS -->
                     <div class="menu-block" id="cardTemas">
                         <h4><span>🎨</span> Temas Personalizados</h4>
-                        <div class="temas-container" id="temasContainer">
-                            <!-- Generado dinámicamente -->
-                        </div>
+                        <div class="temas-container" id="temasContainer"></div>
                         <div id="campoTemaPersonalizado" class="campo-condicional">
                             <label for="temaPersonalizadoInput">✏️ Describe tu tema personalizado:</label>
                             <input type="text" id="temaPersonalizadoInput" placeholder="Ej: Superhéroes, Unicornios, Videojuegos...">
@@ -1634,12 +1647,12 @@
                         </div>
                     </div>
 
-                    <!-- ===== DOMICILIO ===== -->
+                    <!-- DOMICILIO -->
                     <div class="menu-block" id="cardDomicilio">
                         <h4><span id="domicilioIcon">📍</span> <span id="domicilioLabel">Domicilio</span></h4>
                         <div class="domicilio-grid">
-                            <button class="opcion-btn domicilio-btn" data-domicilio="Sí" aria-label="Domicilio Sí">✅ Sí</button>
-                            <button class="opcion-btn domicilio-btn" data-domicilio="No" aria-label="Domicilio No">❌ No</button>
+                            <button class="opcion-btn domicilio-btn" data-domicilio="Sí">✅ Sí</button>
+                            <button class="opcion-btn domicilio-btn" data-domicilio="No">❌ No</button>
                         </div>
                         <div id="campoDireccion" class="campo-condicional">
                             <label for="direccionInput" id="direccionLabel">✏️ Escribe tu dirección:</label>
@@ -1651,7 +1664,7 @@
                         </div>
                     </div>
 
-                    <!-- ===== FECHA ===== -->
+                    <!-- FECHA -->
                     <div class="menu-block" id="cardFecha">
                         <h4><span id="fechaIcon">📅</span> <span id="fechaLabel">Lo quiero para el día</span></h4>
                         <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
@@ -1660,23 +1673,23 @@
                         </div>
                     </div>
 
-                    <!-- ===== ENVASES ===== -->
+                    <!-- ENVASES -->
                     <div class="menu-block" id="cardEnvases">
                         <h4><span id="envaseIcon">📦</span> <span id="envaseLabel">Envases</span></h4>
                         <div class="envases-grid">
-                            <button class="opcion-btn envase-btn" data-envase="Sí" aria-label="Envase Sí">✅ Sí</button>
-                            <button class="opcion-btn envase-btn" data-envase="No" aria-label="Envase No">❌ No</button>
+                            <button class="opcion-btn envase-btn" data-envase="Sí">✅ Sí</button>
+                            <button class="opcion-btn envase-btn" data-envase="No">❌ No</button>
                         </div>
                         <div id="campoCaja" class="campo-condicional">
                             <label style="font-weight:600; color: var(--primary-dark);" id="cajaLabel">¿Caja personalizada?</label>
                             <div class="caja-grid">
-                                <button class="opcion-btn caja-btn" data-caja="Sí" aria-label="Caja personalizada Sí">✅ Sí</button>
-                                <button class="opcion-btn caja-btn" data-caja="No" aria-label="Caja personalizada No">❌ No</button>
+                                <button class="opcion-btn caja-btn" data-caja="Sí">✅ Sí</button>
+                                <button class="opcion-btn caja-btn" data-caja="No">❌ No</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ===== CANTIDAD ===== -->
+                    <!-- CANTIDAD -->
                     <div class="menu-block" id="cardCantidad">
                         <h4><span id="cantidadIcon">🔢</span> <span id="cantidadLabel">Cantidad</span></h4>
                         <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
@@ -1685,7 +1698,7 @@
                         </div>
                     </div>
 
-                    <!-- ===== RESUMEN ===== -->
+                    <!-- RESUMEN -->
                     <div id="seleccionPreview" class="seleccion-preview">
                         <h4 id="resumenTitle">📋 Tu selección</h4>
                         <div class="summary-grid">
@@ -1710,9 +1723,7 @@
 
             <!-- ===== TAB 2: REDES SOCIALES ===== -->
             <div id="tab-rrss" class="tab-content">
-                <div class="rrss-grid" id="rrssGrid">
-                    <!-- Generado dinámicamente -->
-                </div>
+                <div class="rrss-grid" id="rrssGrid"></div>
                 <div class="rrss-mensaje" id="rrssMensaje">
                     ✨ Síguenos en redes para ver nuestras promociones y nuevos sabores. <strong>¡Te esperamos!</strong>
                 </div>
@@ -1720,18 +1731,14 @@
 
             <!-- ===== TAB 3: COMENTARIOS ===== -->
             <div id="tab-comentarios" class="tab-content">
-                <div class="testimonios-grid" id="testimoniosGrid">
-                    <!-- Generado dinámicamente -->
-                </div>
+                <div class="testimonios-grid" id="testimoniosGrid"></div>
             </div>
         </div>
 
         <!-- ===== CATÁLOGO DE IMÁGENES ===== -->
         <div class="catalogo-section">
             <h3 id="catalogoTitle">📸 Catálogo de Imágenes</h3>
-            <div class="catalogo-grid" id="catalogoGrid">
-                <!-- Generado dinámicamente -->
-            </div>
+            <div class="catalogo-grid" id="catalogoGrid"></div>
             <p style="text-align:center; margin-top:20px; color: var(--brown);" id="catalogoFooter">
                 📸 Próximamente más imágenes de nuestros productos. ¡Síguenos en redes para ver las novedades!
             </p>
@@ -1762,6 +1769,7 @@
     <!-- ===== LOGIN MODAL ===== -->
     <div class="login-modal" id="loginModal">
         <div class="login-box">
+            <button class="login-close" id="loginCloseBtn">✕</button>
             <h3>🔐 Acceso Administrador</h3>
             <div class="pass-wrapper">
                 <input type="password" id="adminPassword" placeholder="Contraseña" autofocus>
@@ -1796,13 +1804,15 @@
                 <p>Gestiona todos los contenidos de la página desde las pestañas.</p>
                 <hr style="margin:15px 0; border-color:var(--peach);">
 
-                <!-- ===== APARIENCIA (fondo, fuente, logo) ===== -->
+                <!-- ===== APARIENCIA ===== -->
                 <h3 style="margin:10px 0; color:var(--primary-dark);">🎨 Apariencia</h3>
                 <div class="appearance-config">
                     <label for="bgColor">Color de fondo:</label>
                     <input type="color" id="bgColor" value="#FDF0E8">
                     <label for="bgImage">Imagen de fondo (URL):</label>
                     <input type="text" id="bgImage" placeholder="https://... (dejar vacío para usar el color)">
+                    <label for="bgFile">O subir imagen desde dispositivo:</label>
+                    <input type="file" id="bgFileInput" accept="image/*" style="grid-column:2;">
                     <label for="fontSelect">Fuente para textos:</label>
                     <select id="fontSelect">
                         <option value="Quicksand">Quicksand (actual)</option>
@@ -1821,7 +1831,7 @@
                     <button class="btn-save-appearance" id="saveAppearanceBtn">💾 Guardar apariencia</button>
                 </div>
 
-                <!-- ===== SEGURIDAD (cambiar contraseña) ===== -->
+                <!-- ===== SEGURIDAD ===== -->
                 <h3 style="margin:10px 0; color:var(--primary-dark);">🔐 Seguridad</h3>
                 <div class="security-config">
                     <label for="newPass">Nueva contraseña:</label>
@@ -1837,7 +1847,7 @@
                     <button class="btn-save-security" id="saveSecurityBtn">💾 Cambiar contraseña</button>
                 </div>
 
-                <!-- ===== CONFIGURACIÓN DE GITHUB ===== -->
+                <!-- ===== GITHUB ===== -->
                 <h3 style="margin:10px 0; color:var(--primary-dark);">🐙 GitHub</h3>
                 <div class="github-config">
                     <label for="githubToken">🔑 Token:</label>
@@ -1860,6 +1870,7 @@
                     <button class="btn-import-json" id="importJsonBtn">📥 Importar JSON</button>
                     <input type="file" id="importJsonInput" accept=".json">
                     <button class="btn-publish-github" id="publishGithubBtn">🚀 Publicar en GitHub</button>
+                    <button class="btn-logout" id="logoutBtn">🔒 Cerrar sesión</button>
                 </div>
                 <p style="font-size:0.9rem; color:var(--brown); margin-top: 5px;">
                     ✅ <strong>Descargar HTML:</strong> genera un archivo <code>index.html</code> con todos los datos actuales.<br>
@@ -1998,7 +2009,9 @@
         </div>
     </div>
 
-    <!-- ===== JAVASCRIPT COMPLETO ===== -->
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT COMPLETO (sin IP) ===== -->
+    <!-- ============================================================ -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -2021,7 +2034,7 @@
             setupPasswordToggle('githubTokenToggle', 'githubToken');
 
             // ============================================================
-            // 1. CONFIGURACIÓN GENERAL
+            // 1. CONSTANTES Y ESTADO
             // ============================================================
             const ADMIN_PASSWORD_KEY = 'minidonas_admin_password';
             const STORAGE_KEY = 'minidonas_data';
@@ -2032,7 +2045,7 @@
             let appData = {};
 
             // ============================================================
-            // 2. FUNCIONES DE CONTRASEÑA
+            // 2. GESTIÓN DE CONTRASEÑA
             // ============================================================
             function getAdminPassword() {
                 return localStorage.getItem(ADMIN_PASSWORD_KEY) || 'admin123';
@@ -2141,7 +2154,7 @@
             }
 
             // ============================================================
-            // 5. APARIENCIA (fondo, fuente, etc.)
+            // 5. APARIENCIA
             // ============================================================
             function loadAppearance() {
                 const stored = localStorage.getItem(APPEARANCE_KEY);
@@ -2171,7 +2184,6 @@
                 if (stored) {
                     try {
                         const config = JSON.parse(stored);
-                        // Fondo
                         const body = document.body;
                         if (config.bgImage) {
                             body.style.backgroundImage = `url(${config.bgImage})`;
@@ -2182,16 +2194,14 @@
                             body.style.backgroundImage = 'none';
                             body.style.backgroundColor = config.bgColor || '#FDF0E8';
                         }
-                        // Fuente
                         const font = config.font || 'Quicksand';
                         document.documentElement.style.setProperty('--font-body', `'${font}', sans-serif`);
                         document.documentElement.style.setProperty('--font-heading', `'${font}', serif`);
-                        // Cargar la fuente de Google
                         if (font && font !== 'Quicksand') {
                             const link = document.createElement('link');
-                            link.href = `https://fonts.googleapis.com/css2?family=${font.replace(/ /g,'+')}:wght@400;700&display=swap`;
+                            link.href =
+                                `https://fonts.googleapis.com/css2?family=${font.replace(/ /g,'+')}:wght@400;700&display=swap`;
                             link.rel = 'stylesheet';
-                            // Eliminar anteriores para evitar duplicados
                             document.querySelectorAll('link[data-font]').forEach(el => el.remove());
                             link.setAttribute('data-font', 'true');
                             document.head.appendChild(link);
@@ -2201,6 +2211,23 @@
             }
 
             document.getElementById('saveAppearanceBtn').addEventListener('click', saveAppearance);
+
+            // Manejo de archivo de fondo
+            document.getElementById('bgFileInput').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const dataUrl = ev.target.result;
+                    const config = JSON.parse(localStorage.getItem(APPEARANCE_KEY) || '{}');
+                    config.bgImage = dataUrl;
+                    localStorage.setItem(APPEARANCE_KEY, JSON.stringify(config));
+                    applyAppearance();
+                    showAdminMsg('adminGeneralMsg', '✅ Imagen de fondo actualizada.', 'success');
+                };
+                reader.readAsDataURL(file);
+                this.value = '';
+            });
 
             // ============================================================
             // 6. CAMBIAR CONTRASEÑA
@@ -2617,6 +2644,12 @@
                 }
             });
 
+            document.getElementById('loginCloseBtn').addEventListener('click', function() {
+                document.getElementById('loginModal').classList.remove('open');
+                document.getElementById('adminPassword').value = '';
+                document.getElementById('loginError').style.display = 'none';
+            });
+
             document.getElementById('loginBtn').addEventListener('click', function() {
                 const pass = document.getElementById('adminPassword').value;
                 if (pass === getAdminPassword()) {
@@ -2652,6 +2685,12 @@
                 }
             });
 
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                isAdminLogged = false;
+                document.getElementById('adminPanel').classList.remove('open');
+                showAdminMsg('adminGeneralMsg', '🔒 Sesión cerrada.', 'success');
+            });
+
             document.querySelectorAll('.admin-tab-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
@@ -2662,7 +2701,7 @@
             });
 
             // ============================================================
-            // 10. FUNCIONES RENDER ADMIN (con edición en línea)
+            // 10. FUNCIONES RENDER ADMIN (con edición en línea y blur)
             // ============================================================
             function renderAdminTemas() {
                 const list = document.getElementById('adminTemasList');
@@ -2684,24 +2723,33 @@
                     `;
                     list.appendChild(div);
 
-                    // Lógica de edición: al hacer clic en Editar, convertir el nombre en input
                     const editBtn = div.querySelector('.btn-edit');
                     const saveBtn = div.querySelector('.btn-save-edit');
                     const nameSpan = div.querySelector('.item-name');
+                    let editInputId = `editTemaName_${index}`;
 
                     editBtn.addEventListener('click', function() {
                         const currentName = nameSpan.textContent;
-                        nameSpan.innerHTML = `<input type="text" id="editTemaName_${index}" value="${currentName}" style="width:100%;">`;
+                        nameSpan.innerHTML =
+                            `<input type="text" id="${editInputId}" value="${currentName}" style="width:100%;">`;
                         editBtn.style.display = 'none';
                         saveBtn.style.display = 'inline-block';
+                        const input = document.getElementById(editInputId);
+                        if (input) {
+                            input.focus();
+                            input.addEventListener('blur', function() {
+                                nameSpan.textContent = appData.temas[index].nombre;
+                                editBtn.style.display = 'inline-block';
+                                saveBtn.style.display = 'none';
+                            }, { once: true });
+                        }
                     });
 
                     saveBtn.addEventListener('click', function() {
-                        const newName = document.getElementById(`editTemaName_${index}`).value.trim();
+                        const newName = document.getElementById(editInputId).value.trim();
                         if (newName && newName !== '') {
                             appData.temas[index].nombre = newName;
-                            appData.temas[index].id = newName; // actualizar id también
-                            // Actualizar imagen si se subió archivo
+                            appData.temas[index].id = newName;
                             const fileInput = document.getElementById(`temaFileInput_${index}`);
                             const urlInput = document.getElementById(`temaImgInput_${index}`);
                             if (fileInput.files && fileInput.files[0]) {
@@ -2761,16 +2809,27 @@
                     const editBtn = div.querySelector('.btn-edit');
                     const saveBtn = div.querySelector('.btn-save-edit');
                     const nameSpan = div.querySelector('.item-name');
+                    let editInputId = `editSaborName_${index}`;
 
                     editBtn.addEventListener('click', function() {
                         const currentName = nameSpan.textContent;
-                        nameSpan.innerHTML = `<input type="text" id="editSaborName_${index}" value="${currentName}" style="width:100%;">`;
+                        nameSpan.innerHTML =
+                            `<input type="text" id="${editInputId}" value="${currentName}" style="width:100%;">`;
                         editBtn.style.display = 'none';
                         saveBtn.style.display = 'inline-block';
+                        const input = document.getElementById(editInputId);
+                        if (input) {
+                            input.focus();
+                            input.addEventListener('blur', function() {
+                                nameSpan.textContent = appData.sabores[index];
+                                editBtn.style.display = 'inline-block';
+                                saveBtn.style.display = 'none';
+                            }, { once: true });
+                        }
                     });
 
                     saveBtn.addEventListener('click', function() {
-                        const newName = document.getElementById(`editSaborName_${index}`).value.trim();
+                        const newName = document.getElementById(editInputId).value.trim();
                         if (newName && newName !== '') {
                             appData.sabores[index] = newName;
                             saveData();
@@ -2812,16 +2871,27 @@
                     const editBtn = div.querySelector('.btn-edit');
                     const saveBtn = div.querySelector('.btn-save-edit');
                     const nameSpan = div.querySelector('.item-name');
+                    let editInputId = `editCobName_${index}`;
 
                     editBtn.addEventListener('click', function() {
                         const currentName = nameSpan.textContent;
-                        nameSpan.innerHTML = `<input type="text" id="editCobName_${index}" value="${currentName}" style="width:100%;">`;
+                        nameSpan.innerHTML =
+                            `<input type="text" id="${editInputId}" value="${currentName}" style="width:100%;">`;
                         editBtn.style.display = 'none';
                         saveBtn.style.display = 'inline-block';
+                        const input = document.getElementById(editInputId);
+                        if (input) {
+                            input.focus();
+                            input.addEventListener('blur', function() {
+                                nameSpan.textContent = appData.coberturas[index];
+                                editBtn.style.display = 'inline-block';
+                                saveBtn.style.display = 'none';
+                            }, { once: true });
+                        }
                     });
 
                     saveBtn.addEventListener('click', function() {
-                        const newName = document.getElementById(`editCobName_${index}`).value.trim();
+                        const newName = document.getElementById(editInputId).value.trim();
                         if (newName && newName !== '') {
                             appData.coberturas[index] = newName;
                             saveData();
@@ -2863,16 +2933,27 @@
                     const editBtn = div.querySelector('.btn-edit');
                     const saveBtn = div.querySelector('.btn-save-edit');
                     const nameSpan = div.querySelector('.item-name');
+                    let editInputId = `editAgName_${index}`;
 
                     editBtn.addEventListener('click', function() {
                         const currentName = nameSpan.textContent;
-                        nameSpan.innerHTML = `<input type="text" id="editAgName_${index}" value="${currentName}" style="width:100%;">`;
+                        nameSpan.innerHTML =
+                            `<input type="text" id="${editInputId}" value="${currentName}" style="width:100%;">`;
                         editBtn.style.display = 'none';
                         saveBtn.style.display = 'inline-block';
+                        const input = document.getElementById(editInputId);
+                        if (input) {
+                            input.focus();
+                            input.addEventListener('blur', function() {
+                                nameSpan.textContent = appData.agregos[index];
+                                editBtn.style.display = 'inline-block';
+                                saveBtn.style.display = 'none';
+                            }, { once: true });
+                        }
                     });
 
                     saveBtn.addEventListener('click', function() {
-                        const newName = document.getElementById(`editAgName_${index}`).value.trim();
+                        const newName = document.getElementById(editInputId).value.trim();
                         if (newName && newName !== '') {
                             appData.agregos[index] = newName;
                             saveData();
@@ -2922,16 +3003,27 @@
                     const editBtn = div.querySelector('.btn-edit');
                     const saveBtn = div.querySelector('.btn-save-edit');
                     const nameSpan = div.querySelector('.item-name');
+                    let editInputId = `editCatName_${index}`;
 
                     editBtn.addEventListener('click', function() {
                         const currentName = nameSpan.textContent;
-                        nameSpan.innerHTML = `<input type="text" id="editCatName_${index}" value="${currentName}" style="width:100%;">`;
+                        nameSpan.innerHTML =
+                            `<input type="text" id="${editInputId}" value="${currentName}" style="width:100%;">`;
                         editBtn.style.display = 'none';
                         saveBtn.style.display = 'inline-block';
+                        const input = document.getElementById(editInputId);
+                        if (input) {
+                            input.focus();
+                            input.addEventListener('blur', function() {
+                                nameSpan.textContent = appData.catalogo[index].nombre;
+                                editBtn.style.display = 'inline-block';
+                                saveBtn.style.display = 'none';
+                            }, { once: true });
+                        }
                     });
 
                     saveBtn.addEventListener('click', function() {
-                        const newName = document.getElementById(`editCatName_${index}`).value.trim();
+                        const newName = document.getElementById(editInputId).value.trim();
                         const newDesc = document.getElementById(`catDescInput_${index}`).value.trim();
                         const newEmoji = document.getElementById(`catEmojiInput_${index}`).value.trim() || '🍩';
                         const urlInput = document.getElementById(`catImgInput_${index}`);
@@ -2999,16 +3091,28 @@
                     const editBtn = div.querySelector('.btn-edit');
                     const saveBtn = div.querySelector('.btn-save-edit');
                     const nameSpan = div.querySelector('.item-name');
+                    let editInputId = `editRrssName_${index}`;
 
                     editBtn.addEventListener('click', function() {
-                        const currentName = nameSpan.textContent.replace(/^[^\s]+\s/, ''); // quitar icono
-                        nameSpan.innerHTML = `<input type="text" id="editRrssName_${index}" value="${currentName}" style="width:100%;">`;
+                        const currentName = nameSpan.textContent.replace(/^[^\s]+\s/, '');
+                        nameSpan.innerHTML =
+                            `<input type="text" id="${editInputId}" value="${currentName}" style="width:100%;">`;
                         editBtn.style.display = 'none';
                         saveBtn.style.display = 'inline-block';
+                        const input = document.getElementById(editInputId);
+                        if (input) {
+                            input.focus();
+                            input.addEventListener('blur', function() {
+                                const orig = appData.rrss[index];
+                                nameSpan.textContent = `${orig.icono || '📱'} ${orig.nombre}`;
+                                editBtn.style.display = 'inline-block';
+                                saveBtn.style.display = 'none';
+                            }, { once: true });
+                        }
                     });
 
                     saveBtn.addEventListener('click', function() {
-                        const newName = document.getElementById(`editRrssName_${index}`).value.trim();
+                        const newName = document.getElementById(editInputId).value.trim();
                         const newUrl = document.getElementById(`rrssUrlInput_${index}`).value.trim();
                         const newIcon = document.getElementById(`rrssIconInput_${index}`).value.trim() || '📱';
                         if (newName && newName !== '') {
@@ -3057,16 +3161,28 @@
                     const editBtn = div.querySelector('.btn-edit');
                     const saveBtn = div.querySelector('.btn-save-edit');
                     const nameSpan = div.querySelector('.item-name');
+                    let editInputId = `editTestName_${index}`;
 
                     editBtn.addEventListener('click', function() {
                         const currentName = nameSpan.textContent.replace(/^[^\s]+\s/, '');
-                        nameSpan.innerHTML = `<input type="text" id="editTestName_${index}" value="${currentName}" style="width:100%;">`;
+                        nameSpan.innerHTML =
+                            `<input type="text" id="${editInputId}" value="${currentName}" style="width:100%;">`;
                         editBtn.style.display = 'none';
                         saveBtn.style.display = 'inline-block';
+                        const input = document.getElementById(editInputId);
+                        if (input) {
+                            input.focus();
+                            input.addEventListener('blur', function() {
+                                const orig = appData.testimonios[index];
+                                nameSpan.textContent = `${orig.avatar || '👤'} ${orig.nombre}`;
+                                editBtn.style.display = 'inline-block';
+                                saveBtn.style.display = 'none';
+                            }, { once: true });
+                        }
                     });
 
                     saveBtn.addEventListener('click', function() {
-                        const newName = document.getElementById(`editTestName_${index}`).value.trim();
+                        const newName = document.getElementById(editInputId).value.trim();
                         const newTexto = document.getElementById(`testTextoInput_${index}`).value.trim();
                         const newAvatar = document.getElementById(`testAvatarInput_${index}`).value.trim() || '👤';
                         const newEstrellas = parseInt(document.getElementById(`testEstrellasInput_${index}`).value) || 5;
@@ -3297,12 +3413,10 @@
             // ============================================================
             // 12. EXPORTAR / IMPORTAR / DESCARGAR HTML / PUBLICAR EN GITHUB
             // ============================================================
-            // 12.1 Descargar HTML
             document.getElementById('exportHtmlBtn').addEventListener('click', function() {
                 const currentData = JSON.stringify(appData);
                 const container = document.querySelector('.container');
                 const style = document.querySelector('style').innerHTML;
-                // Obtener la configuración de apariencia actual
                 const appearance = localStorage.getItem(APPEARANCE_KEY) || '{}';
                 const githubConfig = localStorage.getItem(GITHUB_CONFIG_KEY) || '{}';
                 const newHtml = `<!DOCTYPE html>
@@ -3344,7 +3458,6 @@
                 showAdminMsg('adminGeneralMsg', '✅ HTML descargado. Súbelo a GitHub para actualizar la página.', 'success');
             });
 
-            // 12.2 Exportar JSON
             document.getElementById('exportJsonBtn').addEventListener('click', function() {
                 const json = JSON.stringify(appData, null, 2);
                 const blob = new Blob([json], { type: 'application/json' });
@@ -3359,7 +3472,6 @@
                 showAdminMsg('adminGeneralMsg', '✅ Datos exportados correctamente.', 'success');
             });
 
-            // 12.3 Importar JSON
             document.getElementById('importJsonBtn').addEventListener('click', function() {
                 document.getElementById('importJsonInput').click();
             });
@@ -3397,7 +3509,6 @@
                 this.value = '';
             });
 
-            // 12.4 Publicar en GitHub
             document.getElementById('publishGithubBtn').addEventListener('click', function() {
                 const token = document.getElementById('githubToken').value.trim();
                 const owner = document.getElementById('githubOwner').value.trim();
@@ -3493,7 +3604,7 @@
             });
 
             // ============================================================
-            // 13. CONFIGURACIÓN DE GITHUB (cargar/guardar)
+            // 13. CONFIGURACIÓN DE GITHUB
             // ============================================================
             function loadGithubConfig() {
                 const stored = localStorage.getItem(GITHUB_CONFIG_KEY);
@@ -3521,7 +3632,7 @@
             // 14. INICIALIZAR
             // ============================================================
             loadData();
-            console.log('🍩 Minidonas Diane con todas las mejoras cargado.');
+            console.log('🍩 Minidonas Diane cargado.');
 
         });
     </script>
