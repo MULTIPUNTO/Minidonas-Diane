@@ -151,8 +151,9 @@
             align-items: center;
             justify-content: center;
         }
+        /* LOGO MÁS GRANDE */
         .hero-image .logo-hero-img {
-            max-width: 180px;
+            max-width: 220px;
             height: auto;
             display: block;
             border-radius: 50%;
@@ -240,7 +241,7 @@
             color: var(--text-muted);
         }
 
-        /* ===== BADGE CTA (estilo WhatsApp) ===== */
+        /* ===== BADGE CTA ===== */
         .mensaje-pedido .highlight-cta {
             background: #25D366;
             color: white;
@@ -349,7 +350,6 @@
             100% { transform: scale(1); }
         }
 
-        /* ===== BOTÓN DE WHATSAPP EN EL RESUMEN (ahora con el mismo estilo que el badge) ===== */
         .btn-pedido-resumen {
             background: #25D366;
             color: white;
@@ -360,8 +360,8 @@
             font-size: 1.2rem;
             display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);  /* misma sombra que el badge */
-            border: 2px solid #25D366;                       /* borde igual que el badge */
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            border: 2px solid #25D366;
             cursor: pointer;
             margin-top: 15px;
             text-align: center;
@@ -374,7 +374,7 @@
             transform: scale(1.05);
             background: white;
             color: #25D366;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);  /* mismo hover que el badge */
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
         }
         .btn-pedido-resumen:disabled {
             opacity: 0.7;
@@ -759,28 +759,101 @@
             .mensaje-pedido .highlight-cta { animation: none !important; }
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE (optimizado para móviles) ===== */
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; }
-            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero { 
+                flex-direction: column-reverse; 
+                text-align: center; 
+                padding: 30px 20px;
+            }
             .hero-text h2 { font-size: 2.5rem; }
-            .hero-text .sub-lema { border-left: none; border-top: 6px solid var(--secondary); padding-left: 0; padding-top: 15px; }
-            .container { padding: 15px; border-radius: 25px; }
-            .opcion-btn { width: 100%; text-align: center; }
-            .contacto .datos { flex-direction: column; gap: 10px; border-radius: 30px; }
-            .btn-group { flex-direction: column; align-items: center; }
-            .btn-maps { width: 90%; }
-            .seleccion-preview { padding: 20px; }
-            .btn-pedido-resumen { width: 100%; }
-            .campo-condicional input { max-width: 100%; }
-            .tab-btn { flex: 1; text-align: center; font-size: 0.9rem; padding: 10px 15px; }
-            .tabs-header { gap: 5px; }
-            .rrss-card { min-width: 140px; padding: 20px; }
-            .testimonio-card { max-width: 100%; }
-            .catalogo-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
-            .hero-image .logo-hero-img { max-width: 120px; }
-            .mensaje-pedido { font-size: 1rem; padding: 15px; }
-            .mensaje-pedido .highlight-cta { font-size: 0.9rem; padding: 4px 12px; }
+            .hero-text .sub-lema { 
+                border-left: none; 
+                border-top: 6px solid var(--secondary); 
+                padding-left: 0; 
+                padding-top: 15px;
+            }
+            .hero-text p { max-width: 100%; }
+            .container { 
+                padding: 15px; 
+                border-radius: 25px;
+            }
+            .opcion-btn { 
+                width: 100%; 
+                text-align: center; 
+                padding: 14px 20px;  /* más grande al tacto */
+                font-size: 1.1rem;
+            }
+            .contacto .datos { 
+                flex-direction: column; 
+                gap: 10px; 
+                border-radius: 30px; 
+                padding: 20px;
+            }
+            .btn-group { 
+                flex-direction: column; 
+                align-items: center; 
+            }
+            .btn-maps { 
+                width: 90%; 
+                padding: 18px 20px;
+                font-size: 1.2rem;
+            }
+            .seleccion-preview { 
+                padding: 20px;
+            }
+            .btn-pedido-resumen { 
+                width: 100%; 
+                padding: 18px 20px;
+                font-size: 1.3rem;
+            }
+            .campo-condicional input { 
+                max-width: 100%; 
+            }
+            .tab-btn { 
+                flex: 1; 
+                text-align: center; 
+                font-size: 0.9rem; 
+                padding: 12px 15px;
+            }
+            .tabs-header { 
+                gap: 5px; 
+            }
+            .rrss-card { 
+                min-width: 140px; 
+                padding: 25px; 
+            }
+            .testimonio-card { 
+                max-width: 100%; 
+            }
+            .catalogo-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            }
+            /* LOGO MÁS GRANDE EN MÓVIL */
+            .hero-image .logo-hero-img {
+                max-width: 180px;  /* antes 120px */
+            }
+            .hero-image {
+                padding: 15px;
+            }
+            .mensaje-pedido { 
+                font-size: 1rem; 
+                padding: 15px; 
+            }
+            .mensaje-pedido .highlight-cta { 
+                font-size: 0.9rem; 
+                padding: 6px 14px; 
+            }
+            .menu-block {
+                padding: 20px 15px;
+            }
+            .menu-block h4 {
+                font-size: 1.5rem;
+            }
+            .seleccion-preview .resumen-linea {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -804,7 +877,7 @@
             <p>La dosis exacta de dulzura con ingredientes naturales. Perfectas para cualquier momento.</p>
         </div>
         <div class="hero-image">
-            <!-- ⚠️ AQUÍ VA TU LOGO: reemplaza "logo.png" por el nombre real de tu imagen -->
+            <!-- ⚠️ AQUÍ VA TU LOGO: reemplaza "logo.png" por la ruta real -->
             <img src="logo.png" alt="Logo Minidonas Diane" class="logo-hero-img">
         </div>
     </section>
@@ -1331,17 +1404,18 @@
             const caja = (envase === 'Sí') ? selectedCaja : '';
             const cantidad = cantidadInput.value || '9';
 
+            // ===== NUEVO MENSAJE SIN ASTERISCOS =====
             let mensaje = 'Hola Minidonas Diane! Te encontré por tu pagina web y quiero hacer un pedido de minidonas con:\n';
-            mensaje += `* Sabor: ${sabor}\n`;
-            mensaje += `* Cobertura: ${cobertura}\n`;
-            mensaje += `* Agregos: ${agregos}\n`;
-            mensaje += `* Tema: ${tema}\n`;
-            mensaje += `* Cantidad: ${cantidad}\n`;
-            mensaje += `* Envases: ${envase}\n`;
-            if (envase === 'Sí') mensaje += `* Caja personalizada: ${caja}\n`;
-            mensaje += `* Lo quiero para el día: ${fecha}\n`;
-            mensaje += `* Domicilio: ${domicilio}\n`;
-            if (domicilio === 'Sí' && direccion) mensaje += `* Dirección: ${direccion}\n`;
+            mensaje += `Sabor: ${sabor}\n`;
+            mensaje += `Cobertura: ${cobertura}\n`;
+            mensaje += `Agregos: ${agregos}\n`;
+            mensaje += `Tema: ${tema}\n`;
+            mensaje += `Cantidad: ${cantidad}\n`;
+            mensaje += `Envases: ${envase}\n`;
+            if (envase === 'Sí') mensaje += `Caja personalizada: ${caja}\n`;
+            mensaje += `Lo quiero para el día: ${fecha}\n`;
+            mensaje += `Domicilio: ${domicilio}\n`;
+            if (domicilio === 'Sí' && direccion) mensaje += `Dirección: ${direccion}\n`;
 
             const url = `https://wa.me/5355123300?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
